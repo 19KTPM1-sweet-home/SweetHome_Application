@@ -1,2 +1,379 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Sweet Home</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link active" href="#">Contact</a>
+                </li>
+            </ul>
+            <a href="/login">
+                <button class="btn btn-primary me-2 justify-content-end">
+                    Login
+                </button>
+            </a>
+        </div>
+
+    </div>
+</nav>
+
+{{!-- begin: Banner --}}
+
+{{!--end: Banner --}}
+
+<div class="tm-page-wrap">
+
+    <div class="container-fluid">
+        <div id="content" class="mx-auto tm-content-container">
+            <main>
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="tm-page-title mb-4">Sweet Home</h2>
+                        <div class="tm-categories-container mb-5">
+                            <h3 class="tm-text-primary tm-categories-text">Categories:</h3>
+                            <ul class="nav tm-category-list">
+                                <li class="nav-item tm-category-item"><a href="#"
+                                        class="nav-link tm-category-link active">All</a></li>
+                                <li class="nav-item tm-category-item"><a href="#"
+                                        class="nav-link tm-category-link">House</a></li>
+                                <li class="nav-item tm-category-item"><a href="#"
+                                        class="nav-link tm-category-link">Apartment</a></li>
+                                <li class="nav-item tm-category-item"><a href="#"
+                                        class="nav-link tm-category-link">Villa</a></li>
+                                <li class="nav-item tm-category-item"><a href="#"
+                                        class="nav-link tm-category-link">Lands</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card mt-4">
+                            <a href="/house/detail">
+                                <img src="../../images/tn-01.jpg" class="card-img-top" alt="Venezia Beach Bình Thuận" />
+                            </a>
+                            <div class="card-body" class="no-text-decoration">
+                                <a href="/house/detail">
+                                    <h5 class="card-title">Venezia Beach Bình Thuận</h5>
+                                </a>
+                                <p class="card-text">
+                                <ul>
+                                    <li>
+                                        Xã Thắng Hải, Hàm Tân, Bình Thuận
+                                    </li>
+                                    <li>
+                                        Quy mô: 70ha
+                                    </li>
+                                    <li>
+                                        Giá: 11 Tỷ/căn
+                                    </li>
+                                    <li>
+                                        Pháp lý: Sổ hồng
+                                    </li>
+                                </ul>
+                                </p>
+                                <a href="#" class="btn btn-primary">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card mt-4">
+                            <a href="/house/detail">
+                                <img src="../../images/tn-02.jpg" class="card-img-top"
+                                    alt="Dự án Chợ và Nhà phố Thị xã Bình Minh" />
+                            </a>
+                            <div class="card-body" class="no-text-decoration">
+                                <a href="/house/detail">
+                                    <h5 class="card-title">Dự án Chợ và Nhà phố Thị xã Bình Minh</h5>
+                                </a>
+                                <p class="card-text">
+                                <ul>
+                                    <li>
+                                        Xã Thắng Hải, Hàm Tân, Bình Thuận
+                                    </li>
+                                    <li>
+                                        Quy mô: 70ha
+                                    </li>
+                                    <li>
+                                        Giá: 11 Tỷ/căn
+                                    </li>
+                                    <li>
+                                        Pháp lý: Sổ hồng
+                                    </li>
+                                </ul>
+                                </p>
+                                <a href="#" class="btn btn-primary">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card mt-4">
+                            <a href="/house/detail">
+                                <img src="../../images/tn-03.jpg" class="card-img-top"
+                                    alt="Dự án căn hộ Astral City Bình Dương" />
+                            </a>
+                            <div class="card-body" class="no-text-decoration">
+                                <a href="/house/detail">
+                                    <h5 class="card-title">Dự án căn hộ Astral City Bình Dương</h5>
+                                </a>
+                                <p class="card-text">
+                                <ul>
+                                    <li>
+                                        Xã Thắng Hải, Hàm Tân, Bình Thuận
+                                    </li>
+                                    <li>
+                                        Quy mô: 70ha
+                                    </li>
+                                    <li>
+                                        Giá: 11 Tỷ/căn
+                                    </li>
+                                    <li>
+                                        Pháp lý: Sổ hồng
+                                    </li>
+                                </ul>
+                                </p>
+                                <a href="#" class="btn btn-primary">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card mt-4">
+                            <a href="/house/detail">
+                                <img src="../../images/tn-04.jpg" class="card-img-top"
+                                    alt="Dự án căn hộ Astral City Bình Dương" />
+                            </a>
+                            <div class="card-body" class="no-text-decoration">
+                                <a href="/house/detail">
+                                    <h5 class="card-title">Dự án căn hộ Astral City Bình Dương</h5>
+                                </a>
+                                <p class="card-text">
+                                <ul>
+                                    <li>
+                                        Xã Thắng Hải, Hàm Tân, Bình Thuận
+                                    </li>
+                                    <li>
+                                        Quy mô: 70ha
+                                    </li>
+                                    <li>
+                                        Giá: 11 Tỷ/căn
+                                    </li>
+                                    <li>
+                                        Pháp lý: Sổ hồng
+                                    </li>
+                                </ul>
+                                </p>
+                                <a href="#" class="btn btn-primary">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card mt-4">
+                            <a href="/house/detail">
+                                <img src="../../images/tn-05.jpg" class="card-img-top" alt="Hamubay Phan Thiết" />
+                            </a>
+                            <div class="card-body" class="no-text-decoration">
+                                <a href="/house/detail">
+                                    <h5 class="card-title">Hamubay Phan Thiết</h5>
+                                </a>
+                                <p class="card-text">
+                                <ul>
+                                    <li>
+                                        Xã Thắng Hải, Hàm Tân, Bình Thuận
+                                    </li>
+                                    <li>
+                                        Quy mô: 70ha
+                                    </li>
+                                    <li>
+                                        Giá: 11 Tỷ/căn
+                                    </li>
+                                    <li>
+                                        Pháp lý: Sổ hồng
+                                    </li>
+                                </ul>
+                                </p>
+                                <a href="#" class="btn btn-primary">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card mt-4">
+                            <a href="/house/detail">
+                                <img src="../../images/tn-06.jpg" class="card-img-top"
+                                    alt="Thắng Lợi J-Dragon Cần Đước" />
+                            </a>
+                            <div class="card-body" class="no-text-decoration">
+                                <a href="/house/detail">
+                                    <h5 class="card-title">Thắng Lợi J-Dragon Cần Đước</h5>
+                                </a>
+                                <p class="card-text">
+                                <ul>
+                                    <li>
+                                        Xã Thắng Hải, Hàm Tân, Bình Thuận
+                                    </li>
+                                    <li>
+                                        Quy mô: 70ha
+                                    </li>
+                                    <li>
+                                        Giá: 11 Tỷ/căn
+                                    </li>
+                                    <li>
+                                        Pháp lý: Sổ hồng
+                                    </li>
+                                </ul>
+                                </p>
+                                <a href="#" class="btn btn-primary">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card mt-4">
+                            <a href="/house/detail">
+                                <img src="../../images/tn-07.jpg" class="card-img-top" alt="Căn Hộ Citi Grand Quận 2" />
+                            </a>
+                            <div class="card-body" class="no-text-decoration">
+                                <a href="/house/detail">
+                                    <h5 class="card-title">Căn Hộ Citi Grand Quận 2</h5>
+                                </a>
+                                <p class="card-text">
+                                <ul>
+                                    <li>
+                                        Xã Thắng Hải, Hàm Tân, Bình Thuận
+                                    </li>
+                                    <li>
+                                        Quy mô: 70ha
+                                    </li>
+                                    <li>
+                                        Giá: 11 Tỷ/căn
+                                    </li>
+                                    <li>
+                                        Pháp lý: Sổ hồng
+                                    </li>
+                                </ul>
+                                </p>
+                                <a href="#" class="btn btn-primary">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card mt-4">
+                            <a href="/house/detail">
+                                <img src="../../images/tn-08.jpg" class="card-img-top" alt="The Peak Garden" />
+                            </a>
+                            <div class="card-body" class="no-text-decoration">
+                                <a href="/house/detail">
+                                    <h5 class="card-title">The Peak Garden</h5>
+                                </a>
+                                <p class="card-text">
+                                <ul>
+                                    <li>
+                                        Xã Thắng Hải, Hàm Tân, Bình Thuận
+                                    </li>
+                                    <li>
+                                        Quy mô: 70ha
+                                    </li>
+                                    <li>
+                                        Giá: 11 Tỷ/căn
+                                    </li>
+                                    <li>
+                                        Pháp lý: Sổ hồng
+                                    </li>
+                                </ul>
+                                </p>
+                                <a href="#" class="btn btn-primary">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card mt-4">
+                            <a href="/house/detail">
+                                <img src="../../images/tn-08.jpg" class="card-img-top" alt="Biệt thự Lavila De Rio" />
+                            </a>
+                            <div class="card-body" class="no-text-decoration">
+                                <a href="/house/detail">
+                                    <h5 class="card-title">Biệt thự Lavila De Rio</h5>
+                                </a>
+                                <p class="card-text">
+                                <ul>
+                                    <li>
+                                        Xã Thắng Hải, Hàm Tân, Bình Thuận
+                                    </li>
+                                    <li>
+                                        Quy mô: 70ha
+                                    </li>
+                                    <li>
+                                        Giá: 11 Tỷ/căn
+                                    </li>
+                                    <li>
+                                        Pháp lý: Sổ hồng
+                                    </li>
+                                </ul>
+                                </p>
+                                <a href="#" class="btn btn-primary">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <nav aria-label="Page navigation example" class="mt-4">
+                <ul class="pagination pagination-lg justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Subscribe form and footer links -->
+            <div class="row mt-5">
+                <div class="col-8 mb-4">
+                    <div class="tm-bg-gray p-5 h-100">
+                        <h3 class="tm-text-primary mb-3">Do you want to know latest houses?</h3>
+                        <p class="mb-5">Please subscribe our website for upcoming new houses and latest information
+                            about our
+                            lands. Thank you.</p>
+                        <form action="" method="GET" class="tm-subscribe-form">
+                            <input type="text" name="email" placeholder="Your Email..." required>
+                            <button type="submit" class="btn rounded-0 btn-primary tm-btn-small">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-4 mb-4">
+                    <div class="p-5 tm-bg-gray h-100">
+                        <h3 class="tm-text-primary mb-4">About US</h3>
+                        <ul class="list-unstyled tm-footer-links">
+                            <li><a href="#">Hotline</a></li>
+                            <li><a href="#">License Terms</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Privacy Policies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- row -->
+
+            <footer class="row pt-5">
+                <div class="col-12">
+                    <p class="text-right">Copyright 2020 The Video Catalog Company
+
+                        - Designed by <a href="https://templatemo.com" rel="nofollow" target="_parent">TemplateMo</a>
+                    </p>
+                </div>
+            </footer>
+        </div> <!-- tm-content-container -->
+    </div>

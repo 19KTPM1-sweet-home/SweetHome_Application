@@ -5,9 +5,9 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const app = express();
 const route = require('./routes');
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
