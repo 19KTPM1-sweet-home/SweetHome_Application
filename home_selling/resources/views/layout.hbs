@@ -13,6 +13,47 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Sweet Home</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link active" href="#">Contact</a>
+                </li>
+            </ul>
+            <a href="/login">
+                <button class="btn btn-primary me-2 justify-content-end">
+                    Login
+                </button>
+            </a>
+        </div>
+
+    </div>
+</nav>
+
+{{!-- begin: Banner --}}
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+            <img src="../../images/banner.jpg" class="d-block w-100" alt="Banner" />
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Welcome to Sweet Home</h5>
+                <p>Men make houses, women make homes.</p>
+            </div>
+        </div>
+    </div>
+    {{!--end: Banner --}}
   {{{body}}}
 
   <script src="../../javascripts/jquery-3.4.1.min.js"></script>
