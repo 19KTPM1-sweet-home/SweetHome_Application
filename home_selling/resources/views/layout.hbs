@@ -10,18 +10,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
   <!-- https://fonts.google.com/ -->
   <link rel="stylesheet" href="../../stylesheets/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">Sweet Home</span>
+        <span class="navbar-brand mb-0 h1 logo">
+            <p>Sweet Home</p>
+        </span>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
             aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarScroll">
+        <div class="nav-list" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                 <li class="nav-item">
                     <a class="nav-link active" href="/">Home</a>
@@ -30,12 +33,15 @@
                 <li class="nav-item ">
                     <a class="nav-link active" href="#">Contact</a>
                 </li>
+
+                <li class="nav-item ">
+                    <a href="/login">
+                        <button class="btn btn-primary me-2 justify-content-end">
+                            Login
+                        </button>
+                    </a>
+                </li>
             </ul>
-            <a href="/login">
-                <button class="btn btn-primary me-2 justify-content-end">
-                    Login
-                </button>
-            </a>
         </div>
 
     </div>
@@ -46,8 +52,9 @@
 
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="10000">
-            <img src="../../images/banner.jpg" class="d-block w-100" alt="Banner" />
-            <div class="carousel-caption d-none d-md-block">
+            <div class="banner-overlay"></div>
+            <img src="../../images/banner.jpg" class="d-block w-100 banner-img" alt="Banner" />
+            <div class="carousel-caption d-none d-md-block welcome-banner">
                 <h1>Welcome to Sweet Home</h1>
                 <p>Men make houses, women make homes.</p>
             </div>
@@ -55,7 +62,50 @@
     </div>
     {{!--end: Banner --}}
   {{{body}}}
+    <!-- Subscribe form and footer links -->
+    <div class="footer">
+        <div class="row mt-5">
+            <div class="col-8 subscribe-section">
+                <div class="tm-bg-gray p-5 h-100">
+                    <h3 class="tm-text-primary mb-3">Do you want to know latest houses?</h3>
+                    <p class="mb-5 text-info">Please subscribe our website for upcoming new houses and latest information
+                        about our
+                        lands. Thank you.</p>
+                    <form class="row g-3">
 
+                        <div class="col-auto">
+                            <input type="email" class="form-control" id="inputPassword2"
+                                placeholder="Enter your email">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-3">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-4 about-us-section">
+                <div class="p-5 tm-bg-gray h-100">
+                    <h3 class="tm-text-primary mb-4">About US</h3>
+                    <ul class="list-unstyled tm-footer-links">
+                        <li><a href="#">Hotline</a></li>
+                        <li><a href="#">License Terms</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> <!-- row -->
+
+        <footer class="row pt-5 copy-right">
+            <div class="col-12">
+                <p class="text-right">Copyright 2020 The Video Catalog Company
+
+                    - Designed by <a href="https://templatemo.com" rel="nofollow"
+                        target="_parent">TemplateMo</a>
+                </p>
+            </div>
+        </footer>
+    </div>
   <script src="../../javascripts/jquery-3.4.1.min.js"></script>
   <script src="../../javascripts/bootstrap.min.js"></script>
 </body>
