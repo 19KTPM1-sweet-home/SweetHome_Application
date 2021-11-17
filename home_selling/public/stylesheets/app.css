@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 /*
-
 TemplateMo 552 Video Catalog
 
 https://templatemo.com/tm-552-video-catalog
@@ -993,3 +992,10 @@ footer p a:hover {
 }
 
 /*# sourceMappingURL=app.css.map */
+
+
+
+/*-------------------------------------DEV DEFINED CSS------------------------------------------------- */
+.carousel-caption h1 {
+  color: red;
+}
