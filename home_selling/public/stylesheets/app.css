@@ -1112,19 +1112,23 @@ html {
 }
 
 /*-----------------------CATEGORIES----------------------*/
+.buying-section {
+  position: relative;
+}
+
 .buy-title {
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   text-align: center;
-  color: black;
+  font-family: Pacifico;
   font-weight: bold;
-  font-size: 2.5rem;
 }
 
 .buy-title p {
   color: black;
   font-weight: bold;
-  font-size: 2.5rem;
-  margin-top: 2.5em;
+  font-size: 3.5rem;
+  margin-top: 1.5em;
 }
 /*==================
  LATEST PROPERTY SECTION
