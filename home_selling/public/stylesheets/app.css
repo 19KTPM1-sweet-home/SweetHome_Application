@@ -1048,6 +1048,10 @@ html {
   overflow: hidden;
 }
 
+.banner-img {
+  min-height: 300px;
+}
+
 .banner-overlay {
   position: absolute;
   top: 0;
@@ -1068,4 +1072,19 @@ html {
 
 .carousel-caption p{
   font-size: 1.5em;
+}
+
+.search-bar {
+  margin: 0 auto;
+  align-items: center !important;
+  justify-content: center;
+}
+
+.search-input {
+  max-width: 70%;
+  margin-right: 0.5em;
+}
+
+.search-btn {
+  background-color: #3399CC !important;
 }
