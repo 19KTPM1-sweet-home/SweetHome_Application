@@ -17,31 +17,41 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1 logo">
-                <p>Sweet Home</p>
+                <a class="logo-link" href="/"><p>Sweet Home</p></a>
             </span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="nav-list" id="navbarScroll">
+            <div class="collapse navbar-collapse nav-list" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/">Home</a>
+                        <a class="nav-link active" href="/">Buy</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Rent</a>
                     </li>
 
                     <li class="nav-item ">
                         <a class="nav-link active" href="#">Contact</a>
                     </li>
-
-                    <li class="nav-item ">
-                        <a href="/login">
-                            <button class="btn btn-primary me-2 justify-content-end">
-                                Login
-                            </button>
-                        </a>
-                    </li>
                 </ul>
+
+                <a href="/login">
+                    <button class="btn justify-content-end signin-btn">
+                        Login
+                    </button>
+                </a>
+
+                <span class="slash">/</span>
+
+                <a href="/signup">
+                    <button class="btn me-2 justify-content-end signup-btn">
+                        Sign up
+                    </button>
+                </a>
             </div>
 
         </div>
@@ -53,12 +63,12 @@
         <div class="carousel-inner banner-wrapper">
             <div class="carousel-item active" data-bs-interval="10000">
                 <div class="banner-overlay"></div>
-                <img src="../../public/images/banner-background.jpg" class="d-block w-100 banner-img" alt="Banner" />
+                <img src="../../images/banner.jpg" class="d-block w-100 banner-img" alt="Banner" />
                 <div class="carousel-caption d-none d-md-block welcome-banner">
                     <h1>Welcome to Sweet Home</h1>
                     <p>Men make houses, women make homes.</p>
                     <div class="input-group mb-3 search-bar">
-                        <input type="text" class="form-control search-input" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control search-input" placeholder="Enter an address, neighborhood, city,..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary search-btn" type="button">Search</button>
                         </div>

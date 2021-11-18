@@ -288,6 +288,8 @@ https://templatemo.com/tm-552-video-catalog
 /* Blog Posts */
 .blog-posts {
   margin-top: 100px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .blog-posts .blog-post {
@@ -1009,14 +1011,46 @@ html {
   src: url(sansation_light.woff);
 }
 
-.logo p{
+.logo-link {
   margin: 0 auto;
   font-family: Pacifico;
-  font-size: 1.5em;
+  font-size: 1.5rem;
+  text-decoration: none !important;
 }
 
-.nav-list ul > li{
+.logo-link p{
+  margin: 0 auto;
+}
+
+
+.nav-list{
+  font-size: 1.2rem;
+
+}
+
+.nav-list .nav-item{
+  margin-top: 0.2em;
   padding-left: 1em;
+}
+
+.slash {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.nav-list .signin-btn{
+  text-transform: capitalize;
+  color: white;
+  min-height: 100%;
+  font-size: 1.2rem;
+}
+
+.nav-list .signup-btn{
+  text-transform: capitalize;
+  color: white;
+  min-height: 100%;
+  font-size: 1.2rem;
 }
 
 .footer {
@@ -1067,11 +1101,11 @@ html {
 }
 
 .carousel-caption h1{
-  font-size: 3.0em;
+  font-size: 3.0rem;
 }
 
 .carousel-caption p{
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 
 .search-bar {
@@ -1082,9 +1116,19 @@ html {
 
 .search-input {
   max-width: 70%;
-  margin-right: 0.5em;
+  margin-right: 0.5rem;
 }
 
 .search-btn {
-  background-color: #3399CC !important;
+  background-color: #f48843 !important;
+  color: black !important;
+  font-weight: bold !important;
+}
+
+.card-body {
+  overflow: hidden;
+}
+
+.card-title {
+  text-overflow: ellipsis;
 }
