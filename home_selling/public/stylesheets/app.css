@@ -1032,7 +1032,13 @@ html {
 .nav-list .nav-item{
   margin-top: 0.2em;
   padding-left: 1em;
+  transition: transform 0.3s;
 }
+
+.nav-list .nav-item:hover{
+  transform: scale(1.2);
+}
+
 
 .slash {
   color: white;
@@ -1045,6 +1051,12 @@ html {
   color: white;
   min-height: 100%;
   font-size: 1.2rem;
+  transition: transform 0.3s;
+}
+
+.nav-list .signin-btn:hover{
+  transform: scale(1.2);
+  color: white;
 }
 
 .nav-list .signup-btn{
@@ -1052,6 +1064,12 @@ html {
   color: white;
   min-height: 100%;
   font-size: 1.2rem;
+  transition: transform 0.3s;
+}
+
+.nav-list .signup-btn:hover{
+  transform: scale(1.2);
+  color: white;
 }
 
 .carousel-item {
