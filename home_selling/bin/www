@@ -14,8 +14,6 @@ db.connect(process.env.DB_CONNECTION_STRING, {
   useUnifiedTopology: true,
 }).then(() => {
   console.log('Connected to DB successfully');
-
-
   const app = require('../app');
   const debug = require('debug')('home-selling:server');
   /**
