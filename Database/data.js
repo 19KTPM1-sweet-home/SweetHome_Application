@@ -1,8 +1,5 @@
 db = connect( 'mongodb://localhost:27017/sweethomedb' );
 db.category.insertMany([{
-  "_id": {
-    "$oid": "619d0b8dff7c23ca498ce404"
-  },
   "name": "Home",
   "properties": [
     {
@@ -11,9 +8,6 @@ db.category.insertMany([{
   ]
 }]);
 db.comments.insertMany([{
-  "_id": {
-    "$oid": "619e4933f28599d4ef895056"
-  },
   "authorName": "Nguyen Van A",
   "postId": {
     "$oid": "619d001cff7c23ca498ce3ce"
@@ -24,9 +18,6 @@ db.comments.insertMany([{
   "content": "my dream house"
 }]);
 db.customers.insertMany([{
-  "_id": {
-    "$oid": "619d012dff7c23ca498ce3df"
-  },
   "username": "nva123",
   "password": "123456",
   "fullName": "Nguyen Van A",
@@ -44,9 +35,6 @@ db.customers.insertMany([{
   ]
 }]);
 db.properties.insertMany([{
-  "_id": {
-    "$oid": "619d001cff7c23ca498ce3ce"
-  },
   "name": "Golden Dragon",
   "address": "227 Nguyen Van Cu",
   "description": "This is a house",
@@ -78,9 +66,6 @@ db.properties.insertMany([{
   "previewImage": "../../images/house1.jpg"
 }]);
 db.schedules.insertMany([{
-  "_id": {
-    "$oid": "619e4e5ff28599d4ef895065"
-  },
   "seller": {
     "name": "Le Van A",
     "phoneNumber": "0123456789",
