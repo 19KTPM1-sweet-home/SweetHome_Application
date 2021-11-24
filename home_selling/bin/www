@@ -5,32 +5,43 @@
  */
 require('dotenv').config();
 const db = require('../app/models');
-//connect to db
-db.connect();
-const app = require('../app');
-const debug = require('debug')('home-selling:server');
 const http = require('http');
 
-/**
- * Get port from environment and store in Express.
- */
 
-const port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+//connect to db
+db.connect(process.env.DB_CONNECTION_STRING, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log('Connected to DB successfully');
 
-/**
- * Create HTTP server.
- */
 
-const server = http.createServer(app);
+  const app = require('../app');
+  const debug = require('debug')('home-selling:server');
+  /**
+   * Get port from environment and store in Express.
+   */
 
-/**
- * Listen on provided port, on all network interfaces.
- */
+  const port = normalizePort(process.env.PORT || '3000');
+  app.set('port', port);
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+  /**
+   * Create HTTP server.
+   */
+
+  const server = http.createServer(app);
+
+  /**
+   * Listen on provided port, on all network interfaces.
+   */
+
+  server.listen(port);
+  server.on('error', onError);
+  server.on('listening', () => onListening(server, debug));
+}).catch(err => {
+  console.log('Connected to DB failed');
+});
+
 
 /**
  * Normalize a port into a number, string, or false.
@@ -84,7 +95,7 @@ function onError(error) {
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening() {
+function onListening(server, debug) {
   const addr = server.address();
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr
