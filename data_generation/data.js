@@ -1,19 +1,13 @@
 db = connect( 'mongodb://localhost:27017/sweethomedb' );
 db.category.insertMany([{
-  "_id": {
-    "$oid": "619d0b8dff7c23ca498ce404"
-  },
+  "_id": ObjectId("619d0b8dff7c23ca498ce404"),
   "name": "Home",
   "properties": [
-    {
-      "$oid": "619d001cff7c23ca498ce3ce"
-    }
+      ObjectId( "619d001cff7c23ca498ce3ce")
   ]
 }]);
 db.comments.insertMany([{
-  "_id": {
-    "$oid": "619d0422ff7c23ca498ce3e4"
-  },
+  "_id": ObjectId("619d0422ff7c23ca498ce3e4"),
   "authorName": "Nguyen Van A",
   "postId": "619d001cff7c23ca498ce3ce",
   "content": "What a beautiful house!",
@@ -22,29 +16,21 @@ db.comments.insertMany([{
   }
 }]);
 db.customers.insertMany([{
-  "_id": {
-    "$oid": "619d012dff7c23ca498ce3df"
-  },
+  "_id": ObjectId("619d012dff7c23ca498ce3df"),
   "username": "nva123",
   "password": "123456",
   "fullName": "Nguyen Van A",
   "address": "227 Nguyen Van Cu",
   "favorite": [
-    {
-      "$oid": "619d001cff7c23ca498ce3ce"
-    }
+      ObjectId("619d001cff7c23ca498ce3ce")
   ],
   "email": "\"nva123@gmail.com",
   "schedule": [
-    {
-      "$oid": "619d088aff7c23ca498ce3f3"
-    }
+      ObjectId("619d088aff7c23ca498ce3f3")
   ]
 }]);
 db.properties.insertMany([{
-  "_id": {
-    "$oid": "619d001cff7c23ca498ce3ce"
-  },
+  "_id":ObjectId("619d001cff7c23ca498ce3ce"),
   "name": "Golden Dragon",
   "address": "227 Nguyen Van Cu",
   "description": "This is a house",
@@ -64,15 +50,11 @@ db.properties.insertMany([{
   "status": "For Sale",
   "category": {
     "name": "Home",
-    "categoryId": {
-      "$oid": "619d0e424317eda2eb700a18"
-    }
+    "categoryId": ObjectId("619d0e424317eda2eb700a18")
   }
 }]);
 db.schedules.insertMany([{
-  "_id": {
-    "$oid": "619d088aff7c23ca498ce3f3"
-  },
+  "_id": ObjectId("619d088aff7c23ca498ce3f3"),
   "seller": {
     "name": "Le Van A",
     "phoneNumber": "0123456789",
