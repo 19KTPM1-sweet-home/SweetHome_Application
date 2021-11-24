@@ -20,11 +20,13 @@ const Properties = new Schema(
         address: {type: String,required:true},
         description: {type: String},
         feature: {type: Array,of: String},
+        previewImage:{type:String,required: true},
         price: {type:Number,required:true},
         seller:{type:seller},
         rate: {type:Number},
         status:{type: String,required:true},
         category:{type:category},
+        detailImage:{type: Array,of:String},
         slug: {type: String, slug: 'name', unique: true},
     },
     {

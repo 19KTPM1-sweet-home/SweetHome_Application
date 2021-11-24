@@ -6,6 +6,7 @@ async function connect() {
         await mongoose.connect(process.env.DB_CONNECTION_STRING, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
+            dbName: process.env.DB_NAME,
         });
         console.log('Connected to DB successfully');
     } catch (error) {
