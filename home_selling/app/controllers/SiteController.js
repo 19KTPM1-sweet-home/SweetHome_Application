@@ -1,7 +1,14 @@
+const Properties = require('../models/properties');
+
 class SiteController {
     //[GET]  /
     home(req, res, next) {
-        res.render('home');
+        Properties.find({})
+            .then((property)=>{
+                res.render('home',);
+            })
+            .catch(next)
+        
     }
 
 }

@@ -2,17 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 // add slug generator plugin to mongoose
 const slug = require('mongoose-slug-generator');
+// add slug generator plugin to mongoose
 const mongooseDelete = require('mongoose-delete');
 // create schema
-const Customers = new Schema(
+const Categories = new Schema(
     {
-        username: {type: String, required: true},
-        password: {type: String,required:true},
-        fullname: {type: String,required: true},
-        address: {type: String},
-        favorite: {type: Array,of: mongoose.ObjectId},
-        email: {type: String},
-        schedule:{type: Array,of: mongoose.ObjectId},
+        seller: {type: String, required: true},
+        property:{type: Array,of:mongoose.ObjectId, required: true},
         slug: {type: String, slug: 'name', unique: true},
     },
     {
@@ -22,7 +18,7 @@ const Customers = new Schema(
 );
 
 // add soft delete framework to Schema
-Customers.plugin(mongooseDelete, {
+Categories.plugin(mongooseDelete, {
     deletedAt: true,
     overrideMethods: 'all',
 });
@@ -30,4 +26,4 @@ Customers.plugin(mongooseDelete, {
 mongoose.plugin(slug);
 
 // create models and export it
-module.exports = mongoose.model('Customers', Customers);
+module.exports = mongoose.model('Categories', Categories);
