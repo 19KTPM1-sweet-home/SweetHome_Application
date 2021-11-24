@@ -992,11 +992,7 @@ footer p a:hover {
     margin-top: 60px;
   }
 }
-
 /*# sourceMappingURL=app.css.map */
-
-
-
 /*-------------------------------------DEV DEFINED CSS------------------------------------------------- */
 html {
   box-sizing: border-box;
@@ -1010,7 +1006,6 @@ html {
   font-family: myFirstFont;
   src: url(sansation_light.woff);
 }
-
 .logo-link {
   margin: 0 auto;
   font-family: Pacifico;
@@ -1018,27 +1013,24 @@ html {
   text-decoration: none !important;
 }
 
-.logo-link p{
+.logo-link p {
   margin: 0 auto;
   color: white;
 }
 
-
-.nav-list{
+.nav-list {
   font-size: 1.2rem;
-
 }
 
-.nav-list .nav-item{
+.nav-list .nav-item {
   margin-top: 0.2em;
   padding-left: 1em;
   transition: transform 0.3s;
 }
 
-.nav-list .nav-item:hover{
+.nav-list .nav-item:hover {
   transform: scale(1.2);
 }
-
 
 .slash {
   color: white;
@@ -1046,7 +1038,7 @@ html {
   margin: 0;
 }
 
-.nav-list .signin-btn{
+.nav-list .signin-btn {
   text-transform: capitalize;
   color: white;
   min-height: 100%;
@@ -1054,12 +1046,12 @@ html {
   transition: transform 0.3s;
 }
 
-.nav-list .signin-btn:hover{
+.nav-list .signin-btn:hover {
   transform: scale(1.2);
   color: white;
 }
 
-.nav-list .signup-btn{
+.nav-list .signup-btn {
   text-transform: capitalize;
   color: white;
   min-height: 100%;
@@ -1067,7 +1059,7 @@ html {
   transition: transform 0.3s;
 }
 
-.nav-list .signup-btn:hover{
+.nav-list .signup-btn:hover {
   transform: scale(1.2);
   color: white;
 }
@@ -1088,18 +1080,17 @@ html {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.35);
-  
 }
 
-.carousel-caption h1{
+.carousel-caption h1 {
   color: white;
 }
 
-.carousel-caption h1{
-  font-size: 3.0rem;
+.carousel-caption h1 {
+  font-size: 3rem;
 }
 
-.carousel-caption p{
+.carousel-caption p {
   font-size: 1.5rem;
   color: white;
 }
@@ -1148,20 +1139,21 @@ html {
   font-size: 3.5rem;
   margin-top: 1.5em;
 }
+
 /*==================
  LATEST PROPERTY SECTION
 ====================*/
 body {
   background-color: #f8f8f8 !important;
 }
+
 #aa-latest-property {
   display: inline;
   width: 100%;
   padding: 100px 0;
 }
 
-
-#aa-latest-property p{
+#aa-latest-property p {
   color: black;
 }
 
@@ -1185,16 +1177,17 @@ body {
 
 .aa-title span:before {
   background-color: #59abe3;
-  content: '';
+  content: "";
   right: 4px;
   top: 7px;
   position: absolute;
   width: 100px;
   height: 2px;
 }
+
 .aa-title span:after {
   background-color: #59abe3;
-  content: '';
+  content: "";
   left: 4px;
   top: 7px;
   position: absolute;
@@ -1212,16 +1205,17 @@ body {
   margin-top: 5rem;
 }
 
-
 #aa-latest-property .aa-latest-property-area {
   display: inline;
   width: 100%;
 }
+
 #aa-latest-property .aa-latest-property-area .aa-latest-properties-content {
   display: inline;
   margin-top: 20px;
   width: 100%;
 }
+
 .aa-properties-item {
   display: inline;
   float: left;
@@ -1234,15 +1228,19 @@ body {
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
+
 .aa-properties-item:hover {
   box-shadow: 1px 2px 5px 3px #ccc;
 }
+
 .aa-properties-item .aa-properties-item-img {
   width: 100%;
 }
+
 .aa-properties-item .aa-properties-item-img img {
   width: 100%;
 }
+
 .aa-properties-item .aa-tag {
   color: #fff;
   padding: 6px 10px;
@@ -1258,9 +1256,11 @@ body {
 .aa-properties-item .for-rent {
   background-color: #20ceb3;
 }
+
 .aa-properties-item .sold-out {
   background-color: #ff0000;
 }
+
 .aa-properties-item .aa-properties-item-content {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -1269,6 +1269,7 @@ body {
   float: left;
   width: 100%;
 }
+
 .aa-properties-item .aa-properties-item-content .aa-properties-info {
   border-bottom: 1px solid #ddd;
   display: inline;
@@ -1277,22 +1278,27 @@ body {
   width: 100%;
   text-align: left;
 }
+
 .aa-properties-item .aa-properties-item-content .aa-properties-info span {
   margin: 0px 5px;
   font-size: 14px;
 }
+
 .aa-properties-item .aa-properties-item-content .aa-properties-about {
   display: inline;
   float: left;
   width: 100%;
   padding: 10px;
 }
+
 .aa-properties-item .aa-properties-item-content .aa-properties-about h3 {
   margin-top: 0px;
 }
+
 .aa-properties-item .aa-properties-item-content .aa-properties-about p {
   font-size: 14px;
 }
+
 .aa-properties-item .aa-properties-item-content .aa-properties-detial {
   border-top: 1px solid #ddd;
   display: inline;
@@ -1300,27 +1306,25 @@ body {
   padding: 10px;
   width: 100%;
 }
+
 .aa-properties-item .aa-properties-item-content .aa-properties-detial .aa-price {
   float: left;
   font-size: 18px;
   padding: 3px 0;
 }
+
 .aa-properties-item .aa-properties-item-content .aa-properties-detial a {
   float: right;
 }
 
-
 /*==================
  SERVICE SECTION
 ====================*/
-
-
 #aa-service {
   display: inline;
   width: 100%;
   padding: 100px 0;
 }
-
 
 #aa-service .aa-service-area {
   display: inline;
@@ -1329,21 +1333,25 @@ body {
   background-color: white;
   margin-top: 8rem;
 }
+
 #aa-service .aa-service-area .aa-service-content {
   display: inline;
   float: left;
   width: 100%;
   margin-top: 40px;
 }
+
 #aa-service .aa-service-area .aa-service-content .aa-single-service {
   display: inline;
   float: left;
   text-align: center;
   width: 100%;
 }
+
 #aa-service .aa-service-area .aa-service-content .aa-single-service:hover .aa-service-icon:before {
   border: 2px solid #fff;
 }
+
 #aa-service .aa-service-area .aa-service-content .aa-single-service .aa-service-icon {
   display: inline;
   float: left;
@@ -1351,6 +1359,7 @@ body {
   margin-bottom: 20px;
   position: relative;
 }
+
 #aa-service .aa-service-area .aa-service-content .aa-single-service .aa-service-icon:before {
   border: 2px solid transparent;
   border-radius: 50%;
@@ -1365,6 +1374,7 @@ body {
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
+
 #aa-service .aa-service-area .aa-service-content .aa-single-service .aa-service-icon span {
   display: inline-block;
   border-radius: 50%;
@@ -1375,14 +1385,17 @@ body {
   width: 100px;
   background-color: #59abe3;
 }
+
 #aa-service .aa-service-area .aa-service-content .aa-single-service .aa-single-service-content {
   display: inline;
   float: left;
   width: 100%;
 }
+
 #aa-service .aa-service-area .aa-service-content .aa-single-service .aa-single-service-content h4 {
   font-size: 20px;
 }
+
 #aa-service .aa-service-area .aa-service-content .aa-single-service .aa-single-service-content h4 a {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -1390,11 +1403,10 @@ body {
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
+
 #aa-service .aa-service-area .aa-service-content .aa-single-service .aa-single-service-content p {
   font-size: 13px;
 }
-
-
 
 /*---------FOOTER SECTION-------- */
 .footer {
@@ -1410,7 +1422,6 @@ body {
   background-color: #212529;
 }
 
-
 .subscribe-section {
   padding: 0 !important;
   margin-bottom: 0 !important;
@@ -1420,3 +1431,5 @@ body {
   padding: 0 !important;
   margin: 0;
 }
+
+/*# sourceMappingURL=app.css.map */
