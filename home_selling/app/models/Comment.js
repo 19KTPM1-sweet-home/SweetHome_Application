@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
+const Property = require('../Property');
 const Schema = mongoose.Schema;
 const mongooseDelete = require('mongoose-delete');
 // create schema
-const Comments = new Schema(
+const Comment = new Schema(
     {
         authorName: {type: String, required: true},
-        postId: {type: mongoose.ObjectId,required:true},
+        postId: {type: mongoose.Schema.Types.ObjectId,ref:"Property",required:true},
         content: {type: String,required: true},
         postDate: {type: Date}
     },
@@ -16,11 +17,11 @@ const Comments = new Schema(
 );
 
 // add soft delete framework to Schema
-Comments.plugin(mongooseDelete, {
+Comment.plugin(mongooseDelete, {
     deletedAt: true,
     overrideMethods: 'all',
 });
 // add plugin
 
 // create models and export it
-module.exports = mongoose.model('Comments', Comments);
+module.exports = mongoose.model('Comment', Comment);

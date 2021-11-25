@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+import Category from './Category'
 const Schema = mongoose.Schema;
 // add slug generator plugin to mongoose
 const slug = require('mongoose-slug-generator');
@@ -11,22 +12,22 @@ const seller = new Schema({
 })
 const category = new Schema({
     name:{type: String,required: true},
-    category:{type:mongoose.ObjectId}
+    category:{type:mongoose.Schema.Types.ObjectId,ref:"Category"}
 })
 // create schema
-const Properties = new Schema(
+const Property = new Schema(
     {
         name: {type: String, required: true},
         address: {type: String,required:true},
         description: {type: String},
-        feature: {type: Array,of: String},
+        feature: [{type: String}],
         previewImage:{type:String,required: true},
         price: {type:Number,required:true},
         seller:{type:seller},
         rate: {type:Number},
         status:{type: String,required:true},
         category:{type:category},
-        detailImage:{type: Array,of:String},
+        detailImage:[{type:String},],
         slug: {type: String, slug: 'name', unique: true},
     },
     {
@@ -36,7 +37,7 @@ const Properties = new Schema(
 );
 
 // add soft delete framework to Schema
-Properties.plugin(mongooseDelete, {
+Property.plugin(mongooseDelete, {
     deletedAt: true,
     overrideMethods: 'all',
 });
@@ -44,4 +45,4 @@ Properties.plugin(mongooseDelete, {
 mongoose.plugin(slug);
 
 // create models and export it
-module.exports = mongoose.model('Properties', Properties);
+module.exports = mongoose.model('Property', Property);
