@@ -11,7 +11,7 @@ const seller = new Schema({
 const Schedule = new Schema(
     {
         seller: {type: seller, required: true},
-        propertyId: {type: mongoose.Schema.Types.ObjectId,required:true},
+        propertyId: {type: mongoose.Schema.Types.ObjectId,ref:"Property",required:true},
         visitForm: {type: String,required: true},
         ack: {type: Date},
         appointmentDate:{type:Date,required:true},

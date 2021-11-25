@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Property = require('../Property');
 const Schema = mongoose.Schema;
 // add slug generator plugin to mongoose
 const slug = require('mongoose-slug-generator');
@@ -8,7 +9,7 @@ const mongooseDelete = require('mongoose-delete');
 const Category = new Schema(
     {
         seller: {type: String, required: true},
-        property:{type: Array,of:mongoose.Schema.Types.ObjectId, required: true},
+        property:[{type:mongoose.Schema.Types.ObjectId,ref:'Property'},],
         slug: {type: String, slug: 'name', unique: true},
     },
     {

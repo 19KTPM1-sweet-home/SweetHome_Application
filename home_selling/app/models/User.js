@@ -4,16 +4,16 @@ const Schema = mongoose.Schema;
 const slug = require('mongoose-slug-generator');
 const mongooseDelete = require('mongoose-delete');
 // create schema
-const Customer = new Schema(
+const User = new Schema(
     {
-        username: {type: String, required: true},
+        username: {type: String,unique: true, required: true},
         password: {type: String,required:true},
         fullname: {type: String,required: true},
         address: {type: String},
-        favorite: {type: Array,of: mongoose.Schema.Types.ObjectId},
-        email: {type: String},
-        schedule:{type: Array,of: mongoose.Schema.Types.ObjectId},
-        slug: {type: String, slug: 'name', unique: true},
+        favorite: [{type: mongoose.Schema.Types.ObjectId,ref:"Property"}],
+        email: {type: String,unique: true,required: true},
+        schedule:[{type: mongoose.Schema.Types.ObjectId,ref:"Schedule"}],
+        slug: {type: String, slug: 'name', unique: true,required: true},
     },
     {
         // assign createAt and updateAt fields to Schema 
@@ -22,7 +22,7 @@ const Customer = new Schema(
 );
 
 // add soft delete framework to Schema
-Customer.plugin(mongooseDelete, {
+User.plugin(mongooseDelete, {
     deletedAt: true,
     overrideMethods: 'all',
 });
@@ -30,4 +30,4 @@ Customer.plugin(mongooseDelete, {
 mongoose.plugin(slug);
 
 // create models and export it
-module.exports = mongoose.model('Customer', Customer);
+module.exports = mongoose.model('User', User);
