@@ -9,7 +9,7 @@ const http = require('http');
 
 
 //connect to db
-db.connect(process.env.DB_CONNECTION_STRING, {
+db.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
