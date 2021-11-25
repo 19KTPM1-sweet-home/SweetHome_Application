@@ -1,4 +1,4 @@
-const Properties = require('../models/property');
+const Properties = require('../models/Property');
 
 class SiteController {
     //[GET]  /
