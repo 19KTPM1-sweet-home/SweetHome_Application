@@ -6,7 +6,7 @@ class LoginController {
     show(req, res, next) {
         Comment.findbyId("619f3edab4d5ad1235347056")
             .then((cmt) => {
-                    res.render('hello', { name: cmt.fullname});
+                    res.render('hello', { name: cmt.content});
                 })
             .catch()
     }
