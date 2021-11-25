@@ -1,0 +1,51 @@
+[{
+  "_id": {
+    "$oid": "619e4e5ff28599d4ef895065"
+  },
+  "seller": {
+    "name": "Lê Hoài Nam",
+    "phoneNumber": "0123456789",
+    "email": "lhn123@gmail.com"
+  },
+  "propertyId": {
+    "$oid": "619d001cff7c23ca498ce3ce"
+  },
+  "visitForm": "In Person",
+  "ack": "accepted",
+  "appointmentDate": {
+    "$date": "2018-04-01T17:00:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "619f404eb4d5ad123534707e"
+  },
+  "seller": {
+    "name": "Lê Thị Trân",
+    "email": "ltt123@gmail.com"
+  },
+  "propertyId": {
+    "$oid": "619d001cff7c23ca498ce3ce"
+  },
+  "visitForm": "In Person",
+  "ack": "accepted",
+  "appointmentDate": {
+    "$date": "2018-05-21T17:00:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "619f4076b4d5ad123534707f"
+  },
+  "seller": {
+    "name": "Lê Thị Trân",
+    "phoneNumber": "0123456789",
+    "email": "lhn123@gmail.com"
+  },
+  "propertyId": {
+    "$oid": "619d001cff7c23ca498ce3ce"
+  },
+  "visitForm": "Video Chat",
+  "ack": "denied",
+  "appointmentDate": {
+    "$date": "2018-05-21T17:00:00Z"
+  }
+}]

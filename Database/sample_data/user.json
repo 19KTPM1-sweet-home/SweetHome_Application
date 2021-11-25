@@ -1,0 +1,101 @@
+[{
+  "_id": {
+    "$oid": "619d012dff7c23ca498ce3df"
+  },
+  "username": "nva123",
+  "password": "123456",
+  "fullName": "Nguyễn Bảo An",
+  "address": "227 Nguyễn Văn Cừ",
+  "favorite": [
+    {
+      "$oid": "619d001cff7c23ca498ce3ce"
+    }
+  ],
+  "email": "\"nba123@gmail.com",
+  "schedule": [
+    {
+      "$oid": "619d088aff7c23ca498ce3f3"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "619f25d6b4d5ad1235346fdf"
+  },
+  "username": "lhn123",
+  "password": "123456",
+  "fullName": "Lê Hoài Nam",
+  "address": "227 Nguyễn Văn Cừ",
+  "favorite": [],
+  "email": "\"lhn123@gmail.com",
+  "schedule": [
+    {}
+  ],
+  "phoneNumber": "0123456789"
+},{
+  "_id": {
+    "$oid": "619f2a1bb4d5ad1235346ff8"
+  },
+  "username": "hbd123",
+  "password": "123456",
+  "fullName": "Hồ Bảo Đại",
+  "address": "227 Nguyễn Văn Cừ",
+  "favorite": [],
+  "email": "\"hbd123@gmail.com",
+  "schedule": [
+    {}
+  ],
+  "phoneNumber": "0932288722"
+},{
+  "_id": {
+    "$oid": "619f2a47b4d5ad1235346ff9"
+  },
+  "username": "ld123",
+  "password": "123456",
+  "fullName": "Lý Đức",
+  "address": "227 Nguyễn Văn Cừ",
+  "favorite": [],
+  "email": "\"ld123@gmail.com",
+  "schedule": [
+    {}
+  ],
+  "phoneNumber": "0938878722"
+},{
+  "_id": {
+    "$oid": "619f2a76b4d5ad1235346ffa"
+  },
+  "username": "ntb123",
+  "password": "123456",
+  "fullName": "Nguyễn Thế Bảo",
+  "address": "227 Nguyễn Văn Cừ",
+  "favorite": [],
+  "email": "\"ntb123@gmail.com",
+  "schedule": [
+    {}
+  ]
+},{
+  "_id": {
+    "$oid": "619f2b2ab4d5ad1235346ffc"
+  },
+  "username": "ltt123",
+  "password": "123456",
+  "fullName": "Lê Thị Trân",
+  "address": "227 Nguyễn Văn Cừ",
+  "favorite": [],
+  "email": "\"ltt123@gmail.com",
+  "schedule": [
+    {}
+  ]
+},{
+  "_id": {
+    "$oid": "619f2b48b4d5ad1235346ffd"
+  },
+  "username": "nvn123",
+  "password": "123456",
+  "fullName": "Nguyễn Việt Nam",
+  "address": "227 Nguyễn Văn Cừ",
+  "favorite": [],
+  "email": "\"nvn123@gmail.com",
+  "schedule": [
+    {}
+  ]
+}]
