@@ -6,7 +6,7 @@ class LoginController {
     show(req, res, next) {
         User.findOne({})
             .then((user) => {
-                    res.render('login', { name: user.fullname});
+                    res.render('hello', { name: user.fullname});
                 })
             .catch()
     }
