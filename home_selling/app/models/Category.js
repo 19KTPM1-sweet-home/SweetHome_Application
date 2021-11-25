@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Property = require('../Property');
 const Schema = mongoose.Schema;
 // add slug generator plugin to mongoose
 const slug = require('mongoose-slug-generator');

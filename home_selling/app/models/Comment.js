@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Property = require('../Property');
 const Schema = mongoose.Schema;
 const mongooseDelete = require('mongoose-delete');
 // create schema

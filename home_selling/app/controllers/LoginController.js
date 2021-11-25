@@ -1,14 +1,8 @@
-const Comment = require('../models/Comment');
 
-
-class LoginController {
+class LoginController{
     //[GET] /login
-    show(req, res, next) {
-        Comment.findbyId("619f3edab4d5ad1235347056")
-            .then((cmt) => {
-                    res.render('hello', { name: cmt.content});
-                })
-            .catch()
+    show(req, res, next){
+        res.render('login', {layout: false});
     }
 }
 module.exports = new LoginController();

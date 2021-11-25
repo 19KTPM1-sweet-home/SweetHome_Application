@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-import Category from './Category'
 const Schema = mongoose.Schema;
 // add slug generator plugin to mongoose
 const slug = require('mongoose-slug-generator');
