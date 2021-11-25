@@ -8,10 +8,10 @@ const seller = new Schema({
     email:{type: String},
 })
 // create schema
-const Schedules = new Schema(
+const Schedule = new Schema(
     {
         seller: {type: seller, required: true},
-        propertyId: {type: mongoose.ObjectId,required:true},
+        propertyId: {type: mongoose.Schema.Types.ObjectId,required:true},
         visitForm: {type: String,required: true},
         ack: {type: Date},
         appointmentDate:{type:Date,required:true},
@@ -24,11 +24,11 @@ const Schedules = new Schema(
 );
 
 // add soft delete framework to Schema
-Schedules.plugin(mongooseDelete, {
+Schedule.plugin(mongooseDelete, {
     deletedAt: true,
     overrideMethods: 'all',
 });
 // add plugin
 
 // create models and export it
-module.exports = mongoose.model('Schedules', Schedules);
+module.exports = mongoose.model('Schedule', Schedule);

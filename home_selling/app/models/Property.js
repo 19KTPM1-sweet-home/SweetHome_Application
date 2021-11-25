@@ -14,7 +14,7 @@ const category = new Schema({
     category:{type:mongoose.ObjectId}
 })
 // create schema
-const Properties = new Schema(
+const Property = new Schema(
     {
         name: {type: String, required: true},
         address: {type: String,required:true},
@@ -36,7 +36,7 @@ const Properties = new Schema(
 );
 
 // add soft delete framework to Schema
-Properties.plugin(mongooseDelete, {
+Property.plugin(mongooseDelete, {
     deletedAt: true,
     overrideMethods: 'all',
 });
@@ -44,4 +44,4 @@ Properties.plugin(mongooseDelete, {
 mongoose.plugin(slug);
 
 // create models and export it
-module.exports = mongoose.model('Properties', Properties);
+module.exports = mongoose.model('Property', Property);
