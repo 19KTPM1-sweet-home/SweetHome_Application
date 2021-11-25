@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 /*
-
 TemplateMo 552 Video Catalog
 
 https://templatemo.com/tm-552-video-catalog
@@ -15,12 +14,12 @@ https://templatemo.com/tm-552-video-catalog
 }
 
 .tm-page-wrap {
-  width: 75%;
+  width: 85%;
   margin: 0 auto;
 }
 
 .tm-bg-gray {
-  background-color: #F4F4F4;
+  background-color: #212529;
 }
 
 .tm-text-primary {
@@ -289,6 +288,8 @@ https://templatemo.com/tm-552-video-catalog
 /* Blog Posts */
 .blog-posts {
   margin-top: 100px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .blog-posts .blog-post {
