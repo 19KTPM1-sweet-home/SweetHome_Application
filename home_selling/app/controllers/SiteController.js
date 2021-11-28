@@ -1,13 +1,10 @@
-const Properties = require('../models/Property');
+const propertyService = require('../services/propertyService');
 
 class SiteController {
   //[GET]  /
-  home(req, res, next) {
-    Properties.find({})
-      .then((property) => {
-        res.render('home');
-      })
-      .catch(next);
+  async home(req, res, next) {
+    const properties = await propertyService.list();
+    res.render('home', { properties });
   }
 }
 
