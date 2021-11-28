@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "start:dev": "nodemon ./bin/www",
-    "watch": "sass --watch resources/scss:public/stylesheets"
+    "watch": "sass --watch resources/scss:public/stylesheets",
+    "beautiful" : "prettier --single-quote --trailing-comma all --write 'src/**/*.{js,json,scss}'"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15",
+    "prettier": "^2.5.0",
     "sass": "^1.43.4"
   }
 }
