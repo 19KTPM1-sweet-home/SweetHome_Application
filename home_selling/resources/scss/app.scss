@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 /*
 TemplateMo 552 Video Catalog
 
@@ -23,11 +23,11 @@ https://templatemo.com/tm-552-video-catalog
 }
 
 .tm-text-primary {
-  color: #3399CC;
+  color: #3399cc;
 }
 
 .tm-text-secondary {
-  color: #3CAFAF;
+  color: #3cafaf;
 }
 
 .tm-nav-link {
@@ -138,9 +138,9 @@ https://templatemo.com/tm-552-video-catalog
 
 .container-login button {
   border-radius: 20px;
-  border: 1px solid #FF4B2B;
-  background-color: #FF4B2B;
-  color: #FFFFFF;
+  border: 1px solid #ff4b2b;
+  background-color: #ff4b2b;
+  color: #ffffff;
   font-size: 12px;
   font-weight: bold;
   padding: 12px 45px;
@@ -159,11 +159,11 @@ https://templatemo.com/tm-552-video-catalog
 
 .container-login button.ghost {
   background-color: transparent;
-  border-color: #FFFFFF;
+  border-color: #ffffff;
 }
 
 .container-login .form-container form {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -211,11 +211,13 @@ https://templatemo.com/tm-552-video-catalog
 }
 
 @keyframes show {
-  0%, 49.99% {
+  0%,
+  49.99% {
     opacity: 0;
     z-index: 1;
   }
-  50%, 100% {
+  50%,
+  100% {
     opacity: 1;
     z-index: 5;
   }
@@ -231,13 +233,13 @@ https://templatemo.com/tm-552-video-catalog
 }
 
 .container-login .overlay {
-  background: #FF416C;
-  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-  background: linear-gradient(to right, #FF4B2B, #FF416C);
+  background: #ff416c;
+  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+  background: linear-gradient(to right, #ff4b2b, #ff416c);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
-  color: #FFFFFF;
+  color: #ffffff;
   position: relative;
   left: -100%;
   height: 100%;
@@ -262,7 +264,7 @@ https://templatemo.com/tm-552-video-catalog
 }
 
 .container-login .overlay-panel p {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .overlay-right {
@@ -275,7 +277,7 @@ https://templatemo.com/tm-552-video-catalog
 }
 
 .social-container a {
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
   border-radius: 50%;
   display: inline-flex;
   justify-content: center;
@@ -331,7 +333,7 @@ https://templatemo.com/tm-552-video-catalog
 }
 
 .blog-posts .down-content ul.post-info li:after {
-  content: "|";
+  content: '|';
   color: #aaa;
   margin-left: 8px;
 }
@@ -696,7 +698,7 @@ footer ul.social-icons li {
 }
 
 footer ul.social-icons li:after {
-  content: "|";
+  content: '|';
   color: #fff;
   margin-left: 30px;
 }
@@ -908,7 +910,7 @@ footer p a:hover {
   }
 
   .background-header .navbar-brand,
-.background-header .navbar-toggler {
+  .background-header .navbar-toggler {
     top: 15px;
   }
 
@@ -945,10 +947,10 @@ footer p a:hover {
   }
 
   .navbar .navbar-nav .nav-link:hover,
-.navbar .navbar-nav .active > .nav-link,
-.navbar .navbar-nav .nav-link.active,
-.navbar .navbar-nav .nav-link.show,
-.navbar .navbar-nav .show > .nav-link {
+  .navbar .navbar-nav .active > .nav-link,
+  .navbar .navbar-nav .nav-link.active,
+  .navbar .navbar-nav .nav-link.show,
+  .navbar .navbar-nav .show > .nav-link {
     color: #f48840 !important;
     border-bottom: none !important;
     padding-bottom: 15px;
@@ -995,14 +997,14 @@ footer p a:hover {
 
 /*# sourceMappingURL=app.css.map */
 
-
-
 /*-------------------------------------DEV DEFINED CSS------------------------------------------------- */
 html {
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -1018,27 +1020,24 @@ html {
   text-decoration: none !important;
 }
 
-.logo-link p{
+.logo-link p {
   margin: 0 auto;
   color: white;
 }
 
-
-.nav-list{
+.nav-list {
   font-size: 1.2rem;
-
 }
 
-.nav-list .nav-item{
+.nav-list .nav-item {
   margin-top: 0.2em;
   padding-left: 1em;
   transition: transform 0.3s;
 }
 
-.nav-list .nav-item:hover{
+.nav-list .nav-item:hover {
   transform: scale(1.2);
 }
-
 
 .slash {
   color: white;
@@ -1046,7 +1045,7 @@ html {
   margin: 0;
 }
 
-.nav-list .signin-btn{
+.nav-list .signin-btn {
   text-transform: capitalize;
   color: white;
   min-height: 100%;
@@ -1054,12 +1053,12 @@ html {
   transition: transform 0.3s;
 }
 
-.nav-list .signin-btn:hover{
+.nav-list .signin-btn:hover {
   transform: scale(1.2);
   color: white;
 }
 
-.nav-list .signup-btn{
+.nav-list .signup-btn {
   text-transform: capitalize;
   color: white;
   min-height: 100%;
@@ -1067,7 +1066,7 @@ html {
   transition: transform 0.3s;
 }
 
-.nav-list .signup-btn:hover{
+.nav-list .signup-btn:hover {
   transform: scale(1.2);
   color: white;
 }
@@ -1088,18 +1087,17 @@ html {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.35);
-  
 }
 
-.carousel-caption h1{
+.carousel-caption h1 {
   color: white;
 }
 
-.carousel-caption h1{
-  font-size: 3.0rem;
+.carousel-caption h1 {
+  font-size: 3rem;
 }
 
-.carousel-caption p{
+.carousel-caption p {
   font-size: 1.5rem;
   color: white;
 }
@@ -1160,8 +1158,7 @@ body {
   padding: 100px 0;
 }
 
-
-#aa-latest-property p{
+#aa-latest-property p {
   color: black;
 }
 
@@ -1211,7 +1208,6 @@ body {
   text-align: center;
   margin-top: 5rem;
 }
-
 
 #aa-latest-property .aa-latest-property-area {
   display: inline;
@@ -1300,7 +1296,10 @@ body {
   padding: 10px;
   width: 100%;
 }
-.aa-properties-item .aa-properties-item-content .aa-properties-detial .aa-price {
+.aa-properties-item
+  .aa-properties-item-content
+  .aa-properties-detial
+  .aa-price {
   float: left;
   font-size: 18px;
   padding: 3px 0;
@@ -1309,18 +1308,15 @@ body {
   float: right;
 }
 
-
 /*==================
  SERVICE SECTION
 ====================*/
-
 
 #aa-service {
   display: inline;
   width: 100%;
   padding: 100px 0;
 }
-
 
 #aa-service .aa-service-area {
   display: inline;
@@ -1341,20 +1337,32 @@ body {
   text-align: center;
   width: 100%;
 }
-#aa-service .aa-service-area .aa-service-content .aa-single-service:hover .aa-service-icon:before {
+#aa-service
+  .aa-service-area
+  .aa-service-content
+  .aa-single-service:hover
+  .aa-service-icon:before {
   border: 2px solid #fff;
 }
-#aa-service .aa-service-area .aa-service-content .aa-single-service .aa-service-icon {
+#aa-service
+  .aa-service-area
+  .aa-service-content
+  .aa-single-service
+  .aa-service-icon {
   display: inline;
   float: left;
   width: 100%;
   margin-bottom: 20px;
   position: relative;
 }
-#aa-service .aa-service-area .aa-service-content .aa-single-service .aa-service-icon:before {
+#aa-service
+  .aa-service-area
+  .aa-service-content
+  .aa-single-service
+  .aa-service-icon:before {
   border: 2px solid transparent;
   border-radius: 50%;
-  content: "";
+  content: '';
   height: 100px;
   margin-left: 4px;
   position: absolute;
@@ -1365,7 +1373,12 @@ body {
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
-#aa-service .aa-service-area .aa-service-content .aa-single-service .aa-service-icon span {
+#aa-service
+  .aa-service-area
+  .aa-service-content
+  .aa-single-service
+  .aa-service-icon
+  span {
   display: inline-block;
   border-radius: 50%;
   color: white;
@@ -1375,26 +1388,44 @@ body {
   width: 100px;
   background-color: #59abe3;
 }
-#aa-service .aa-service-area .aa-service-content .aa-single-service .aa-single-service-content {
+#aa-service
+  .aa-service-area
+  .aa-service-content
+  .aa-single-service
+  .aa-single-service-content {
   display: inline;
   float: left;
   width: 100%;
 }
-#aa-service .aa-service-area .aa-service-content .aa-single-service .aa-single-service-content h4 {
+#aa-service
+  .aa-service-area
+  .aa-service-content
+  .aa-single-service
+  .aa-single-service-content
+  h4 {
   font-size: 20px;
 }
-#aa-service .aa-service-area .aa-service-content .aa-single-service .aa-single-service-content h4 a {
+#aa-service
+  .aa-service-area
+  .aa-service-content
+  .aa-single-service
+  .aa-single-service-content
+  h4
+  a {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
-#aa-service .aa-service-area .aa-service-content .aa-single-service .aa-single-service-content p {
+#aa-service
+  .aa-service-area
+  .aa-service-content
+  .aa-single-service
+  .aa-single-service-content
+  p {
   font-size: 13px;
 }
-
-
 
 /*---------FOOTER SECTION-------- */
 .footer {
@@ -1409,7 +1440,6 @@ body {
   margin: 0 !important;
   background-color: #212529;
 }
-
 
 .subscribe-section {
   padding: 0 !important;

@@ -3,22 +3,26 @@ const Schema = mongoose.Schema;
 const mongooseDelete = require('mongoose-delete');
 // create schema
 const Comment = new Schema(
-    {
-        authorName: {type: String, required: true},
-        postId: {type: mongoose.Schema.Types.ObjectId,ref:"Property",required:true},
-        content: {type: String,required: true},
-        postDate: {type: Date}
+  {
+    authorName: { type: String, required: true },
+    postId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Property',
+      required: true,
     },
-    {
-        // assign createAt and updateAt fields to Schema 
-        timestamps: true,
-    },
+    content: { type: String, required: true },
+    postDate: { type: Date },
+  },
+  {
+    // assign createAt and updateAt fields to Schema
+    timestamps: true,
+  },
 );
 
 // add soft delete framework to Schema
 Comment.plugin(mongooseDelete, {
-    deletedAt: true,
-    overrideMethods: 'all',
+  deletedAt: true,
+  overrideMethods: 'all',
 });
 // add plugin
 

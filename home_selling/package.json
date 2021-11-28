@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "start:dev": "nodemon ./bin/www",
     "watch": "sass --watch resources/scss:public/stylesheets",
-    "beautiful" : "prettier --single-quote --trailing-comma all --write 'src/**/*.{js,json,scss}'"
+    "beautiful": "prettier --single-quote --trailing-comma all --write \"**/*.{js,json,scss}\""
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -15,6 +15,7 @@
     "express": "~4.16.1",
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
+    "jquery": "^3.6.0",
     "mongoose": "^6.0.13",
     "mongoose-delete": "^0.5.4",
     "mongoose-slug-generator": "^1.0.4",
