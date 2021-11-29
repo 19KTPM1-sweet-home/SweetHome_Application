@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import 'variables';
 /*
 TemplateMo 552 Video Catalog
 
@@ -903,7 +904,6 @@ footer p a:hover {
   }
 }
 @media (max-width: 992px) {
-
   .background-header .navbar-brand,
   .background-header .navbar-toggler {
     top: 15px;
@@ -1444,4 +1444,25 @@ body {
 .about-us-section {
   padding: 0 !important;
   margin: 0;
+}
+
+.card .prev_image {
+  height: 13rem;
+  object-fit: cover;
+}
+.card .prev_image:hover {
+  opacity: 0.8;
+}
+
+.card-footer.foot {
+  background-color: #ffffff;
+}
+
+.card-body .property-title{
+  text-decoration: none;
+  color: $theme_color;
+}
+
+.card-body .property-price{
+  color: $theme_color;
 }

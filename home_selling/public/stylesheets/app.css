@@ -1428,4 +1428,26 @@ body {
   margin: 0;
 }
 
+.card .prev_image {
+  height: 13rem;
+  object-fit: cover;
+}
+
+.card .prev_image:hover {
+  opacity: 0.8;
+}
+
+.card-footer.foot {
+  background-color: #ffffff;
+}
+
+.card-body .property-title {
+  text-decoration: none;
+  color: #f48840;
+}
+
+.card-body .property-price {
+  color: #f48840;
+}
+
 /*# sourceMappingURL=app.css.map */

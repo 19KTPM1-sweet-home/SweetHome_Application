@@ -1,7 +1,11 @@
+const propertyService = require('../services/propertyService');
+
 class DetailController {
   //[GET]  /
-  show(req, res, next) {
-    res.render('houses/detail');
+  async show(req, res, next) {
+    const property = await propertyService.detail(req.params.slug);
+    console.log(property);
+    res.render('houses/detail', { property: property });
   }
 }
 
