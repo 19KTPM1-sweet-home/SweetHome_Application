@@ -12,7 +12,7 @@ const Schedule = new Schema(
   {
     seller: { type: seller, required: true },
     propertyId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Property',
       required: true,
     },

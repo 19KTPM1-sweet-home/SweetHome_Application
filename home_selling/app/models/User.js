@@ -10,7 +10,7 @@ const User = new Schema(
     password: { type: String, required: true },
     fullname: { type: String, required: true },
     address: { type: String },
-    favorite: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Property' }],
+    favorite: [{ type: Schema.Types.ObjectId, ref: 'Property' }],
     email: { type: String, unique: true, required: true },
     schedule: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Schedule' }],
     slug: { type: String, slug: 'name', unique: true, required: true },

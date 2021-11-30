@@ -1,7 +1,11 @@
 const Properties = require('../models/Property');
 const { mongooseToObject } = require('../../util/mongoose');
-exports.list = () => {
-  return Properties.find({});
+exports.listAll = () => {
+  return new Promise((resolve, reject) => {
+      Properties.find({})
+        .then(properties => resolve(properties))
+        .catch(err => reject(err));
+  })
 };
 exports.detail = (slug) => {
   return new Promise((resolve, reject) =>

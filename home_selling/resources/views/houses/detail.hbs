@@ -194,11 +194,11 @@
                                     <h2>Categories</h2>
                                 </div>
                                 <div class="content">
+                                    
                                     <ul>
-                                        <li><a href="#"> House</a></li>
-                                        <li><a href="#"> Apartment</a></li>
-                                        <li><a href="#"> Villa</a></li>
-                                        <li><a href="#"> Lands</a></li>
+                                        {{#each category}}
+                                        <li><a href="/{{this.slug}}"> {{this.name}}</a></li>
+                                        {{/each}}
                                     </ul>
                                 </div>
                             </div>

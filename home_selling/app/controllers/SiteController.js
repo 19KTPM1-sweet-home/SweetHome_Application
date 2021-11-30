@@ -3,8 +3,11 @@ const propertyService = require('../services/propertyService');
 class SiteController {
   //[GET]  /
   async home(req, res, next) {
-    const properties = await propertyService.list();
-    res.render('home', { properties });
+    propertyService.listAll().
+      then(properties=>{
+        res.render('home', { properties });
+      })
+      .catch(next);
   }
 }
 

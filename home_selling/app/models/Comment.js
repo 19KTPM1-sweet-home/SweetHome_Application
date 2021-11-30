@@ -6,7 +6,7 @@ const Comment = new Schema(
   {
     authorName: { type: String, required: true },
     postId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Property',
       required: true,
     },
