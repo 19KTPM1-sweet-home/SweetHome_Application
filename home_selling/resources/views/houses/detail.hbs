@@ -56,15 +56,11 @@
                                     <h5>More</h5>
                                     <div class="more-container">
                                         <div class="row">
+                                            {{#each property.detailImage}}
                                             <div class="col-4">
-                                                <img src="../images/living-room.jpg" class="img-thumbnail" alt="">
+                                                <img src={{this}} class="img-thumbnail" alt={{this.slug}}>
                                             </div>
-                                            <div class="col-4">
-                                                <img src="../images/bedroom.jpg" class="img-thumbnail" alt="">
-                                            </div>
-                                            <div class="col-4">
-                                                <img src="../images/outdoor.jpg" class="img-thumbnail" alt="">
-                                            </div>
+                                            {{/each}}
                                         </div>
                                     </div>
                                     <div class="d-grid gap-2 mt-4">

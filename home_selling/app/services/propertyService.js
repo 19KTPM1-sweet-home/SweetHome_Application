@@ -1,5 +1,5 @@
 const Properties = require('../models/Property');
-const { mongooseToObject } = require('../../util/mongoose');
+const { multipleMongooseToObject,mongooseToObject } = require('../../util/mongoose');
 exports.listAll = () => {
   return new Promise((resolve, reject) => {
       Properties.find({})
