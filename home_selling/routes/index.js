@@ -7,7 +7,7 @@ function route(app) {
   app.use('/house/detail', detailRouter);
   app.use('/signup', signupRouter);
   app.use('/login', loginRouter);
-  app.use('/buy/categories/all', listRouter);
+  app.use('/buy', listRouter);
   app.use('/', siteRouter);
 }
 

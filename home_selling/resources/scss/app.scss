@@ -635,6 +635,11 @@ ul.page-numbers li a:hover {
   margin-top: 8px;
 }
 
+.sidebar .content .card-body>a{
+  outline: none;
+  text-decoration: none;
+}
+
 .sidebar .categories ul li {
   margin-bottom: 15px;
 }

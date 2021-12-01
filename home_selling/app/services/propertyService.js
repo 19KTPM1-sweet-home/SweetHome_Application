@@ -16,3 +16,22 @@ exports.detail = (slug) => {
       .catch((err)=>reject(err))
   )
 };
+
+exports.getRelated = (slug) =>{
+  return new Promise((resolve, reject) =>{
+    Properties.findOne({ slug: slug})
+      .populate({
+        path:'category',
+        populate:{
+          path:'categoryId',
+          populate:{path:'properties'}
+        },
+      })
+      .then((property) =>{
+        const relatedProperty = mongooseToObject(property).category.categoryId.properties;
+        resolve(relatedProperty);
+      })
+      .catch((err)=>reject(err))
+  })
+}
+

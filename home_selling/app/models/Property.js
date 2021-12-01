@@ -11,7 +11,7 @@ const seller = new Schema({
 });
 const category = new Schema({
   name: { type: String, required: true },
-  category: { type: Schema.Types.ObjectId, ref: 'Category' },
+  categoryId: { type: Schema.Types.ObjectId, ref: 'Category' },
 });
 // create schema
 const Property = new Schema(
