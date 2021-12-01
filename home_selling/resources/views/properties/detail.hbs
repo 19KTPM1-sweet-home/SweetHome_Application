@@ -22,8 +22,8 @@
                                         </div>
                                         <ul class="post-info">
                                             <li><a href="#">{{property.seller.name}}</a></li>
-                                            <li><a href="#">May 12, 2020</a></li>
-                                            <li><a href="#">2 Comments</a></li>
+                                            <li><a>{{property.postDate}}</a></li>
+                                            <li>2 Comments</li>
                                         </ul>
                                     </div>
 
@@ -152,7 +152,7 @@
                                                                 </h5>
                                                             </a>
                                                             <p class="card-text"><small class="text-muted">Last updated
-                                                                    3 mins ago</small></p>
+                                                                    {{this.time}} {{this.unit}} ago</small></p>
                 
                                                         </div>
                                                         

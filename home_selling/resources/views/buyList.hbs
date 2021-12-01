@@ -7,8 +7,7 @@
                     <p>Discover your perfect home</p>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-
+                    <div class="col-12 category">
                         <ul class="nav nav-pills mt-5">
                             <li class="nav-item mr-4">
                                 <h4>Categories:</h4>
@@ -72,3 +71,12 @@
             </nav>
         </div> <!-- tm-content-container -->
     </div>
+
+    <script>
+        $(document).ready(function(){
+            $(".buying-section .category a").click(function(){
+                $(".buying-section .category a").removeClass("active");
+                $(this).addClass("active");
+            })
+        })
+    </script>
