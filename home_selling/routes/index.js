@@ -3,11 +3,13 @@ const loginRouter = require('./signin');
 const signupRouter = require('./signup');
 const detailRouter = require('./detail');
 const listRouter = require('./list');
+const propertyRouter = require('./property');
 function route(app) {
   app.use('/house/detail', detailRouter);
   app.use('/signup', signupRouter);
   app.use('/login', loginRouter);
   app.use('/buy', listRouter);
+  app.use('/property', propertyRouter);
   app.use('/', siteRouter);
 }
 

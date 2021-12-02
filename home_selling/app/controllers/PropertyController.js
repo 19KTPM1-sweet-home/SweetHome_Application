@@ -1,6 +1,7 @@
 const propertyService = require('../services/propertyService');
 const categoryService = require('../services/categoryService');
 const commentService = require('../services/commentService');
+const propertiesPerPage = 6;
 class PropertyController {
   //[GET]  /
   async show(req, res, next) {
@@ -14,6 +15,11 @@ class PropertyController {
       related: relatedProperty,
       comment: comment
     });
+  }
+  //[GET] /property/:currentPage
+  async listByCategory(req, res, next){
+    const properties = await propertyService.listByCategory(req.params.slug,req.params.currentPage,propertiesPerPage);
+    res.send(properties);
   }
 }
 
