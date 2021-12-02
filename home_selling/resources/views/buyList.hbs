@@ -13,11 +13,11 @@
                                 <h4>Categories:</h4>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/buy/categories/all">All</a>
+                                <a class="nav-link active" name="all" aria-current="page" href="/buy/categories/all">All</a>
                             </li>
                             {{#each category}}
                             <li class="nav-item">
-                                <a class="nav-link" href="/buy/categories/{{this.slug}}">{{this.name}}</a>
+                                <a name="{{this.slug}}" class="nav-link" href="/buy/categories/{{this.slug}}">{{this.name}}</a>
                             </li>
                             {{/each}}
 
@@ -74,9 +74,9 @@
 
     <script>
         $(document).ready(function(){
-            $(".buying-section .category a").click(function(){
-                $(".buying-section .category a").removeClass("active");
-                $(this).addClass("active");
-            })
-        })
+            var pathname = window.location.pathname;
+            const slug = pathname.split("/").at(-1);
+            console.log(slug);
+            $(".buying-section .category a").removeClass("active");
+            $(`.buying-section .category a[name='${slug}']`).addClass("active");})
     </script>
