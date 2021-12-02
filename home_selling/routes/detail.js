@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const detailController = require('../app/controllers/DetailController');
+const propertyController = require('../app/controllers/PropertyController');
 
-
-router.get('/', detailController.show);
+router.get('/:slug', propertyController.show);
 
 module.exports = router;

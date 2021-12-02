@@ -1,16 +1,15 @@
-const Properties = require('../models/Property');
+const propertyService = require('../services/propertyService');
 
 class SiteController {
-    //[GET]  /
-    home(req, res, next) {
-        Properties.find({})
-            .then((property)=>{
-                res.render('home',);
-            })
-            .catch(next)
-        
-    }
-
+  //[GET]  /
+  async home(req, res, next) {
+    propertyService
+      .listLatest(6)
+      .then((properties) => {
+        res.render('home', { properties });
+      })
+      .catch(next);
+  }
 }
 
 module.exports = new SiteController();

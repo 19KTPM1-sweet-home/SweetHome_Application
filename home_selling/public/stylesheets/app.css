@@ -23,11 +23,11 @@ https://templatemo.com/tm-552-video-catalog
 }
 
 .tm-text-primary {
-  color: #3399CC;
+  color: #3399cc;
 }
 
 .tm-text-secondary {
-  color: #3CAFAF;
+  color: #3cafaf;
 }
 
 .tm-nav-link {
@@ -138,9 +138,9 @@ https://templatemo.com/tm-552-video-catalog
 
 .container-login button {
   border-radius: 20px;
-  border: 1px solid #FF4B2B;
-  background-color: #FF4B2B;
-  color: #FFFFFF;
+  border: 1px solid #ff4b2b;
+  background-color: #ff4b2b;
+  color: #ffffff;
   font-size: 12px;
   font-weight: bold;
   padding: 12px 45px;
@@ -159,11 +159,11 @@ https://templatemo.com/tm-552-video-catalog
 
 .container-login button.ghost {
   background-color: transparent;
-  border-color: #FFFFFF;
+  border-color: #ffffff;
 }
 
 .container-login .form-container form {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -231,13 +231,13 @@ https://templatemo.com/tm-552-video-catalog
 }
 
 .container-login .overlay {
-  background: #FF416C;
-  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-  background: linear-gradient(to right, #FF4B2B, #FF416C);
+  background: #ff416c;
+  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+  background: linear-gradient(to right, #ff4b2b, #ff416c);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
-  color: #FFFFFF;
+  color: #ffffff;
   position: relative;
   left: -100%;
   height: 100%;
@@ -262,7 +262,7 @@ https://templatemo.com/tm-552-video-catalog
 }
 
 .container-login .overlay-panel p {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .overlay-right {
@@ -275,7 +275,7 @@ https://templatemo.com/tm-552-video-catalog
 }
 
 .social-container a {
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
   border-radius: 50%;
   display: inline-flex;
   justify-content: center;
@@ -632,6 +632,11 @@ ul.page-numbers li a:hover {
   margin-top: 8px;
 }
 
+.sidebar .content .card-body > a {
+  outline: none;
+  text-decoration: none;
+}
+
 .sidebar .categories ul li {
   margin-bottom: 15px;
 }
@@ -901,12 +906,6 @@ footer p a:hover {
   }
 }
 @media (max-width: 992px) {
-  .navbar .navbar-brand {
-    position: absolute;
-    left: 30px;
-    top: 25px;
-  }
-
   .background-header .navbar-brand,
 .background-header .navbar-toggler {
     top: 15px;
@@ -998,7 +997,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -1430,6 +1431,28 @@ body {
 .about-us-section {
   padding: 0 !important;
   margin: 0;
+}
+
+.card .prev_image {
+  height: 13rem;
+  object-fit: cover;
+}
+
+.card .prev_image:hover {
+  opacity: 0.8;
+}
+
+.card-footer.foot {
+  background-color: #ffffff;
+}
+
+.card-body .property-title {
+  text-decoration: none;
+  color: #f48840;
+}
+
+.card-body .property-price {
+  color: #f48840;
 }
 
 /*# sourceMappingURL=app.css.map */

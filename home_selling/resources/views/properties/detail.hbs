@@ -1,0 +1,198 @@
+<section class="blog-posts grid-system mb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="all-blog-posts">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="blog-post">
+                                <div class="blog-thumb">
+                                    <img src="{{property.previewImage}}" alt={{property.name}}>
+                                </div>
+                                <div class="down-content">
+                                    <span>{{property.category.name}}</span>
+                                    <div class="row">
+                                        <div class="d-flex bd-highlight">
+                                            <div class="p-2 flex-grow-1 bd-highlight ">
+                                                <h4>{{property.name}}</h4>
+                                            </div>
+                                            <div
+                                                class="p-2 flex-shrink-1 bd-highlight d-flex align-content-center flex-wrap">
+                                                <span>${{property.price}}</span></div>
+                                        </div>
+                                        <ul class="post-info">
+                                            <li><a href="#">{{property.seller.name}}</a></li>
+                                            <li><a>{{property.postDate}}</a></li>
+                                            <li>{{comment.amount}} Comments</li>
+                                        </ul>
+                                    </div>
+
+                                    <hr class="dropdown-divider">
+                                    <h5>Description</h5>
+                                    <ul>
+                                        <li>
+                                            Địa chỉ: {{property.address}}
+                                        </li>
+                                        <li>
+                                            Mô tả: {{property.description}}
+                                        </li>
+                                    </ul>
+                                    <hr class="dropdown-divider">
+                                    <h5>Features</h5>
+                                    <ul class="list-group list-group-flush">
+                                        {{#each property.feature}}
+                                        <li class="list-group-item">{{this}}</li>
+                                        {{/each}}
+                                    </ul>
+                                    <hr class="dropdown-divider">
+                                    <h5>Map</h5>
+                                    <!--The div element for the map -->
+                                    <div id="map"></div>
+                                    <script src="/jquery/map.js"></script>
+                                    <script
+                                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4nLHv8knjzism36-uclagvwZUM622QkM&callback=initMap&libraries=&v=weekly"
+                                        async></script>
+                                    <hr class="dropdown-divider">
+                                    <h5>More</h5>
+                                    <div class="more-container">
+                                        <div class="row">
+                                            {{#each property.detailImage}}
+                                            <div class="col-4">
+                                                <img src={{this}} class="img-thumbnail" alt={{this.slug}}>
+                                            </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                    <div class="d-grid gap-2 mt-4">
+                                        <button class="btn btn-primary" type="button">Favorites</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item comments">
+                                <div class="sidebar-heading">
+                                    <h2>{{comment.amount}} comments</h2>
+                                </div>
+                                <div class="content">
+                                    <ul class="d-flex flex-column">
+                                        {{#each comment.data}}
+                                        <li>
+                                            <div class="author-thumb">
+                                                <img src="../../images/unknowComment.jpg" alt="">
+                                            </div>
+                                            <div class="right-content">
+                                                <h4>{{this.authorName}}<span>{{this.postDate}}</span></h4>
+                                                <p class="text-dark">{{this.content}}</p>
+                                            </div>
+                                        </li>
+                                        {{/each}}
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item submit-comment">
+                                <div class="sidebar-heading">
+                                    <h2>Your comment</h2>
+                                </div>
+                                <div class="content">
+                                    <form id="comment" action="#" method="post">
+                                        <div class="row">
+
+                                            <div class="col-lg-12">
+                                                <fieldset>
+                                                    <textarea name="message" rows="3" id="message"
+                                                        placeholder="Type your comment" required=""></textarea>
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <fieldset>
+                                                    <button type="submit" id="form-submit"
+                                                        class="main-button">Submit</button>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sidebar-item recent-posts">
+                                <div class="sidebar-heading">
+                                    <h2>Related Posts</h2>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        {{#each related}}
+                                        <li>
+                                            <div class="card mb-3" style="max-width: 540px;">
+                                                <div class="row g-0">
+                                                    <div class="col-lg-12">
+                                                        
+                                                        <div class="card-body">
+                                                            <a href="/house/detail/{{this.slug}}" class="related-property" >
+                                                                <h5 class="card-title">
+                                                                        {{this.name}}
+                                                                </h5>
+                                                            </a>
+                                                            <p class="card-text"><small class="text-muted">Last updated
+                                                                    {{this.time}} {{this.unit}} ago</small></p>
+                
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        {{/each}}
+                                        
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item categories">
+                                <div class="sidebar-heading">
+                                    <h2>Categories</h2>
+                                </div>
+                                <div class="content">
+                                    
+                                    <ul>
+                                        {{#each category}}
+                                        <li><a href="/buy/categories/{{this.slug}}"> {{this.name}}</a></li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item tags">
+                                <div class="sidebar-heading">
+                                    <h2>Others</h2>
+                                </div>
+                                <div class="content ml-0">
+                                    <ul>
+                                        <li><a href="#">Kitten</a></li>
+                                        <li><a href="#">Bathroom</a></li>
+                                        <li><a href="#">Kidsroom</a></li>
+                                        <li><a href="#">Outdoor</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

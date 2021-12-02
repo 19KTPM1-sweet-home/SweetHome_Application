@@ -1,9 +1,11 @@
-class ListController {
-    //[GET]  /
-    show(req, res, next) {
-        res.render('buyList',{title:'Express'});
-    }
+const categoryService = require('../services/categoryService');
 
+class ListController {
+  //[GET] /:slug/:currentPage
+  async listProperties(req, res, next) {
+    const category = await categoryService.listAll();
+    res.render('buyList', { category: category });
+  }
 }
 
 module.exports = new ListController();
