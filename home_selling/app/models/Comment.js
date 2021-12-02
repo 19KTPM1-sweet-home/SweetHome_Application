@@ -11,7 +11,6 @@ const Comment = new Schema(
       required: true,
     },
     content: { type: String, required: true },
-    postDate: { type: Date },
   },
   {
     // assign createAt and updateAt fields to Schema

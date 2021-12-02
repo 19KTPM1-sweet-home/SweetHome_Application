@@ -76,25 +76,18 @@
                                     <h2>2 comments</h2>
                                 </div>
                                 <div class="content">
-                                    <ul>
+                                    <ul class="d-flex flex-column">
+                                        {{#each comment}}
                                         <li>
                                             <div class="author-thumb">
                                                 <img src="../../images/comment-author-01.jpg" alt="">
                                             </div>
                                             <div class="right-content">
-                                                <h4>Charles Kate<span>May 16, 2020</span></h4>
-                                                <p class="text-dark">So beautiful house!!!</p>
+                                                <h4>{{this.authorName}}<span>{{this.postDate}}</span></h4>
+                                                <p class="text-dark">{{this.content}}</p>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="author-thumb">
-                                                <img src="../../images/comment-author-02.jpg" alt="">
-                                            </div>
-                                            <div class="right-content">
-                                                <h4>Nguyen Minh Tam<span>May 20, 2020</span></h4>
-                                                <p class="text-dark">Thank you.</p>
-                                            </div>
-                                        </li>
+                                        {{/each}}
 
                                     </ul>
                                 </div>
