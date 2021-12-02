@@ -23,7 +23,7 @@
                                         <ul class="post-info">
                                             <li><a href="#">{{property.seller.name}}</a></li>
                                             <li><a>{{property.postDate}}</a></li>
-                                            <li>2 Comments</li>
+                                            <li>{{comment.amount}} Comments</li>
                                         </ul>
                                     </div>
 
@@ -73,11 +73,11 @@
                         <div class="col-lg-12">
                             <div class="sidebar-item comments">
                                 <div class="sidebar-heading">
-                                    <h2>2 comments</h2>
+                                    <h2>{{comment.amount}} comments</h2>
                                 </div>
                                 <div class="content">
                                     <ul class="d-flex flex-column">
-                                        {{#each comment}}
+                                        {{#each comment.data}}
                                         <li>
                                             <div class="author-thumb">
                                                 <img src="../../images/unknowComment.jpg" alt="">

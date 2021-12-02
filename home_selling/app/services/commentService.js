@@ -15,7 +15,8 @@ exports.list = (slug) => {
                     }
                     return comment.postId !== null;
                 })
-                resolve(results);
+                const length = results.length;
+                resolve({data: results,amount: length});
             })
             .catch((err) => reject(err));
     })
