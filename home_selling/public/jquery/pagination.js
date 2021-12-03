@@ -36,7 +36,7 @@ function loadPropertiesPerPage(currentPage) {
                                     <a href="/house/detail/${properties.slug}" class="property-title">
                                         <h5 class="card-title ">${properties.name}</h5>
                                     </a>
-                                    <h5 class="property-price ">${properties.price}</h5>
+                                    <h5 class="property-price ">$${properties.price}</h5>
                                 </div>
                                 ${featureContainer}
                             </div>

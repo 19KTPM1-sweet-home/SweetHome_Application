@@ -4,7 +4,15 @@ const { multipleMongooseToObject, mongooseToObject } = require('../../util/mongo
 exports.listAll = () => {
   return new Promise((resolve, reject) => {
     Properties.find({})
-      .then((properties) => resolve(properties))
+      .then((properties) => {
+        const result = multipleMongooseToObject(properties);
+        result.map((property) =>{
+          const price = new Number(property.price)
+          property.price = price.toLocaleString();
+        }
+        )
+        resolve(result)
+    })
       .catch((err) => reject(err));
   });
 };
@@ -17,7 +25,11 @@ exports.listLatest = (number) => {
     query.exec((err, properties) => {
       if (err) reject(err);
       else {
-        properties.map((property) => {
+        const result = multipleMongooseToObject(properties);
+        result.map((property) => {
+          const price = new Number(property.price)
+          property.price = price.toLocaleString();
+          console.log(property);
           const minute = Math.round(
             (Date.now() - property.createdAt.getTime()) / (1000 * 60),
           );
@@ -55,7 +67,7 @@ exports.listLatest = (number) => {
             }
           }
         });
-        resolve(properties);
+        resolve(result);
       }
     });
   });
@@ -66,6 +78,8 @@ exports.detail = (slug) => {
       .then((property) => {
         const result = mongooseToObject(property);
         result.postDate = result.createdAt.toDateString();
+        const price = new Number(result.price)
+        result.price = price.toLocaleString();
         resolve(result);
       })
       .catch((err) => reject(err)),
@@ -145,6 +159,11 @@ exports.listByCategory = (slug, currentPage, propertiesPerPage) => {
         })
         .then((category) => {
           const result = mongooseToObject(category).properties;
+          result.map((property) =>{
+            const price = new Number(property.price)
+            property.price = price.toLocaleString();
+          })
+          
           Categories.findOne({ slug: slug}).populate({path: 'properties'})
           .then((category) => {
             const count = mongooseToObject(category).properties.length;
@@ -167,6 +186,10 @@ exports.listByCategory = (slug, currentPage, propertiesPerPage) => {
               if (err) { reject(err); }
               else {
                 const result = multipleMongooseToObject(properties);
+                result.map((property)=>{
+                  const price = new Number(property.price)
+                  property.price = price.toLocaleString();
+                })
                 resolve({ properties: result, count: count });
               }
             });
