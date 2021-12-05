@@ -19,7 +19,9 @@
     "mongoose": "^6.0.13",
     "mongoose-delete": "^0.5.4",
     "mongoose-slug-generator": "^1.0.4",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15",

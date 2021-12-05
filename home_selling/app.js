@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const app = express();
 const route = require('./routes');
+const session = require("express-session");
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 
@@ -15,6 +16,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// setup session
+app.use(session({ secret: "cats" }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Config template engine
 app.set('views', path.join(__dirname, 'resources', 'views'));
