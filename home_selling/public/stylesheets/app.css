@@ -1036,7 +1036,9 @@ html {
 .slash {
   color: white;
   font-size: 1.5rem;
-  margin: 0;
+  position: absolute;
+  top: 0.6em;
+  right: 5.5em;
 }
 
 .nav-list .signin-btn {
@@ -1045,6 +1047,7 @@ html {
   min-height: 100%;
   font-size: 1.2rem;
   transition: transform 0.3s;
+  position: relative;
 }
 
 .nav-list .signin-btn:hover {
@@ -1065,6 +1068,81 @@ html {
   color: white;
 }
 
+.user-icon {
+  font-size: 2rem;
+  color: white;
+}
+
+.user-menu a:hover {
+  text-decoration: none !important;
+}
+
+.user-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-menu .welcome-user {
+  display: inline-block;
+  color: white;
+  padding-right: 1em;
+  padding-top: 0.5em;
+  max-height: 100%;
+  font-size: 1rem;
+}
+
+.user-menu-wrapper {
+  display: none;
+}
+
+@media only screen and (max-width: 992px) {
+  .nav-list .nav-item:hover {
+    transform: none;
+    font-weight: 700;
+  }
+
+  .nav-list .slash {
+    display: none;
+  }
+
+  .nav-list .button-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-list .button-wrapper::before {
+    content: "";
+    width: 100%;
+    background-color: white;
+    height: 0.05rem;
+    margin-top: -0.4rem;
+  }
+
+  .user-menu {
+    display: none;
+  }
+
+  .user-menu-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-menu-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-menu-wrapper .user-menu-item-wrapper a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+  }
+}
 .carousel-item {
   position: relative;
   overflow: hidden;
