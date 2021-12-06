@@ -29,7 +29,6 @@ exports.listLatest = (number) => {
         result.map((property) => {
           const price = new Number(property.price)
           property.price = price.toLocaleString();
-          console.log(property);
           const minute = Math.round(
             (Date.now() - property.createdAt.getTime()) / (1000 * 60),
           );

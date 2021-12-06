@@ -18,4 +18,12 @@ passport.use(new LocalStrategy({
   }
 ));
 
+passport.serializeUser(function(user, done) {
+  done(null, {fullName: user.fullName, email: user.email, address: user.address});
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
 module.exports = passport;

@@ -54,22 +54,10 @@
                     
                 </ul>
 
-                <div class="button-wrapper">
-                    <a href="/login">
-                        <button class="btn justify-content-end signin-btn nav-item">
-                            Login
-                        </button>
-                    </a>
-                    <span class="slash">/</span>
-                    <a href="/signup">
-                        <button class="btn me-2 justify-content-end signup-btn nav-item">
-                            Sign up
-                        </button>
-                    </a>
-                </div>
-                {{!-- <div class="dropdown user-menu">
+                {{#if user}}
+                <div class="dropdown user-menu">
                     <div class="welcome-user">
-                       Welcome, Duong Le Xuan Khang
+                        Welcome, {{user.fullName}}
                     </div>
                     <a class="user-icon" href="#" role="button" data-toggle="dropdown">
                         <i class="fas fa-user-circle"></i>
@@ -83,7 +71,7 @@
                             <i class="fas fa-sliders-h"></i>
                             <span class="ml-2">Account settings </span>
                         </a>
-                        <a href="#" class="dropdown-item">
+                        <a href="/logout" class="dropdown-item">
                             <i class="fas fa-sign-out-alt"></i>
                             <span class="ml-2">Logout </span>
                         </a>
@@ -102,13 +90,27 @@
                             <a href="#" class="">
                                 Account settings
                             </a>
-                            <a href="#" class="">
+                            <a href="/logout" class="">
                                 Logout
                             </a>
                         </div>
                     </div>
-                </div> --}}
-                
+                </div>
+                {{else}}
+                <div class="button-wrapper">
+                    <a href="/login">
+                        <button class="btn justify-content-end signin-btn nav-item">
+                            Login
+                        </button>
+                    </a>
+                    <span class="slash">/</span>
+                    <a href="/signup">
+                        <button class="btn me-2 justify-content-end signup-btn nav-item">
+                            Sign up
+                        </button>
+                    </a>
+                </div>
+                {{/if}}
             </div>
 
         </div>

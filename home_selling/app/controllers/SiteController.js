@@ -3,6 +3,7 @@ const propertyService = require('../services/propertyService');
 class SiteController {
   //[GET]  /
   async home(req, res, next) {
+    console.log(req.user);
     propertyService
       .listLatest(6)
       .then((properties) => {

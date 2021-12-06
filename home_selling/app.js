@@ -6,6 +6,7 @@ const logger = require('morgan');
 const app = express();
 const route = require('./routes');
 const session = require("express-session");
+const passport = require('passport');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 
@@ -18,9 +19,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // setup session
-app.use(session({ secret: "cats" }));
+app.use(session({ secret: process.env.SESSION_SECRET}));
 app.use(passport.initialize());
 app.use(passport.session());
+
+// make req.user locally in views
+app.use(function (req, res, next) {
+  res.locals.user = req.user
+  next()
+})
 
 //Config template engine
 app.set('views', path.join(__dirname, 'resources', 'views'));
