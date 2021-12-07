@@ -11,7 +11,7 @@ mongoose.plugin(slug);
 const User = new Schema(
   {
     password: { type: String, required: true },
-    fullname: { type: String, required: true },
+    fullName: { type: String, required: true },
     address: { type: String },
     favorite: [{ type: Schema.Types.ObjectId, ref: 'Property' }],
     email: { type: String, unique: true, required: true },

@@ -14,7 +14,6 @@ class authController {
 
   async createUser(req, res) {
     const ack = await userService.createUser(req.body.email, req.body.password, req.body.fullName);
-    console.log('ack' + ack);
     if(ack == 'exist') {
       res.redirect('/signup/?email-already-exist');
     }
