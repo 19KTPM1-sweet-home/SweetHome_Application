@@ -7,14 +7,21 @@ const app = express();
 const route = require('./routes');
 const session = require("express-session");
 const passport = require('passport');
+const bodyParser = require('body-parser');
+const flash = require('connect-flash');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+//app.use(express.json());
+//app.use(express.urlencoded({ extended: false }));
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -22,6 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: process.env.SESSION_SECRET}));
 app.use(passport.initialize());
 app.use(passport.session());
+
+// setup flash msg
+app.use(flash());
 
 // make req.user locally in views
 app.use(function (req, res, next) {

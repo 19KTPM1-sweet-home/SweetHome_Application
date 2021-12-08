@@ -1014,6 +1014,7 @@ html {
 }
 
 //---------------START NAV BAR-----------------
+
 .logo-link {
   margin: 0 auto;
   font-family: Pacifico;
@@ -1078,17 +1079,18 @@ html {
 .user-icon {
   font-size: 2rem;
   color: white;
-  
 }
 
-.user-menu a:hover{
-  text-decoration: none !important;
+.user-icon:hover{
+  color: white;
 }
 
 .user-menu {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  right: 2rem;
 }
 
 .user-menu .welcome-user {
@@ -1105,6 +1107,9 @@ html {
 }
 
 @media only screen and (max-width: 992px) {
+  .navbar .logo {
+    margin-left: 1rem;
+  }
 
   .nav-list .nav-item:hover {
     transform: none;
@@ -1129,28 +1134,29 @@ html {
   }
 
   .user-menu {
-    display: none;
+    top: 0.4rem;
+    right: 5.5rem;
   }
 
-  .user-menu-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  // .user-menu-wrapper {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
 
-  .user-menu-item-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  // .user-menu-item-wrapper {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
 
-  .user-menu-wrapper .user-menu-item-wrapper a{
-    text-decoration: none;
-    color: white;
-    font-weight: 400;
-  }
+  // .user-menu-wrapper .user-menu-item-wrapper a{
+  //   text-decoration: none;
+  //   color: white;
+  //   font-weight: 400;
+  // }
 }
 
 //---------------END NAV BAR-----------------
@@ -1559,3 +1565,113 @@ body {
 .card-body .property-price {
   color: $theme_color;
 }
+
+
+//---------START PROFILE----------
+.profile-container {
+  margin-top: 3.5rem;
+}
+
+.ui-w-80 {
+  width: 80px !important;
+  height: auto;
+}
+
+.btn-default {
+  border-color: rgba(24,28,33,0.1);
+  background: rgba(0,0,0,0);
+  color: #4E5155;
+}
+
+label.btn {
+  margin-bottom: 0;
+}
+
+.btn-outline-primary {
+  border-color: #26B4FF;
+  background: transparent;
+  color: #26B4FF;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.text-light {
+  color: #babbbc !important;
+}
+
+.btn-facebook {
+  border-color: rgba(0,0,0,0);
+  background: #3B5998;
+  color: #fff;
+}
+
+.btn-instagram {
+  border-color: rgba(0,0,0,0);
+  background: #000;
+  color: #fff;
+}
+
+.card {
+  background-clip: padding-box;
+  box-shadow: 0 1px 4px rgba(24,28,33,0.012);
+}
+
+.row-bordered {
+  overflow: hidden;
+}
+
+.account-settings-fileinput {
+  position: absolute;
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.account-settings-links .list-group-item.active {
+  font-weight: bold !important;
+}
+html:not(.dark-style) .account-settings-links .list-group-item.active {
+  background: transparent !important;
+}
+.account-settings-multiselect ~ .select2-container {
+  width: 100% !important;
+}
+.light-style .account-settings-links .list-group-item {
+  padding: 0.85rem 1.5rem;
+  border-color: rgba(24, 28, 33, 0.03) !important;
+}
+.light-style .account-settings-links .list-group-item.active {
+  color: #4e5155 !important;
+}
+.material-style .account-settings-links .list-group-item {
+  padding: 0.85rem 1.5rem;
+  border-color: rgba(24, 28, 33, 0.03) !important;
+}
+.material-style .account-settings-links .list-group-item.active {
+  color: #4e5155 !important;
+}
+.dark-style .account-settings-links .list-group-item {
+  padding: 0.85rem 1.5rem;
+  border-color: rgba(255, 255, 255, 0.03) !important;
+}
+.dark-style .account-settings-links .list-group-item.active {
+  color: #fff !important;
+}
+.light-style .account-settings-links .list-group-item.active {
+  color: #4E5155 !important;
+}
+.light-style .account-settings-links .list-group-item {
+  padding: 0.85rem 1.5rem;
+  border-color: rgba(24,28,33,0.03) !important;
+}
+//---------END PROFILE----------
+
+
+//---------START LOGIN----------
+.error-login-msg {
+  margin-left: -11rem;
+}
+
+//---------END LOGIN----------

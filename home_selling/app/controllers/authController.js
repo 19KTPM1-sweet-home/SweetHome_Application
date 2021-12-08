@@ -1,9 +1,9 @@
-const userService = require('../services/userService')
+const userService = require('../services/userService');
 class authController {
   //[GET] /login
   showLogin(req, res) {
-    const wrongPassword = req.query['wrong-password'];
-    res.render('login', { wrongPassword, layout: false });
+    const errorMsg = req.flash('errorMsg');
+    res.render('login', { errorMsg, layout: false });
   }
 
   //[GET] /signup
