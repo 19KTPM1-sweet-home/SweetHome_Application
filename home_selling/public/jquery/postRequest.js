@@ -16,7 +16,7 @@ $(window).on('load', () => {
             success: function(res){
                 console.log(res)
                 if(res == "wrong-password")
-                    alert("Current password not match!");
+                    $('.password-error').css("display","block");
                 else if(res == "success") {
                     alert("Change password successfully!");
                     window.location.reload();

@@ -175,6 +175,7 @@
                     <div class="form-group">
                       <label class="form-label">Current password</label>
                       <input type="password" name="oldPassword" class="form-control" required>
+                      <span class="text-danger password-error" style="display: none;">Current password not match</span>
                     </div>
 
                     <div class="form-group">
@@ -240,21 +241,7 @@
     <script src="/javascripts/jquery-3.4.1.min.js"></script>
     <script src="/javascripts/bootstrap.min.js"></script>
     <script src="/jquery/postRequest.js"></script>
-    <script>
-      $('#newPassword, #repeatNewPassword').on('keyup', function () {
-        if ($('#newPassword').val() == $('#repeatNewPassword').val()) {
-          $('#message').html('Matching').css('color', 'green');
-          $('#passwordSubmit').removeAttr("disabled");
-        } else {
-          $('#passwordSubmit').attr("disabled", "disabled");
-          $('#message').html('Not Matching').css('color', 'red');
-        }
-      });
-
-      function img_pathUrl(input){
-          $('#avatar')[0].src = (window.URL ? URL : webkitURL).createObjectURL(input.files[0]);
-      }
-    </script>
+    <script src="/jquery/changePassword.js"></script>
 </body>
 
 </html>
