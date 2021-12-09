@@ -42,6 +42,9 @@
         </div> <!-- tm-content-container -->
     </div>
 
+    <script src="/javascripts/jquery-3.4.1.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/jquery/pagination.js"></script>
     <script>
         $(document).ready(function(){
             var pathname = window.location.pathname;
@@ -49,4 +52,3 @@
             $(".buying-section .category a").removeClass("active");
             $(`.buying-section .category a[name='${slug}']`).addClass("active");})
     </script>
-    <script src="/jquery/pagination.js"></script>
