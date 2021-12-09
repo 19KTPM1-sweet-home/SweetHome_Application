@@ -13,13 +13,15 @@ class userController {
           address: req.body.address,
           phoneNumber: req.body.phoneNumber
       }
-      const updatedUser = await userService.editProfile(req.user._id, user);
+      const updatedUser = await userService.editProfile(req.user, req.files.avatar[0], user);
       if(updatedUser) {
         const newSessionUser = {
           _id: updatedUser._id.toString(), 
           fullName: updatedUser.fullName,
           email: updatedUser.email, 
-          phoneNumber: updatedUser.phoneNumber || ""
+          phoneNumber: updatedUser.phoneNumber || "",
+          avatar: updatedUser.avatar,
+          slug: updatedUser.slug
         };
 
         // refresh req.user

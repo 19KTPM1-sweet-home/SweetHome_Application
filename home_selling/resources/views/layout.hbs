@@ -40,7 +40,11 @@
                     Welcome, {{user.fullName}}
                 </div>
                 <a class="user-icon" href="#" role="button" data-toggle="dropdown">
-                    <i class="fas fa-user-circle"></i>
+                    {{#if user.avatar}}
+                    <img src="{{user.avatar}}" alt="user-avatar">
+                    {{else}}
+                    <span class="default-icon"><i class="fas fa-user-circle"></i></span>
+                    {{/if}}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="/profile/" class="dropdown-item">

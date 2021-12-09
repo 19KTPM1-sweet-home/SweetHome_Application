@@ -40,7 +40,11 @@
                     Welcome, {{user.fullName}}
                 </div>
                 <a class="user-icon" href="#" role="button" data-toggle="dropdown">
+                    {{#if user.avatar}}
+                    <img src="{{user.avatar}}" alt="user-avatar">
+                    {{else}}
                     <i class="fas fa-user-circle"></i>
+                    {{/if}}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="/profile/" class="dropdown-item">
@@ -119,52 +123,50 @@
           <div class="col-md-9">
             <div class="tab-content">
               <div class="tab-pane fade active show" id="account-general">
+                <form id="profileForm" action ="/profile/edit" method="POST" enctype='multipart/form-data'>
+                  <div class="card-body media align-items-center">
+                    <img id="avatar" src="{{#if user.avatar}}{{user.avatar}}{{else}}https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png{{/if}}" alt="" class="d-block ui-w-80">
+                    <div class="media-body ml-4">
+                      <label class="btn btn-outline-primary">
+                        Upload new photo
+                        <input id="inputAvatar" type="file" class="account-settings-fileinput" name="avatar" onChange="img_pathUrl(this)">
 
-                <div class="card-body media align-items-center">
-                  <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt="" class="d-block ui-w-80">
-                  <div class="media-body ml-4">
-                    <label class="btn btn-outline-primary">
-                      Upload new photo
-                      <input type="file" class="account-settings-fileinput">
-
-                    <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                      <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                    </div>
                   </div>
-                </div>
-                <hr class="border-light m-0">
+                  <hr class="border-light m-0">
 
-                <div class="card-body">
-                  <form id="profileForm" action ="/profile/edit" method="POST">
-                      <div class="form-group">
-                        <label class="form-label">E-mail</label>
-                        <input type="text" class="form-control mb-1" name="email" placeholder="abc@gmail.com" value="{{user.email}}">
-                        <div class="alert alert-warning mt-3">
-                          Your email is not confirmed. Please check your inbox.<br>
-                          <a href="javascript:void(0)">Resend confirmation</a>
-                        </div>
-
-                        <div class="form-group">
-                          <label class="form-label">Full Name</label>
-                          <input type="text" class="form-control" name="fullName" value="{{user.fullName}}">
-                        </div>
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label class="form-label">E-mail</label>
+                      <input type="text" class="form-control mb-1" name="email" placeholder="abc@gmail.com" value="{{user.email}}" required>
+                      <div class="alert alert-warning mt-3">
+                        Your email is not confirmed. Please check your inbox.<br>
+                        <a href="javascript:void(0)">Resend confirmation</a>
                       </div>
 
                       <div class="form-group">
-                        <label class="form-label">Address</label>
-                        <input type="text" class="form-control" name="address" placeholder="227 Nguyễn Văn Cừ..." value="{{user.address}}">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" name="fullName" value="{{user.fullName}}" required>
                       </div>
+                    </div>
 
-                      <div class="form-group">
-                        <label class="form-label">Phone Number</label>
-                        <input type="tel" class="form-control" name="phoneNumber" pattern="[0-9]{10}" placeholder="0934227200" value="{{user.phoneNumber}}">
-                      </div>
+                    <div class="form-group">
+                      <label class="form-label">Address</label>
+                      <input type="text" class="form-control" name="address" placeholder="227 Nguyễn Văn Cừ..." value="{{user.address}}">
+                    </div>
 
-                      <div class="text-right mt-3 mb-4">
-                        <button type="submit" class="btn btn-primary">Save changes</button>&nbsp;
-                        <a href="/profile" class="btn btn-default">Cancel</a>
-                      </div>
-                  </form>
-                </div>
+                    <div class="form-group">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" name="phoneNumber" pattern="[0-9]{10}" placeholder="0934227200" value="{{user.phoneNumber}}">
+                    </div>
 
+                    <div class="text-right mt-3 mb-4">
+                      <button type="submit" class="btn btn-primary">Save changes</button>&nbsp;
+                      <a href="/profile" class="btn btn-default">Cancel</a>
+                    </div>
+                  </div>
+                </form>
               </div>
               <div class="tab-pane fade" id="account-change-password">
                 <div class="card-body pb-2">
@@ -247,8 +249,11 @@
           $('#passwordSubmit').attr("disabled", "disabled");
           $('#message').html('Not Matching').css('color', 'red');
         }
-          
       });
+
+      function img_pathUrl(input){
+          $('#avatar')[0].src = (window.URL ? URL : webkitURL).createObjectURL(input.files[0]);
+      }
     </script>
 </body>
 

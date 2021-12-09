@@ -8,7 +8,7 @@ class authController {
 
   //[GET] /signup
   showSignup(req, res) {
-    const emailExist = req.query['email-already-exist'];
+    const emailExist = req.query['email-already-exist'] !== undefined;
     res.render('signup', { emailExist, layout: false });
   }
 

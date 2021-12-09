@@ -45,6 +45,9 @@
                 ></i></a>
             </div>
             <span>or use your email for registration</span>
+            {{#if emailExist}}
+              <span class="text-danger error-login-msg">Email already exists</span>
+            {{/if}}
             <input type='text' name="fullName" placeholder='Name' required/>
             <input type='email' name="email" placeholder='Email' required/>
             <input type='password' name="password" placeholder='Password' required/>

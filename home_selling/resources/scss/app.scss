@@ -1077,8 +1077,16 @@ html {
 }
 
 .user-icon {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: white;
+}
+
+.user-icon img {
+  vertical-align: middle;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-bottom: 0.3rem;
 }
 
 .user-icon:hover{
@@ -1134,29 +1142,17 @@ html {
   }
 
   .user-menu {
-    top: 0.4rem;
+    top: 0.1rem;
     right: 5.5rem;
   }
 
-  // .user-menu-wrapper {
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   align-items: center;
-  // }
+  .welcome-user {
+    margin-bottom: 0.4rem;
+  }
 
-  // .user-menu-item-wrapper {
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   align-items: center;
-  // }
-
-  // .user-menu-wrapper .user-menu-item-wrapper a{
-  //   text-decoration: none;
-  //   color: white;
-  //   font-weight: 400;
-  // }
+  .user-icon img {
+    margin-bottom: 0.6rem;
+  }
 }
 
 //---------------END NAV BAR-----------------

@@ -27,7 +27,9 @@ passport.serializeUser(function(user, done) {
     fullName: user.fullName, 
     email: user.email, 
     address: user.address,
-    phoneNumber: user.phoneNumber || ""
+    phoneNumber: user.phoneNumber || "",
+    avatar: user.avatar,
+    slug: user.slug
   };
   done(null, sessionUser);
 });
@@ -39,7 +41,9 @@ passport.deserializeUser(async function(user, done) {
     fullName: newUser.fullName, 
     email: newUser.email, 
     address: newUser.address,
-    phoneNumber: newUser.phoneNumber || ""
+    phoneNumber: newUser.phoneNumber || "",
+    avatar: newUser.avatar,
+    slug: newUser.slug
   };
   done(null, sessionUser);
 });
