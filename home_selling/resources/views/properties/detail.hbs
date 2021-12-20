@@ -71,46 +71,23 @@
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <div class="sidebar-item comments">
-                                <div class="sidebar-heading">
-                                    <h2>{{comment.amount}} comments</h2>
-                                </div>
-                                <div class="content">
-                                    <ul class="d-flex flex-column">
-                                        {{#each comment.data}}
-                                        <li>
-                                            <div class="author-thumb">
-                                                <img src="../../images/unknowComment.jpg" alt="">
-                                            </div>
-                                            <div class="right-content">
-                                                <h4>{{this.authorName}}<span>{{this.postDate}}</span></h4>
-                                                <p class="text-dark">{{this.content}}</p>
-                                            </div>
-                                        </li>
-                                        {{/each}}
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
                             <div class="sidebar-item submit-comment">
                                 <div class="sidebar-heading">
                                     <h2>Your comment</h2>
                                 </div>
                                 <div class="content">
-                                    <form id="comment" action="#" method="post">
+                                    <form id="commentForm">
                                         <div class="row">
-
                                             <div class="col-lg-12">
                                                 <fieldset>
-                                                    <textarea name="message" rows="3" id="message"
-                                                        placeholder="Type your comment" required=""></textarea>
+                                                    <input type="hidden" name="propertyId" value={{property._id}}>
+                                                    <textarea name="commentContent" rows="3" id="commentContent"
+                                                        placeholder="Type your comment" required></textarea>
                                                 </fieldset>
                                             </div>
                                             <div class="col-lg-12">
                                                 <fieldset>
-                                                    <button type="submit" id="form-submit"
+                                                    <button type="submit" id="commentSubmitBtn"
                                                         class="main-button">Submit</button>
                                                 </fieldset>
                                             </div>
@@ -118,6 +95,14 @@
                                     </form>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item comments {{property.slug}}">
+                                {{!-- JQuery will generate comment UI here --}}
+                            </div>
+                        </div>
+                        <div class = "mt-4 pagination-wrapper pagination justify-content-center">
+                            {{!-- JQuery will generate pagination UI here --}}
                         </div>
                     </div>
                 </div>
@@ -139,7 +124,7 @@
                                                     <div class="col-lg-12">
                                                         
                                                         <div class="card-body">
-                                                            <a href="/house/detail/{{this.slug}}" class="related-property" >
+                                                            <a href="/detail/{{this.slug}}" class="related-property" >
                                                                 <h5 class="card-title">
                                                                         {{this.name}}
                                                                 </h5>
@@ -196,3 +181,10 @@
         </div>
     </div>
 </section>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+<script src="/javascripts/jquery-3.4.1.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/jquery/commentPaging.js"></script>
+<script src="/jquery/comment.js"></script>

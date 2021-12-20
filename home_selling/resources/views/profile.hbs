@@ -242,6 +242,11 @@
     <script src="/javascripts/bootstrap.min.js"></script>
     <script src="/jquery/postRequest.js"></script>
     <script src="/jquery/changePassword.js"></script>
+    <script>
+      function img_pathUrl(input){
+          $('#avatar')[0].src = (window.URL ? URL : webkitURL).createObjectURL(input.files[0]);
+      }
+    </script>
 </body>
 
 </html>

@@ -71,6 +71,7 @@ exports.listLatest = (number) => {
     });
   });
 };
+
 exports.detail = (slug) => {
   return new Promise((resolve, reject) =>
     Properties.findOne({ slug: slug })
