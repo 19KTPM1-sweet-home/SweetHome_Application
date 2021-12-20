@@ -1,0 +1,5 @@
+{"_id":{"$oid":"619f3edab4d5ad1235347056"},"authorName":"Hồ Bảo Đại","postId":{"$oid":"619f321bb4d5ad1235347011"},"content":"Is it have a kitchen ?","createdAt":{"$date":"2018-08-23T17:00:00Z"}}
+{"_id":{"$oid":"619f3fa8b4d5ad123534706d"},"authorName":"Lê Thị Trân","postId":{"$oid":"619f321bb4d5ad1235347011"},"content":"Any market around there?","createdAt":{"$date":"2018-02-12T17:00:00Z"}}
+{"_id":{"$oid":"619f3e7cb4d5ad1235347050"},"authorName":"Lê Thị Trân","postId":{"$oid":"619f30a5b4d5ad1235347009"},"content":"Nice house!","createdAt":{"$date":"2018-09-11T17:00:00Z"}}
+{"_id":{"$oid":"619f3f84b4d5ad1235347067"},"authorName":"Lê Hoài Nam","postId":{"$oid":"619f30a5b4d5ad1235347009"},"content":"Haizz, just one bathroom...","createdAt":{"$date":"2018-08-23T17:00:00Z"}}
+{"_id":{"$oid":"619e4933f28599d4ef895056"},"authorName":"Nguyễn Việt Nam","postId":{"$oid":"619f330ab4d5ad1235347024"},"content":"What a beautiful house!","createdAt":{"$date":"2019-01-11T17:00:00Z"}}
