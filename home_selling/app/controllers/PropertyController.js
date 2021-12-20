@@ -29,6 +29,11 @@ class PropertyController {
   
   // POST COMMENT
   async postComment(req, res) {
+    if(!req.user) {
+      res.send('redirect');
+      return;
+    }
+
     const user = {
       _id: req.user._id,
       fullName: req.user.fullName,

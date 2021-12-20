@@ -8,6 +8,6 @@ router.get('/:slug', propertyController.show);
 
 router.get('/:slug/comments/:page', propertyController.loadCommentPerPage);
 
-router.post('/:slug/comments', loggedInUserGuard, propertyController.postComment);
+router.post('/:slug/comments', propertyController.postComment);
 
 module.exports = router;

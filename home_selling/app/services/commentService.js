@@ -57,7 +57,6 @@ module.exports.loadCommentPerPage = (propertySlug, page) => {
                                     createdAt: comment.createdAt.toLocaleString('vi-VN')
                                 }
                             })
-                            console.log(results);
                             resolve({comments: results, numOfComment: count});
                         }
                     });
