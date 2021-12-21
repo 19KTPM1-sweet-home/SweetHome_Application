@@ -1650,4 +1650,31 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
   margin-left: -11rem;
 }
 
+#requestTourForm label {
+  font-weight: bold;
+}
+
+#requestTourForm h3 {
+  font-weight: bold;
+}
+
+.md-form.md-outline {
+  margin: 0;
+}
+
+.date-label {
+  margin-top: 3rem;
+}
+
+.add-message-btn {
+  margin-top: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.submit-form-btn {
+  width: 98%;
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=app.css.map */

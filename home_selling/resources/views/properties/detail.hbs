@@ -13,18 +13,19 @@
                                     <span>{{property.category.name}}</span>
                                     <div class="row">
                                         <div class="d-flex bd-highlight">
-                                            <div class="p-2 flex-grow-1 bd-highlight ">
+                                            <div class="flex-grow-1 bd-highlight ">
                                                 <h4>{{property.name}}</h4>
                                             </div>
                                             <div
                                                 class="p-2 flex-shrink-1 bd-highlight d-flex align-content-center flex-wrap">
                                                 <span>${{property.price}}</span></div>
                                         </div>
+                                        
                                         <ul class="post-info">
                                             <li><a href="#">{{property.seller.name}}</a></li>
                                             <li><a>{{property.postDate}}</a></li>
-                                            <li>{{comment.amount}} Comments</li>
                                         </ul>
+                                        <button type="button" class="btn btn-primary request-tour-btn">Request a tour</button>
                                     </div>
 
                                     <hr class="dropdown-divider">
@@ -180,10 +181,61 @@
             </div>
         </div>
     </div>
+
+    <!-- Request a tour Modal HTML -->
+    <div id="requestTourModal" class="modal fade">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <h3 >Request a tour</h3>
+                        <p>Let us know when you're available, and we will contact you to arrange a tour.</p>
+                    </div>
+                    <button type="button" class="close cancel-form-btn" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">					
+                    <form id="requestTourForm" class="row g-3">
+                        <label for="example" class="date-label">Select a few dates you’re available</label>
+                        <div class="md-form md-outline input-with-post-icon datepicker">
+                          <input placeholder="Select a few dates" type="text" id="datepicker" class="form-control" required>
+                          <i class="fas fa-calendar input-prefix" tabindex=0></i>
+                        </div>
+                        <div class="mb-2">
+                          <label for="fullName" class="form-label">Fullname</label>
+                          <input type="text" name="fullName" class="form-control" placeholder="Ex: Nguyen Van A">
+                        </div>
+                        <div class="mb-2">
+                          <label for="email" class="form-label">Email address</label>
+                          <input type="email" name="email" class="form-control" placeholder="Ex: name@example.com" required>
+                        </div>
+                        <div class="mb-2">
+                          <label for="phoneNumber" class="form-label">Phone number</label>
+                          <input type="tel" name="phoneNumber" class="form-control" placeholder="Ex: 0932200XXX" required>
+                        </div>
+                        <a class="add-message-btn" data-bs-toggle="collapse" href="#collapseMessage" role="button" aria-expanded="false" aria-controls="collapseExample">
+                          + ADD A MESSAGE
+                        </a>
+                        <div class="collapse" id="collapseMessage">
+                            <div class="mb-2">
+                              <label for="message" class="form-label">Enter your message</label>
+                              <textarea class="form-control" name="message" placeholder="Add your message" rows="2"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary submit-form-btn">Send tour request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </section>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
 <script src="/javascripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 <script src="/jquery/commentPaging.js"></script>
 <script src="/jquery/comment.js"></script>
+<script src="/jquery/requestTourModal.js"></script>
