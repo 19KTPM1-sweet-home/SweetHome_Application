@@ -1,27 +1,6 @@
 const commentModel = require('../models/Comment');
 const commentPerPage = 5;
 
-// module.exports.list = (slug) => {
-//     return new Promise((resolve, reject) => {
-//         commentModel.find({})
-//             .populate({
-//                 path: 'postId',
-//                 match: { slug: { $eq: slug } }
-//             })
-//             .then((comments) => {
-//                 const results = comments.filter((comment) =>{
-//                     if(comment.postId !== null){
-//                         comment.postDate = comment.createdAt.toLocaleString('vi');
-//                     }
-//                     return comment.postId !== null;
-//                 })
-//                 const length = results.length;
-//                 resolve({comments: results, numOfComment: length});
-//             })
-//             .catch((err) => reject(err));
-//     })
-// }
-
 module.exports.loadCommentPerPage = (propertySlug, page) => {
     return new Promise((resolve, reject) => {
         // load comments corresponding to current page
@@ -32,34 +11,47 @@ module.exports.loadCommentPerPage = (propertySlug, page) => {
             .find()
             .populate({
                 path: 'postId',
-                match: { slug: { $eq: propertySlug } }
+                select: 'slug',
+                match: { slug: propertySlug }
             })
             .sort({'createdAt':-1})
             .skip((commentPerPage * page) - commentPerPage)
             .limit(commentPerPage)
             .exec((err, comments) => {
+                var resultSet = comments.filter((comment) =>  {
+                    return comment.postId !== null;
+                });
                 if(err) {
                     console.log(err);
                     reject(err);
                 }
                 else {
-                    commentModel.countDocuments((err, count) => {
-                        if(err) {
-                            console.log(err);
-                            reject(err);
-                        }
-                        else {
-                            const results = comments.map((comment) =>{
-                                return {
-                                    authorName: comment.authorName,
-                                    authorAvatar: comment.authorAvatar,
-                                    content: comment.content,
-                                    createdAt: comment.createdAt.toLocaleString('vi-VN')
-                                }
-                            })
-                            resolve({comments: results, numOfComment: count});
-                        }
-                    });
+                    // Count total comments
+                    commentModel
+                    .find()
+                    .populate({
+                        path: 'postId',
+                        select: 'slug',
+                        match: { slug: propertySlug }
+                    })
+                    .exec((err, result) => {
+                        // Count total comments
+                        result = result.filter((comment) =>  {
+                            return comment.postId !== null;
+                        });
+                        const count = result.length;
+
+                        // Extract needed information
+                        resultSet = resultSet.map((comment) =>{
+                            return {
+                                authorName: comment.authorName,
+                                authorAvatar: comment.authorAvatar,
+                                content: comment.content,
+                                createdAt: comment.createdAt.toLocaleString('vi-VN')
+                            }
+                        })
+                        resolve({comments: resultSet, numOfComment: count});
+                    })
                 }
             });
     })

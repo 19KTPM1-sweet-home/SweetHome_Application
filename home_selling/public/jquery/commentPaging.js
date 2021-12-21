@@ -5,7 +5,7 @@ const defaultTotalPages = 10;
 function loadCommentPerPage(currentPage) {
     const origin = window.location.origin + window.location.pathname;
     const url = origin + '/comments/' + currentPage.toString();
-
+    console.log(url);
     $.get(url, function (data) {
         var template = Handlebars.compile(`<div class="sidebar-heading num-of-comment">
             <h2>{{commentData.numOfComment}} comments</h2>
@@ -28,9 +28,12 @@ function loadCommentPerPage(currentPage) {
 
         $('.comments').html(template({commentData: data}));
 
-        // append html somewhere to see the response
         // Update total properties in every get request
-        $('.pagination-wrapper').pagination('updateItems', data.numOfComment);
+        if(data.numOfComment <= commentPerPage)
+            $('.pagination-wrapper').css("display", "none");
+        else
+            $('.pagination-wrapper').pagination('updateItems', data.numOfComment);
+
     });
 }
 
