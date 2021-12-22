@@ -1675,6 +1675,10 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
 
 
 //---------START REQUEST A TOUR MODAL----------
+// #requestTourForm {
+//   display: none;
+// }
+
 #requestTourForm label {
   font-weight: bold;
 }
@@ -1702,7 +1706,119 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
 }
 
 .submit-form-btn {
-  width: 98%;
+  margin-top: 1rem;
+  width: 97%;
   font-weight: bold;
 }
+
+.success-msg{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    background-color: #daf3d2;
+    border: #78bb78 solid 0.13em;
+    border-radius: 5px;
+    padding: 1em;
+    font-size: 1.1rem;
+    margin: 1.5em auto;
+}
+
+.success-msg p {
+  margin-bottom: 0;
+  margin-left: 0.5rem;
+}
+
+.success-msg i {
+  color: green;
+}
+
+.requested-date-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background-color: #e6f3f3;
+  border: #7286c5 solid 0.13em;
+  border-radius: 5px;
+  padding: 1em;
+  font-size: 1.1rem;
+  margin: 0 auto;
+}
+
+.requested-date-label {
+  display: flex;
+  align-items: center;
+}
+
+.requested-date-label i {
+  color: #8e6ad5;
+}
+
+.requested-date-label p {
+  margin-bottom: 0;
+  margin-left: 0.5rem;
+  font-weight: bold;
+}
+
+.requested-date {
+  margin-left: 1.5rem;
+}
+
+.requested-date p {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 992px) {
+  #requestTourModal {
+    max-height: 43%;
+  }
+}
+
+
+// LOGIN CONFIRM Modal
+#loginConfirmModal {
+  position: absolute;
+  top: 10rem;
+}
+
+#loginConfirmModal .modal-content{
+  border: #8794b1 solid 2px;
+  background-color: #f9f9f9;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+#loginConfirmModal p {
+  margin-bottom: 0;
+}
+
+.modal-confirm {		
+	color: #636363;
+	width: 325px;
+	font-size: 14px;
+}
+.modal-confirm .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+}
+.modal-confirm .modal-header {
+	border-bottom: none;   
+	position: relative;
+}
+.modal-confirm h4 {
+	text-align: center;
+	font-size: 26px;
+	margin: 30px 0 -15px;
+}
+
+.modal-confirm .close {
+	position: absolute;
+	top: -5px;
+	right: -5px;
+}	
+
+.modal-confirm.modal-dialog {
+	margin-top: 80px;
+}
+
+
 //---------END REQUEST A TOUR MODAL----------

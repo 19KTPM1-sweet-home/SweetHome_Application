@@ -1,6 +1,10 @@
+const moment = require('moment');
 const propertyService = require('../services/propertyService');
 const categoryService = require('../services/categoryService');
 const commentService = require('../services/commentService');
+const tourService = require('../services/tourService');
+
+
 const propertiesPerPage = 6;
 class PropertyController {
   //[GET]  /
@@ -43,6 +47,29 @@ class PropertyController {
     const newComment = await commentService.postComment(user, req.body.propertyId, req.body.commentContent);
     if(newComment)
       res.send(newComment);
+  }
+
+  // REQUEST A TOUR
+  async requestTour(req, res) {
+    if(!req.user) {
+      req.session.returnTo = '/detail/' + req.params.slug;
+      res.send({ack: 'redirect'});
+      return;
+    }
+    const requestTour = {
+      fullName: req.body.fullName,
+      email: req.body.email,
+      phoneNumber: req.body.phoneNumber,
+      message: req.body.message,
+      propertyId: req.body.propertyId,
+      ack: 'pending',
+      appointmentDate: moment(req.body.date + ' ' + req.body.time, "DD-MM-YYYY hh:mm")
+    }
+    
+
+    const appointmentDate = await tourService.requestTour(req.user._id, requestTour);
+    if(appointmentDate)
+      res.send({appointmentDate: appointmentDate});
   }
 }
 

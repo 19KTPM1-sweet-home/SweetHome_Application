@@ -188,19 +188,40 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="modal-title">
+                        <button type="button" class="close cancel-form-btn" aria-hidden="true">&times;</button>
                         <h3 >Request a tour</h3>
                         <p>Let us know when you're available, and we will contact you to arrange a tour.</p>
                     </div>
-                    <button type="button" class="close cancel-form-btn" aria-hidden="true">&times;</button>
                 </div>
-                <div class="modal-body">					
+                <div class="modal-body">	
+                    <div class="success-tab">
+                        <div class="success-msg">
+                            <i class="fa fa-check-circle" style="color:green"></i>
+                            <p>Tour request sent</p>
+                        </div>
+                        <div class="requested-date-wrapper">
+                            <div class="requested-date-label">
+                                <i class="fa fa-calendar" style="color: #8e6ad5"></i>
+                                <p>Your requested dates: </p>
+                            </div>
+                            <div class="requested-date">
+                                <p>Test</p>
+                            </div>
+                        </div>				
+                    </div>
                     <form id="requestTourForm" class="row g-3">
-                        <label for="example" class="date-label">Select a few dates you’re available</label>
+                        <input type="hidden" name="propertyId" value={{property._id}}>
+                        <label for="example" class="date-label">Select a date you’re available</label>
                         <div class="input-group datepicker">
-                          <input placeholder="Select a few dates" type="text" id="datepicker" class="form-control" required>
-                          <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                          <input placeholder="Select a date" type="text" id="datepicker" class="form-control" name="date" required>
+                          {{!-- <span class="input-group-text"><i class="fas fa-calendar"></i></span> --}}
                           
                         </div>
+                        <div class="mb-2">
+                          <label for="time" class="form-label">Select a time</label>
+                          <input type="time" name="time" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
                         <div class="mb-2">
                           <label for="fullName" class="form-label">Fullname</label>
                           <input type="text" name="fullName" class="form-control" placeholder="Ex: Nguyen Van A">
@@ -223,8 +244,20 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary submit-form-btn">Send tour request</button>
+                        <button type="submit" class="ml-2 btn btn-primary submit-form-btn">Send tour request</button>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="loginConfirmModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close hide-login-confirm-btn" aria-hidden="true">&times;</button>
+                    <p>You must login to request a tour. <a href='#'>Click here</a> to login</p>
                 </div>
             </div>
         </div>

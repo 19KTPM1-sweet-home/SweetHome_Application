@@ -10,4 +10,6 @@ router.get('/:slug/comments/:page', propertyController.loadCommentPerPage);
 
 router.post('/:slug/comments', propertyController.postComment);
 
+router.post('/:slug/request-tour', propertyController.requestTour);
+
 module.exports = router;

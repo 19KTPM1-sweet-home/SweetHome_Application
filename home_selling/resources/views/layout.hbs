@@ -43,7 +43,7 @@
                 <div class="welcome-user">
                     Welcome, {{user.fullName}}
                 </div>
-                <a class="user-icon" href="#" role="button" data-toggle="dropdown">
+                <a class="user-icon" href="#" role="button" data-bs-toggle="dropdown">
                     {{#if user.avatar}}
                     <img src="{{user.avatar}}" alt="user-avatar">
                     {{else}}
@@ -175,8 +175,7 @@
         $(function(){
            $('#datepicker').datepicker({
               format: 'dd-mm-yyyy',
-              startDate: "dateToday",
-              multidate: true
+              startDate: "dateToday"
             });
         });
     </script>

@@ -16,6 +16,7 @@ const User = new Schema(
     avatar: { type: String },
     favorite: [{ type: Schema.Types.ObjectId, ref: 'Property' }],
     email: { type: String, unique: true, required: true },
+    phoneNumber: {type: String, unique: true},
     schedule: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Schedule' }],
     slug: { type: String, slug: 'fullName', unique: true},
   },
