@@ -1,7 +1,8 @@
 const userService = require('../services/userService');
-const passport = require('passport');
+const tourService = require('../services/tourService');
+
 class userController {
-  //[GET] /login
+
   showProfile(req, res) {
     res.render('profile', {layout: false});
   }
@@ -45,6 +46,17 @@ class userController {
       }
       const ack = await userService.editPassword(req.user.email, passwordPackage);
       res.send(ack);
+  }
+
+
+  async showHomeTours(req, res) {
+    const homeTours = await tourService.loadHomeTours(req.user._id);
+    res.render('homeTour', {layout: false, homeTours: homeTours});
+  }
+
+  async cancelHomeTour(req, res) {
+    const ack = await tourService.cancelHomeTour(req.user._id, req.params.homeTourId);
+    res.send(ack);
   }
 }
 module.exports = new userController();

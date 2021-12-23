@@ -12,9 +12,13 @@ const upload = multer({
   limits: { fileSize: maxfileSize }
 });
 
-router.get('/', loggedInUserGuard, userController.showProfile);
+router.get('/profile', loggedInUserGuard, userController.showProfile);
 
-router.post('/edit', upload.fields([{ name: 'avatar', maxCount: 1 }]), userController.editProfile);
+router.post('/profile/edit', upload.fields([{ name: 'avatar', maxCount: 1 }]), userController.editProfile);
 
-router.post('/edit/password', userController.editPassword);
+router.post('/profile/edit/password', userController.editPassword);
+
+router.get('/home-tours', userController.showHomeTours);
+
+router.delete('/home-tours/cancel/:homeTourId', userController.cancelHomeTour);
 module.exports = router;

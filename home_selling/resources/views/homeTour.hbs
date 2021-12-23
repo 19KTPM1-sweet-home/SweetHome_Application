@@ -108,100 +108,86 @@
 
     <div class="container light-style flex-grow-1 container-p-y profile-container">
 
-      <h4 class="font-weight-bold py-3 mb-4">
-        Profile Settings
-      </h4>
+      <h2 class="font-weight-bold py-3 mb-4">
+        Home Tours
+      </h2>
 
-      <div class="card overflow-hidden">
-        <div class="row no-gutters row-bordered row-border-light">
-          <div class="col-md-3 pt-0">
-            <div class="list-group list-group-flush account-settings-links">
-              <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">Account Info</a>
-              <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Change password</a>
+      <div class="card card-container-custom">
+        <div class="no-tour-title">
+            <i class="fas fa-home home-icon"></i>
+            <div>
+                <h4>You have no upcoming tours</h4>
+                <p>Find homes you’d like to see in person and schedule free <a href="/">here</a></p>
             </div>
-          </div>
-          <div class="col-md-9">
-            <div class="tab-content">
-              <div class="tab-pane fade active show" id="account-general">
-                <form id="profileForm" action ="/profile/edit" method="POST" enctype='multipart/form-data'>
-                  <div class="card-body media align-items-center">
-                    <img id="avatar" src="{{#if user.avatar}}{{user.avatar}}{{else}}https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png{{/if}}" alt="" class="d-block ui-w-80">
-                    <div class="media-body ml-4">
-                      <label class="btn btn-outline-primary">
-                        Upload new photo
-                        <input id="inputAvatar" type="file" class="account-settings-fileinput" name="avatar" onChange="img_pathUrl(this)">
+        </div>
+        
+        <div class="container mt-4 mb-5">
+            <div class="row home-tour-title mb-5">
+                <h3>Your upcoming tours</h3>
+            </div>
+            <div class="row ml-1 mr-1 tour-wrapper">
+                <div class="col-md-12 p-0 tour-list">
+                    {{#each homeTours}}
+                    <div class="bg-white p-3 rounded card-wrapper mb-3">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="{{this.propertyImage}}" class="card-img-top prev_image" alt="property image">
+                            </div>
+                            <div class="col-md-6 border-right d-flex flex-column property-info">
+                                <div class="property-name">
+                                    <h4>{{this.propertyName}}</h4>
+                                </div>
+                                <div class="property-address">
+                                    <p>{{this.propertyAddress}}</p>
+                                </div>
+                                <div class="property-price">
+                                    <p>${{this.propertyPrice}}</p>
+                                </div>
+                                <div class="property-description">
+                                    <p><strong>Description: </strong>{{this.propertyDescription}}</p>
+                                </div>
+                            </div>
+                            <div class="d-flex col-md-3">
+                                <div class="tour-info">
+                                    <label class="appointment-date-label">Appointment date</label>
+                                    <div class="appointment-date">{{this.appointmentDate}}</div>
 
-                      <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                                    <label class="status-label">Status</label>
+                                    <div class="status">{{this.status}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <input class="home-tour-id" type="hidden" name="homeTourId" value="{{this.id}}">
+                        <button class="btn btn-danger cancel-tour-btn">Cancel</button>
                     </div>
-                  </div>
-                  <hr class="border-light m-0">
-
-                  <div class="card-body">
-                    <div class="form-group">
-                      <label class="form-label">E-mail</label>
-                      <input type="text" class="form-control mb-1" name="email" placeholder="abc@gmail.com" value="{{user.email}}" required>
-                      <div class="alert alert-warning mt-3">
-                        Your email is not confirmed. Please check your inbox.<br>
-                        <a href="javascript:void(0)">Resend confirmation</a>
-                      </div>
-
-                      <div class="form-group">
-                        <label class="form-label">Full Name</label>
-                        <input type="text" class="form-control" name="fullName" value="{{user.fullName}}" required>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label class="form-label">Address</label>
-                      <input type="text" class="form-control" name="address" placeholder="227 Nguyễn Văn Cừ..." value="{{user.address}}">
-                    </div>
-
-                    <div class="form-group">
-                      <label class="form-label">Phone Number</label>
-                      <input type="tel" class="form-control" name="phoneNumber" pattern="[0-9]{10}" placeholder="0934227200" value="{{user.phoneNumber}}">
-                    </div>
-
-                    <div class="text-right mt-3 mb-4">
-                      <button type="submit" class="btn btn-primary">Save changes</button>&nbsp;
-                      <a href="/profile" class="btn btn-default">Cancel</a>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="tab-pane fade" id="account-change-password">
-                <div class="card-body pb-2">
-
-                  <form id="passwordForm">
-                    <div class="form-group">
-                      <label class="form-label">Current password</label>
-                      <input type="password" name="oldPassword" class="form-control" required>
-                      <span class="text-danger password-error" style="display: none;">Current password not match</span>
-                    </div>
-
-                    <div class="form-group">
-                      <label class="form-label">New password</label>
-                      <input id="newPassword" type="password" name="newPassword" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                      <label class="form-label">Repeat new password</label>
-                      <input id="repeatNewPassword" type="password" class="form-control" required>
-                      <span id='message'></span>
-                    </div>
-
-                    <div class="text-right mt-3 mb-4">
-                      <button id="passwordSubmit" type="submit" class="btn btn-primary">Save changes</button>&nbsp;
-                      <a href="/profile" class="btn btn-default">Cancel</a>
-                    </div>
-                  </form>
-
+                    {{/each}}
                 </div>
-              </div>
             </div>
+        </div>
       </div>
 
+    <!-- Delete Modal HTML -->
+    <div id="deleteModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="delete-icon-box">
+                        <i class="material-icons">&#xE5CD;</i>
+                    </div>						
+                    <h4 class="modal-title w-100">Are you sure?</h4>	
+                    <button id="exitDeleteModalBtn" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to cancel this home tour? This process cannot be undone.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button id="delete-modal-no-btn" type="button" class="btn btn-secondary">No</button>
+                    <button id="delete-modal-yes-btn" type="button" class="btn btn-danger">Yes</button>
+                </div>
+            </div>
+        </div>
     </div>
-
+        
     </div>
     <!-- Subscribe form and footer links -->
     <div class="footer">
@@ -237,16 +223,11 @@
             </div>
         </div> <!-- row -->
     </div>
+    
     <script defer src="/fontawesome/fontawesome-free-5.15.1-web/js/all.js"></script>
     <script src="/javascripts/jquery-3.4.1.min.js"></script>
     <script src="/javascripts/bootstrap.min.js"></script>
-    <script src="/jquery/postRequest.js"></script>
-    <script src="/jquery/changePassword.js"></script>
-    <script>
-      function img_pathUrl(input){
-          $('#avatar')[0].src = (window.URL ? URL : webkitURL).createObjectURL(input.files[0]);
-      }
-    </script>
+    <script src="/jquery/userHomeTours.js"></script>
 </body>
 
 </html>

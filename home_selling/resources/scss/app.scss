@@ -1114,6 +1114,11 @@ html {
   display: none;
 }
 
+.user-dropdown-menu-custom {
+  width: 50%;
+  left: 8.5rem !important;
+}
+
 @media only screen and (max-width: 992px) {
   .navbar .logo {
     margin-left: 1rem;
@@ -1822,3 +1827,192 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
 
 
 //---------END REQUEST A TOUR MODAL----------
+
+
+//---------START HOME TOUR----------
+.icon-container {
+  border-radius: 7px
+}
+
+.stars i {
+  margin-right: 2px;
+  color: red;
+  font-size: 13px
+}
+
+.rating-number {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 2px
+}
+
+.number-ratings {
+  font-size: 12px
+}
+
+.listing-title {
+  margin-bottom: -7px
+}
+
+.progress-bar {
+  background: green
+}
+
+.progress {
+  height: 16px
+}
+
+.tags span {
+  margin-right: 9px;
+  border: 1px solid green;
+  padding-right: 9px;
+  padding-left: 9px;
+  padding-top: 2px;
+  padding-bottom: 4px;
+  border-radius: 7px;
+  background-color: green;
+  color: #fff
+}
+
+.card-container-custom {
+  background-color: #eee;
+}
+
+.home-tour-title h3 {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.tour-wrapper {
+  overflow: auto;
+  max-height: 770px;
+}
+
+.property-price {
+  color: #47b848;
+  font-size: 1.3rem;
+  margin-top: 1.2rem;
+}
+
+.property-price p {
+  margin-bottom: 0.3rem;
+}
+
+.tour-info {
+  margin-left: 1.5rem;
+}
+
+.tour-info label {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.tour-info .status-label {
+  margin-top: 2rem;
+}
+
+.tour-info .status {
+  text-transform: capitalize;
+}
+
+.card-wrapper {
+  position: relative;
+}
+.cancel-tour-btn {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 1rem;
+}
+
+.no-tour-title {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.no-tour-title .home-icon {
+  font-size: 4.5rem;
+  margin-right: 1.5rem;
+}
+
+// DELETE MODAL
+#deleteModal .modal-confirm {		
+	color: #636363;
+	width: 400px;
+}
+#deleteModal .modal-confirm .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	border: none;
+	text-align: center;
+	font-size: 14px;
+}
+#deleteModal .modal-confirm .modal-header {
+	border-bottom: none;   
+	position: relative;
+}
+#deleteModal .modal-confirm h4 {
+	text-align: center;
+	font-size: 26px;
+	margin: 30px 0 -10px;
+}
+#deleteModal .modal-confirm .close {
+	position: absolute;
+	top: -5px;
+	right: -2px;
+}
+#deleteModal .modal-confirm .modal-body {
+	color: #999;
+}
+#deleteModal .modal-confirm .modal-footer {
+	border: none;
+	text-align: center;		
+	border-radius: 5px;
+	font-size: 13px;
+	padding: 10px 15px 25px;
+}
+#deleteModal .modal-confirm .modal-footer a {
+	color: #999;
+}		
+#deleteModal .modal-confirm .delete-icon-box {
+	width: 80px;
+	height: 80px;
+	margin: 0 auto;
+	border-radius: 50%;
+	z-index: 9;
+	text-align: center;
+	border: 3px solid #f15e5e;
+}
+#deleteModal .modal-confirm .delete-icon-box i {
+	color: #f15e5e;
+	font-size: 46px;
+	display: inline-block;
+	margin-top: 13px;
+}
+#deleteModal .modal-confirm .btn, .modal-confirm .btn:active {
+	color: #fff;
+	border-radius: 4px;
+	background: #60c7c1;
+	text-decoration: none;
+	transition: all 0.4s;
+	line-height: normal;
+	min-width: 120px;
+	border: none;
+	min-height: 40px;
+	border-radius: 3px;
+	margin: 0 5px;
+}
+#deleteModal .modal-confirm .btn-secondary {
+	background: #c1c1c1;
+}
+#deleteModal .modal-confirm #delete-modal-cancel-btn:hover, .modal-confirm #delete-modal-cancel-btn:focus {
+	background: #a8a8a8;
+}
+#deleteModal .modal-confirm .btn-danger {
+	background: #f15e5e;
+}
+#deleteModal .modal-confirm #delete-modal-delete-btn:hover, .modal-confirm #delete-modal-delete-btn:focus {
+	background: #ee3535;
+}
+
+//---------END HOME TOUR----------
