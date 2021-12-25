@@ -95,9 +95,9 @@ exchange:
 expand:
   name: expand-alt
 external-link:
-  name: external-link-alt
+  name: externalService-link-alt
 external-link-square:
-  name: external-link-square-alt
+  name: externalService-link-square-alt
 eye:
   prefix: far
 eye-dropper:

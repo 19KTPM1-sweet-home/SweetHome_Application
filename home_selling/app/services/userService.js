@@ -1,8 +1,13 @@
-const userModel = require('../models/User');
+
+
 const bcrypt = require('bcrypt');
 const cloudinary = require('../../cloudinary/cloudinary');
 const streamifier = require('streamifier');
+const randomString = require("randomstring");
 
+const userModel = require('../models/User');
+const sgMail = require('../middlewares/sendGrid');
+const emailTemplate = require('../middlewares/emailTemplate')
 module.exports.findByEmail = (email) => {
     return userModel.findOne({
         email: email
@@ -22,13 +27,36 @@ module.exports.createUser = (email, password, fullName) => {
             return;
         }
         const hashPassword = await bcrypt.hash(password, 10);
+        const activationString = randomString.generate()
         const newUser = new userModel({
             fullName: fullName,
             email: email,
-            password: hashPassword
+            password: hashPassword,
+            status: 'unactivated',
+            activationString,
         });
+        const linkConfirmation = `${process.env.DOMAIN_NAME}/signup/activate?email=${email}&activation-string=${activationString}`;
+        // send activation string to user email
+        const msg = {
+            to: email, // Change to your recipient
+            from: process.env.EMAIL_SENDER, // Change to your verified sender
+            subject: 'Sweet Home account email activation',
+            text: 'and easy to do anywhere, even with Node.js',
+            html: emailTemplate(email,linkConfirmation)
+            //html: `<h1>Thanks for register your account with Sweethome</h1> Click here to activate your account <a href="${process.env.DOMAIN_NAME}/signup/activate?email=${email}&activation-string=${activationString}">Activate now</a>`,
+        }
+        sgMail
+          .send(msg)
+          .then(() => {
+              console.log('Email sent')
+          })
+          .catch((error) => {
+              console.error(error)
+          })
 
-        newUser.save((err) => {
+
+        // adding a new users
+        await newUser.save((err) => {
             if (err) {
                 console.log(err);
                 reject(err);
@@ -107,3 +135,15 @@ module.exports.editPassword = (userEmail, passwordPackage) => {
             resolve('wrong-password');
     });
 };
+module.exports.activateEmail = async function(email,activationString){
+        const user = userModel.findOne({email:email,activationString:activationString}).lean();
+        if(!user){
+            return false;
+        }
+        await userModel.updateOne({email:email,activationString:activationString},{
+            $set:{
+                status:'profile',
+            }
+        })
+        return true;
+}

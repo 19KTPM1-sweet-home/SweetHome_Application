@@ -97,8 +97,8 @@ arrows:
     - exchange-alt
     - expand-alt
     - expand-arrows-alt
-    - external-link-alt
-    - external-link-square-alt
+    - externalService-link-alt
+    - externalService-link-square-alt
     - hand-point-down
     - hand-point-left
     - hand-point-right
@@ -1241,8 +1241,8 @@ interfaces:
     - exclamation
     - exclamation-circle
     - exclamation-triangle
-    - external-link-alt
-    - external-link-square-alt
+    - externalService-link-alt
+    - externalService-link-square-alt
     - eye
     - eye-slash
     - file

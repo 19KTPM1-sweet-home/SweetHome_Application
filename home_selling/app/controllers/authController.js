@@ -14,11 +14,32 @@ class authController {
 
   async createUser(req, res) {
     const ack = await userService.createUser(req.body.email, req.body.password, req.body.fullName);
-    if(ack == 'exist') {
+    if(ack === 'exist') {
       res.redirect('/signup/?email-already-exist');
     }
-    else if(ack == 'success')
-      res.redirect('/login')
+    else if(ack === 'success')
+      res.redirect('/login');
+
+  }
+  async activateEmail(req, res,next) {
+    const email = req.query.email;
+    const activationString = req.query['activation-string'];
+    console.log(email);
+    console.log(activationString);
+    const isActivated = await userService.activateEmail(email, activationString);
+    if(isActivated){
+      const user = await userService.findByEmail(email);
+      req.login(user,function(err){
+        if(err){
+          return next(err);
+        }
+        return res.redirect('/');
+      })
+
+    }
+    else{
+
+    }
   }
 }
 module.exports = new authController();

@@ -6648,7 +6648,7 @@ external-link-alt:
   label: Alternate External Link
   search:
     terms:
-      - external-link
+      - externalService-link
       - new
       - open
       - share
@@ -6662,7 +6662,7 @@ external-link-square-alt:
   label: Alternate External Link Square
   search:
     terms:
-      - external-link-square
+      - externalService-link-square
       - new
       - open
       - share

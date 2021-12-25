@@ -16,7 +16,7 @@ router.post('/login', passport.authenticate('local', {
     failureFlash: true
 }));
 
-
+router.get('/signup/activate',authController.activateEmail)
 router.get('/signup', authController.showSignup);
 router.post('/signup', authController.createUser);
 module.exports = router;

@@ -18,6 +18,8 @@ const User = new Schema(
     email: { type: String, unique: true, required: true },
     schedule: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Schedule' }],
     slug: { type: String, slug: 'fullName', unique: true},
+    status: {type: String, required: true, default: 'unactivated'},
+    activationString: { type: String, required: true}
   },
   {
     // assign createAt and updateAt fields to Schema
