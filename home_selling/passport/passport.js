@@ -22,29 +22,13 @@ passport.use(new LocalStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
-  const sessionUser = {
-    _id: user._id, 
-    fullName: user.fullName, 
-    email: user.email, 
-    address: user.address,
-    phoneNumber: user.phoneNumber || "",
-    avatar: user.avatar,
-    slug: user.slug
-  };
-  done(null, sessionUser);
+
+  done(null, user.email);
 });
 
-passport.deserializeUser(async function(user, done) {
-  const newUser = await userService.findByEmail(user.email);
-  const sessionUser = {
-    _id: newUser._id.toString(), 
-    fullName: newUser.fullName, 
-    email: newUser.email, 
-    address: newUser.address,
-    phoneNumber: newUser.phoneNumber || "",
-    avatar: newUser.avatar,
-    slug: newUser.slug
-  };
+passport.deserializeUser(async function(email, done) {
+  const sessionUser = await userService.findByEmail(email);
+
   done(null, sessionUser);
 });
 

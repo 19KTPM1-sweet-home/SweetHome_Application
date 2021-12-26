@@ -140,11 +140,16 @@
                     <div class="form-group">
                       <label class="form-label">E-mail</label>
                       <input type="text" class="form-control mb-1" name="email" placeholder="abc@gmail.com" value="{{user.email}}" required>
+                      {{#if (isActivated user)}}
+                        <div class="alert alert-success mt-3"><i class="far fa-check-circle"></i>
+                          Your email is activated<br>
+                        </div>
+                      {{else}}
                       <div class="alert alert-warning mt-3">
-                        Your email is not confirmed. Please check your inbox.<br>
-                        <a href="javascript:void(0)">Resend confirmation</a>
+                        <i class="fas fa-exclamation-triangle"></i>Your email is not activated. Please check your inbox.<br>
+                        <a href="javascript:void(0)">Resend activation</a>
                       </div>
-
+                      {{/if}}
                       <div class="form-group">
                         <label class="form-label">Full Name</label>
                         <input type="text" class="form-control" name="fullName" value="{{user.fullName}}" required>

@@ -9,10 +9,18 @@ const session = require("express-session");
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
+const Handlebars = require('hbs');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-
 app.set('view engine', 'hbs');
+// custom helper
+Handlebars.registerHelper("isActivated",function(user){
+  if(user.status === "activated"){
+    return true;
+  }
+  return false;
+})
 
 app.use(logger('dev'));
 //app.use(express.json());
