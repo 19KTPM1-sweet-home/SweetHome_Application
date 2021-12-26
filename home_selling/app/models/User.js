@@ -14,13 +14,12 @@ const User = new Schema(
     fullName: { type: String, required: true },
     address: { type: String },
     avatar: { type: String },
-    favorite: [{ type: Schema.Types.ObjectId, ref: 'Property' }],
+    favourite: [{ type: Schema.Types.ObjectId, ref: 'Property' }],
     email: { type: String, unique: true, required: true },
     schedule: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Schedule' }],
     slug: { type: String, slug: 'fullName', unique: true},
     status: {type: String, required: true, default: 'unactivated'},
     activationString: { type: String, required: true},
-    favorites:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Property' }]
   },
   {
     // assign createAt and updateAt fields to Schema

@@ -148,6 +148,16 @@ module.exports.activateEmail = async function(email,activationString){
         })
         return true;
 }
-module.exports.getListFavourite = async (user) => {
-    
+module.exports.getListFavourite = (email) => {
+    return new Promise(async (resolve, reject) =>{
+        await userModel.findOne({
+            email: email
+        })
+          .lean()
+          .populate('favourite')
+          .then((user) =>{
+              resolve(user.favourite);
+          })
+          .catch((error) =>reject(error))
+    })
 }

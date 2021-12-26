@@ -48,9 +48,8 @@ class userController {
 
   //[GET] /favourite-list
   async showFavoriteList(req, res) {
-    const user = req.user;
-    const listFavourite = await userService.getListFavourite(user);
-    res.render('user/favourite', {favorites: listFavourite });
+    const listFavourite = await userService.getListFavourite(req.user.email);
+    res.render('user/favourite', {favourites: listFavourite });
   }
 
 }
