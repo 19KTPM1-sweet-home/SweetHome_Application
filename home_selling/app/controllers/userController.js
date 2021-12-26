@@ -1,9 +1,8 @@
 const userService = require('../services/userService');
-const passport = require('passport');
 class userController {
-  //[GET] /login
+  //[GET] /profile
   showProfile(req, res) {
-    res.render('profile', {layout: false});
+    res.render('user/profile', {layout: false});
   }
 
   async editProfile(req, res) {
@@ -46,5 +45,13 @@ class userController {
       const ack = await userService.editPassword(req.user.email, passwordPackage);
       res.send(ack);
   }
+
+  //[GET] /favourite-list
+  async showFavoriteList(req, res) {
+    const user = req.user;
+    const listFavourite = await userService.getListFavourite(user);
+    res.render('user/favourite', {favorites: listFavourite });
+  }
+
 }
 module.exports = new userController();

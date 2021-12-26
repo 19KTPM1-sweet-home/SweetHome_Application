@@ -19,7 +19,8 @@ const User = new Schema(
     schedule: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Schedule' }],
     slug: { type: String, slug: 'fullName', unique: true},
     status: {type: String, required: true, default: 'unactivated'},
-    activationString: { type: String, required: true}
+    activationString: { type: String, required: true},
+    favorites:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Property' }]
   },
   {
     // assign createAt and updateAt fields to Schema

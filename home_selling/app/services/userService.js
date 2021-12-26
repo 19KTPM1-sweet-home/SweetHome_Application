@@ -1,5 +1,6 @@
 
 
+
 const bcrypt = require('bcrypt');
 const cloudinary = require('../../cloudinary/cloudinary');
 const streamifier = require('streamifier');
@@ -146,4 +147,7 @@ module.exports.activateEmail = async function(email,activationString){
             }
         })
         return true;
+}
+module.exports.getListFavourite = async (user) => {
+    
 }

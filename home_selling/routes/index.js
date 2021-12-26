@@ -9,8 +9,8 @@ function route(app) {
   app.use('/', authRouter);
   app.use('/buy', listRouter);
   app.use('/property', propertyRouter);
-  app.use('/profile', userRouter);
   app.use('/', siteRouter);
+  app.use('/', userRouter);
 }
 
 module.exports = route;
