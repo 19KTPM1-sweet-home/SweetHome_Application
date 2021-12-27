@@ -28,12 +28,12 @@ function loadPropertiesPerPage(currentPage) {
             const template = `
                     <div class="col-lg-4 col-md-6 d-inline-flex">
                         <div class="card mt-4 w-100">
-                            <a href="/house/detail/${properties.slug}">
+                            <a href="/detail/${properties.slug}">
                                 <img src="${properties.previewImage}" class="card-img-top prev_image" alt="${this.name}" />
                             </a>
                             <div class="card-body" class="no-text-decoration">
                                 <div class="d-flex justify-content-between">
-                                    <a href="/house/detail/${properties.slug}" class="property-title">
+                                    <a href="/detail/${properties.slug}" class="property-title">
                                         <h5 class="card-title ">${properties.name}</h5>
                                     </a>
                                     <h5 class="property-price ">$${properties.price}</h5>

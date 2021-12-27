@@ -19,4 +19,7 @@ router.post('/profile/edit', upload.fields([{ name: 'avatar', maxCount: 1 }]), u
 router.post('/profile/edit/password', userController.editPassword);
 
 router.get('/favourite-list',userController.showFavoriteList);
+router.get('/home-tours', userController.showHomeTours);
+
+router.delete('/home-tours/cancel/:homeTourId', userController.cancelHomeTour);
 module.exports = router;

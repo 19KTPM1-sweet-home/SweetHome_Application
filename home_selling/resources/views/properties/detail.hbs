@@ -13,18 +13,19 @@
                                     <span>{{property.category.name}}</span>
                                     <div class="row">
                                         <div class="d-flex bd-highlight">
-                                            <div class="p-2 flex-grow-1 bd-highlight ">
+                                            <div class="flex-grow-1 bd-highlight ">
                                                 <h4>{{property.name}}</h4>
                                             </div>
                                             <div
                                                 class="p-2 flex-shrink-1 bd-highlight d-flex align-content-center flex-wrap">
                                                 <span>${{property.price}}</span></div>
                                         </div>
+                                        
                                         <ul class="post-info">
                                             <li><a href="#">{{property.seller.name}}</a></li>
                                             <li><a>{{property.postDate}}</a></li>
-                                            <li>{{comment.amount}} Comments</li>
                                         </ul>
+                                        <button type="button" class="btn btn-primary request-tour-btn">Request a tour</button>
                                     </div>
 
                                     <hr class="dropdown-divider">
@@ -72,46 +73,23 @@
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <div class="sidebar-item comments">
-                                <div class="sidebar-heading">
-                                    <h2>{{comment.amount}} comments</h2>
-                                </div>
-                                <div class="content">
-                                    <ul class="d-flex flex-column">
-                                        {{#each comment.data}}
-                                        <li>
-                                            <div class="author-thumb">
-                                                <img src="../../images/unknowComment.jpg" alt="">
-                                            </div>
-                                            <div class="right-content">
-                                                <h4>{{this.authorName}}<span>{{this.postDate}}</span></h4>
-                                                <p class="text-dark">{{this.content}}</p>
-                                            </div>
-                                        </li>
-                                        {{/each}}
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
                             <div class="sidebar-item submit-comment">
                                 <div class="sidebar-heading">
                                     <h2>Your comment</h2>
                                 </div>
                                 <div class="content">
-                                    <form id="comment" action="#" method="post">
+                                    <form id="commentForm">
                                         <div class="row">
-
                                             <div class="col-lg-12">
                                                 <fieldset>
-                                                    <textarea name="message" rows="3" id="message"
-                                                        placeholder="Type your comment" required=""></textarea>
+                                                    <input type="hidden" name="propertyId" value={{property._id}}>
+                                                    <textarea name="commentContent" rows="3" id="commentContent"
+                                                        placeholder="Type your comment" required></textarea>
                                                 </fieldset>
                                             </div>
                                             <div class="col-lg-12">
                                                 <fieldset>
-                                                    <button type="submit" id="form-submit"
+                                                    <button type="submit" id="commentSubmitBtn"
                                                         class="main-button">Submit</button>
                                                 </fieldset>
                                             </div>
@@ -119,6 +97,14 @@
                                     </form>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item comments {{property.slug}}">
+                                {{!-- JQuery will generate comment UI here --}}
+                            </div>
+                        </div>
+                        <div class = "mt-4 pagination-wrapper pagination justify-content-center">
+                            {{!-- JQuery will generate pagination UI here --}}
                         </div>
                     </div>
                 </div>
@@ -140,7 +126,7 @@
                                                     <div class="col-lg-12">
                                                         
                                                         <div class="card-body">
-                                                            <a href="/house/detail/{{this.slug}}" class="related-property" >
+                                                            <a href="/detail/{{this.slug}}" class="related-property" >
                                                                 <h5 class="card-title">
                                                                         {{this.name}}
                                                                 </h5>
@@ -196,4 +182,95 @@
             </div>
         </div>
     </div>
+
+    <!-- Request a tour Modal HTML -->
+    <div id="requestTourModal" class="modal fade">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <button type="button" class="close cancel-form-btn" aria-hidden="true">&times;</button>
+                        <h3 >Request a tour</h3>
+                        <p>Let us know when you're available, and we will contact you to arrange a tour.</p>
+                    </div>
+                </div>
+                <div class="modal-body">	
+                    <div class="success-tab">
+                        <div class="success-msg">
+                            <i class="fa fa-check-circle" style="color:green"></i>
+                            <p>Tour request sent</p>
+                        </div>
+                        <div class="requested-date-wrapper">
+                            <div class="requested-date-label">
+                                <i class="fa fa-calendar" style="color: #8e6ad5"></i>
+                                <p>Your requested dates: </p>
+                            </div>
+                            <div class="requested-date">
+                                <p>Test</p>
+                            </div>
+                        </div>				
+                    </div>
+                    <form id="requestTourForm" class="row g-3">
+                        <input type="hidden" name="propertyId" value={{property._id}}>
+                        <label for="example" class="date-label">Select a date you’re available</label>
+                        <div class="input-group datepicker">
+                          <input placeholder="Select a date" type="text" id="datepicker" class="form-control" name="date" required>
+                          {{!-- <span class="input-group-text"><i class="fas fa-calendar"></i></span> --}}
+                          
+                        </div>
+                        <div class="mb-2">
+                          <label for="time" class="form-label">Select a time</label>
+                          <input type="time" name="time" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                        <div class="mb-2">
+                          <label for="fullName" class="form-label">Fullname</label>
+                          <input type="text" name="fullName" class="form-control" placeholder="Ex: Nguyen Van A">
+                        </div>
+                        <div class="mb-2">
+                          <label for="email" class="form-label">Email address</label>
+                          <input type="email" name="email" class="form-control" placeholder="Ex: name@example.com" required>
+                        </div>
+                        <div class="mb-2">
+                          <label for="phoneNumber" class="form-label">Phone number</label>
+                          <input type="tel" name="phoneNumber" class="form-control" placeholder="Ex: 0932200XXX" required>
+                        </div>
+                        <a class="add-message-btn" data-bs-toggle="collapse" href="#collapseMessage" role="button" aria-expanded="false" aria-controls="collapseExample">
+                          + ADD A MESSAGE
+                        </a>
+                        <div class="collapse" id="collapseMessage">
+                            <div class="mb-2">
+                              <label for="message" class="form-label">Enter your message</label>
+                              <textarea class="form-control" name="message" placeholder="Add your message" rows="2"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="ml-2 btn btn-primary submit-form-btn">Send tour request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="loginConfirmModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close hide-login-confirm-btn" aria-hidden="true">&times;</button>
+                    <p>You must login to request a tour. <a href='#'>Click here</a> to login</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </section>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+<script src="/javascripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+<script src="/jquery/commentPaging.js"></script>
+<script src="/jquery/comment.js"></script>
+<script src="/jquery/requestTourModal.js"></script>

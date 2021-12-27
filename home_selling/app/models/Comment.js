@@ -4,7 +4,13 @@ const mongooseDelete = require('mongoose-delete');
 // create schema
 const Comment = new Schema(
   {
+    authorId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
     authorName: { type: String, required: true },
+    authorAvatar: { type: String, required: true },
     postId: {
       type: Schema.Types.ObjectId,
       ref: 'Property',

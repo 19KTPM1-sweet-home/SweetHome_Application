@@ -5,7 +5,7 @@ const listRouter = require('./list');
 const propertyRouter = require('./property');
 const userRouter = require('./user');
 function route(app) {
-  app.use('/house/detail', detailRouter);
+  app.use('/detail', detailRouter);
   app.use('/', authRouter);
   app.use('/buy', listRouter);
   app.use('/property', propertyRouter);

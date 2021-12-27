@@ -8,8 +8,4 @@ $(window).on('load', () => {
         $('#message').html('Not Matching').css('color', 'red');
       }
     });
-
-    function img_pathUrl(input){
-        $('#avatar')[0].src = (window.URL ? URL : webkitURL).createObjectURL(input.files[0]);
-    }
 });

@@ -1,6 +1,8 @@
 const userService = require('../services/userService');
+const tourService = require('../services/tourService');
+
 class userController {
-  //[GET] /profile
+
   showProfile(req, res) {
     res.render('user/profile', {layout: false});
   }
@@ -52,5 +54,15 @@ class userController {
     res.render('user/favourite', {favourites: listFavourite });
   }
 
+
+  async showHomeTours(req, res) {
+    const homeTours = await tourService.loadHomeTours(req.user._id);
+    res.render('homeTour', {layout: false, homeTours: homeTours});
+  }
+
+  async cancelHomeTour(req, res) {
+    const ack = await tourService.cancelHomeTour(req.user._id, req.params.homeTourId);
+    res.send(ack);
+  }
 }
 module.exports = new userController();

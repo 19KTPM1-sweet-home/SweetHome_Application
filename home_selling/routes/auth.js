@@ -11,10 +11,13 @@ router.get('/logout', function(req, res){
 });
 
 router.post('/login', passport.authenticate('local', { 
-    successRedirect: '/',
     failureRedirect: '/login/?wrong-password',
     failureFlash: true
-}));
+}), (req, res) => {
+  const returnTo = req.session.returnTo || '/';
+  delete req.session.returnTo;
+  res.redirect(returnTo);
+});
 
 router.get('/signup/activate',authController.activateEmail)
 router.get('/signup', authController.showSignup);
