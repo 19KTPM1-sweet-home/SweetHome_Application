@@ -2,7 +2,11 @@ const express = require('express');
 const router = express.Router();
 const passport = require('../passport/passport');
 const authController = require('../app/controllers/authController');
-
+router.post('/reset-password',authController.resetPassword);
+router.get('/reset-password',authController.showResetPassword);
+router.get('/login/forgot-password/success', authController.showSendEmailSuccess);
+router.post('/login/forgot-password', authController.sendResetLinkToEmail);
+router.get('/login/forgot-password', authController.showSendEmail);
 router.get('/login', authController.showLogin);
 
 router.get('/logout', function(req, res){

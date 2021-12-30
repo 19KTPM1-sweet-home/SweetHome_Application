@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 // add slug generator plugin to mongoose
 const slug = require('mongoose-slug-generator');
 const mongooseDelete = require('mongoose-delete');
-// create sub schema objects
-const seller = new Schema({});
+
 // create schema
 const Property = new Schema(
   {

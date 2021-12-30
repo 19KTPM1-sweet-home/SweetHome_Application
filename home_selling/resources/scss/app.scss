@@ -99,6 +99,7 @@ https://templatemo.com/tm-552-video-catalog
   font-style: italic;
 }
 
+
 .body-login {
   background: #f6f5f7;
   display: flex;
@@ -1116,7 +1117,7 @@ html {
 
 .user-dropdown-menu-custom {
   width: 50%;
-  left: 8.5rem !important;
+  left: 4.5rem !important;
 }
 
 @media only screen and (max-width: 992px) {
@@ -2194,7 +2195,7 @@ a {
   line-height: inherit;
   font-size: 1em;
   fill: currentColor;
-  vertical-align: middle;
+  vertical-align: top;
   white-space: nowrap;
 }
 .u-text .u-icon > svg + img,
@@ -5773,12 +5774,7 @@ blockquote
   .u-footer .u-text-1 {
     width: 340px;
   }
-}
-
-/*begin-variables base-font-size*/
-html { font-size: 16px; }
-/*end-variables base-font-size*/
-
+} 
 .u-section-1 .u-blog-1 {
   margin-top: 60px;
   margin-bottom: 60px;
@@ -6303,7 +6299,6 @@ html { font-size: 16px; }
     padding-left: 115px;
   }
 }
-//---------END FAVOURITE LIST----------
 
 
 .u-section-1 .u-post-details-1 {
@@ -6394,7 +6389,396 @@ html { font-size: 16px; }
   }
 }
 
-
-
-
 //---------END FAVOURITE LIST----------
+
+
+
+//---------START FORGOT PASSWORD----------
+.body-forgot-password {
+  background: #f6f5f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  margin: -20px 0 50px;
+}
+
+.container-forgot-password h1 {
+  font-weight: bold;
+  margin: 0;
+}
+
+.container-forgot-password h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.container-forgot-password p {
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  margin: 20px 0 30px;
+}
+
+.container-forgot-password span {
+  font-size: 12px;
+}
+
+.container-forgot-password a {
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
+}
+
+.container-forgot-password button {
+  border-radius: 10px;
+  border: 1px solid #ff4b2b;
+  background-color: #ff4b2b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+}
+
+.container-forgot-password button.request-btn{
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.container-forgot-password button:active {
+  transform: scale(0.95);
+}
+
+.container-forgot-password button:focus {
+  outline: none;
+}
+
+.container-forgot-password button.ghost {
+  background-color: transparent;
+  border-color: #ffffff;
+}
+
+.container-forgot-password .form-container form {
+  background-color: #ffffff;
+  display: flex;
+  align-items:flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+}
+
+.container-forgot-password .form-container input {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+}
+
+.container-forgot-password {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
+}
+
+.container-forgot-password .form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+
+.container-forgot-password .sign-in-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.container-forgot-password .sign-up-container {
+  left: 0;
+  width: 50%;
+  z-index: 1;
+}
+
+@keyframes show {
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+.container-forgot-password .overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.container-forgot-password .overlay {
+  background: #ff416c;
+  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  color: #ffffff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.container-forgot-password .overlay-panel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.container-forgot-password .overlay-panel p {
+  color: #ffffff;
+}
+
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+
+//---------END FORGOT PASSWORD----------
+
+
+//---------START SENT EMAIL----------
+.body-sent-email {
+  background: #f6f5f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  margin: -20px 0 50px;
+}
+
+.container-sent-email h1 {
+  font-weight: bold;
+  margin: 0;
+}
+
+.container-sent-email h2 {
+  text-align: center;
+}
+
+
+.container-sent-email span {
+  font-size: 12px;
+}
+
+.container-sent-email a {
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
+}
+
+.container-sent-email button {
+  border-radius: 10px;
+  border: 1px solid #ff4b2b;
+  background-color: #ff4b2b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+}
+.container-sent-email .control{
+  width: 100%;
+  display: flex;
+  direction: row;
+  justify-content: space-around; 
+  align-items: center;
+}
+.container-sent-email .control .back-btn{
+  background-color: transparent;
+  color:#6c757d;
+  border: 1px solid #6c757d;
+}
+.container-sent-email .control .back-btn:hover{
+  background-color: #6c757d;
+  color:#fff;
+  border: 1px solid #6c757d;
+}
+
+
+.container-sent-email button:active {
+  transform: scale(0.95);
+}
+
+.container-sent-email button:focus {
+  outline: none;
+}
+
+.container-sent-email button.ghost {
+  background-color: transparent;
+  border-color: #ffffff;
+}
+
+
+.container-sent-email {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
+}
+
+.container-sent-email .form-container {
+  background-color: #ffffff;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+  font-size: 16px;
+  
+}
+.container-sent-email img{
+  height:88px;
+  margin-bottom:24px;
+}
+
+.container-sent-email .cant-login{
+  color:rgb(94,108,132);
+  margin-bottom:16px;
+}
+
+.container-sent-email .sign-in-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.container-sent-email .sign-up-container {
+  left: 0;
+  width: 50%;
+  z-index: 1;
+}
+.container-sent-email .message{
+  text-align: left;
+  width: 100%;
+  padding-left: 5px
+}
+.container-sent-email .message .email{
+line-height: 1.25;
+color:var(--ds-text-highEmphasis,#172B4D);
+font-weight: 600;
+font-size: 16px;
+}
+
+@keyframes show {
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+.container-sent-email .overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.container-sent-email .overlay {
+  background: #ff416c;
+  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  color: #ffffff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.container-sent-email .overlay-panel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.container-sent-email .overlay-panel p {
+  margin-top: 10px;
+  color: #ffffff;
+}
+
+.body-sent-email .overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+
+//---------END SENT EMAIL----------
+
+//---------START RESET PASSWORD----------
+.container-forgot-password button[disabled]{
+  opacity:.65;
+}
+//---------END RESET PASSWORD----------

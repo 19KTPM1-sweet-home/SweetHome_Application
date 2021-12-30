@@ -21,6 +21,10 @@ const User = new Schema(
     slug: { type: String, slug: 'fullName', unique: true},
     status: {type: String, required: true, default: 'unactivated'},
     activationString: { type: String, required: true},
+    resetToken:{
+      token:{type: String},
+      updatedAt:{type: Date}
+    }
   },
   {
     // assign createAt and updateAt fields to Schema
