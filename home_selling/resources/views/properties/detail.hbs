@@ -25,7 +25,10 @@
                                             <li><a href="#">{{property.seller.name}}</a></li>
                                             <li><a>{{property.postDate}}</a></li>
                                         </ul>
+                                      <div class="control-container">
+                                        <button class="btn favourite-btn" type="button"><i class="far fa-heart"></i> Favourite </button>
                                         <button type="button" class="btn btn-primary request-tour-btn">Request a tour</button>
+                                      </div>
                                     </div>
 
                                     <hr class="dropdown-divider">
@@ -65,8 +68,7 @@
                                         </div>
                                     </div>
                                     <div class="d-grid gap-2 mt-4">
-                                        <a href=""></a>
-                                        <button class="btn btn-primary" type="button">Favorites</button>
+
                                     </div>
 
                                 </div>
@@ -258,7 +260,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <button type="button" class="close hide-login-confirm-btn" aria-hidden="true">&times;</button>
-                    <p>You must login to request a tour. <a href='#'>Click here</a> to login</p>
+                    <p>You must login to continue. <a href='#'>Click here</a> to login</p>
                 </div>
             </div>
         </div>
@@ -274,3 +276,4 @@
 <script src="/jquery/commentPaging.js"></script>
 <script src="/jquery/comment.js"></script>
 <script src="/jquery/requestTourModal.js"></script>
+<script src="/jquery/favourite.js"></script>

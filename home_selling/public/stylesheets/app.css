@@ -412,6 +412,37 @@ https://templatemo.com/tm-552-video-catalog
   text-align: center;
 }
 
+.blog-posts .control-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.blog-posts .control-container button {
+  width: 100%;
+}
+
+.blog-posts .control-container button.favourite-btn {
+  margin-right: 10px;
+  color: #e23b3b;
+  background-color: transparent;
+  border-color: #e23b3b;
+}
+
+.blog-posts .control-container button.favourite-btn:hover {
+  background-color: #e23b3b;
+  color: #ffff;
+}
+
+.blog-posts .control-container button.favourite-btn:focus {
+  box-shadow: none;
+}
+
+.blog-posts .control-container button.favourite-btn.press {
+  background-color: #e23b3b;
+  color: #ffff;
+}
+
 ul.page-numbers {
   text-align: center;
 }
@@ -1857,7 +1888,6 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
 .property-price {
   color: #47b848;
   font-size: 1.3rem;
-  margin-top: 1.2rem;
 }
 
 .property-price p {
