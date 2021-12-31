@@ -53,6 +53,16 @@ class userController {
     res.render('user/favourite', {favourites: listFavourite });
   }
 
+  async removeFromFavouriteList(req, res,next) {
+    if(!req.user){
+      res.send('not-login');
+    }
+    const email = req.user.email;
+    const propertyId = req.body.propertyId;
+    await userService.removeFromFavourite(email, propertyId)
+      .then((ack)=> res.send(ack))
+      .catch((err)=>next(err));
+  }
 
   async showHomeTours(req, res) {
     const homeTours = await tourService.loadHomeTours(req.user._id);

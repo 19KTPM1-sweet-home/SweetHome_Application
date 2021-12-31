@@ -139,7 +139,7 @@ module.exports.activateEmail = function(email, activationString) {
       email: email,
       activationString: activationString
     }, { status: "activated" }, { new: true })
-      .then((user) => {
+      .then(() => {
         resolve("success");
       })
       .catch((err) => reject(err));
@@ -248,3 +248,71 @@ module.exports.resetPassword = (email,newPassword) => {
   })
 
 }
+
+module.exports.addToFavourite = (email,propertyId)=>{
+  return new Promise(async (resolve,reject)=>{
+    await userModel.findOne({email})
+      .lean()
+      .then((user)=> {
+        const favourite = user.favourite.map(propertyId =>{
+          return propertyId.toString();
+        });
+
+        if (favourite.includes(propertyId.toString())) {
+          resolve('existed');
+        }
+        else{
+          userModel.findOneAndUpdate({email},{ $push: {"favourite": propertyId}})
+            .then(() =>{
+              resolve('success');
+            })
+            .catch((err) => reject(err));
+        }
+      })
+      .catch((err)=>reject(err))
+  })
+}
+
+
+module.exports.removeFromFavourite = (email,propertyId)=>{
+  return new Promise(async (resolve,reject)=>{
+    await userModel.findOne({email})
+      .lean()
+      .then((user)=> {
+        const favourite = user.favourite.map(propertyId =>{
+          return propertyId.toString();
+        });
+
+        if (favourite.includes(propertyId.toString())) {
+          userModel.findOneAndUpdate({email},{ $pull: {"favourite": propertyId}})
+            .then(() =>{
+              resolve('success');
+            })
+            .catch((err) => reject(err));
+        }
+        else{
+          resolve('not-existed');
+        }
+      })
+      .catch((err)=>reject(err))
+  })
+}
+
+module.exports.checkFavourite = (email,propertyId)=>{
+  return new Promise(async (resolve,reject)=>{
+    await userModel.findOne({email})
+      .lean()
+      .then((user)=> {
+        const favourite = user.favourite.map(propertyId =>{
+          return propertyId.toString();
+        });
+
+        if (favourite.includes(propertyId.toString())) {
+          resolve(true);
+        }
+        else{
+          resolve(false);
+        }
+      })
+      .catch((err)=>reject(err))
+})}

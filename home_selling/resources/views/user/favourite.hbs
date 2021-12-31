@@ -15,15 +15,15 @@
   </div>
 </section>
 {{#each favourites}}
-<section class="u-align-center u-clearfix u-section-2">
+<section class="u-align-center u-clearfix u-section-2 favourite-section" of="{{this._id}}">
   <div class="u-clearfix u-sheet u-sheet-1">
     <div
       class="u-align-center-sm u-align-center-xs u-blog u-expanded-width-md u-expanded-width-xs u-layout-grid u-blog-1">
-      <div class="u-repeater u-repeater-1"><!--blog_post-->
+      <div class="u-repeater u-repeater-1 fav-property-container"><!--blog_post-->
         <div
           class="u-blog-post u-border-1 u-border-custom-color-2 u-container-style u-radius-8 u-repeater-item u-shape-round">
           <div class="u-container-layout u-similar-container u-container-layout-1">
-            <a class="u-post-header-link" href="#"><!--blog_post_image-->
+            <a class="u-post-header-link" href="/detail/{{this.slug}}"><!--blog_post_image-->
               <img class="u-blog-control u-image u-preserve-proportions u-image-1" src="{{this.previewImage}}"
                    data-image-width="370" data-image-height="220"><!--/blog_post_image-->
             </a><span class="u-icon u-icon-circle u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice"
@@ -38,21 +38,21 @@
 	c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"></path></svg></span>
             <!--blog_post_header-->
             <h2 class="u-blog-control u-text u-text-1">
-              <a class="u-post-header-link" href="#">{{this.name}}</a>
+              <a class="u-post-header-link" href="/detail/{{this.slug}}">{{this.name}}</a>
             </h2><!--/blog_post_header-->
             <p class="u-text u-text-2"><i class="fas fa-map-marked-alt"></i>​&nbsp;{{this.address}}
             </p>
-            <a href="https://nicepage.me"
+            <a href="#"
                class="u-active-none u-btn u-button-style u-hover-none u-none u-text-hover-palette-1-base u-btn-1"> <i class="fas fa-phone-alt"></i>&nbsp;
               {{this.seller.phoneNumber}}
             </a><!--blog_post_readmore-->
             <a href="#"
-               class="u-align-center-xs u-blog-control u-border-none u-btn u-btn-round u-button-style u-hover-palette-2-light-2 u-palette-2-light-2 u-radius-5 u-btn-2">
+               class="u-align-center-xs u-blog-control u-border-none u-btn u-btn-round u-button-style u-hover-palette-2-light-2 u-palette-2-light-2 u-radius-6 u-btn-2 button remove-button" id-property = {{this._id}}>
               <i class="far fa-trash-alt"></i>
               Remove
             </a><!--/blog_post_readmore--><!--blog_post_readmore-->
-            <a href="#"
-               class="u-align-center-xs u-blog-control u-border-none u-btn u-btn-round u-button-style u-custom-color-5 u-hover-palette-1-dark-1 u-radius-6 u-btn-3">
+            <a href="/detail/{{this.slug}}/request-tour"
+               class="u-align-center-xs u-blog-control u-border-none u-btn u-btn-round u-button-style u-custom-color-5 u-hover-palette-1-dark-1 u-radius-6 u-btn-3 button ">
               Schedule
             </a>
           </div>

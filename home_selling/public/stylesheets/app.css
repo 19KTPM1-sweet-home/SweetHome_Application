@@ -430,7 +430,8 @@ https://templatemo.com/tm-552-video-catalog
 }
 
 .blog-posts .control-container button.favourite-btn:hover {
-  background-color: #e23b3b;
+  background-color: #4d535c;
+  border-color: #4d535c;
   color: #ffff;
 }
 
@@ -440,6 +441,12 @@ https://templatemo.com/tm-552-video-catalog
 
 .blog-posts .control-container button.favourite-btn.press {
   background-color: #e23b3b;
+  color: #ffff;
+}
+
+.blog-posts .control-container button.favourite-btn.press:hover {
+  background-color: #4d535c;
+  border-color: #4d535c;
   color: #ffff;
 }
 
@@ -5862,7 +5869,7 @@ a.u-button-style.u-text-custom-color-4[class*=u-border-] {
 .u-gradient > .u-container-layout > a,
 .u-image:not(.u-shading) > .u-container-layout > a,
 a {
-  color: #478ac9;
+  color: #f48840;
 }
 
 .u-overlap.u-overlap-transparent:not(.u-overlap-contrast) .u-header :not(.u-nav-item) > a:hover,
@@ -6596,6 +6603,14 @@ blockquote {
     margin-left: initial;
   }
 }
+.fav-property-container a.button {
+  text-decoration: none;
+}
+
+.fav-property-container a.remove-button:hover {
+  opacity: 0.8;
+}
+
 .body-forgot-password {
   background: #f6f5f7;
   display: flex;
@@ -6820,7 +6835,7 @@ blockquote {
 .container-sent-email .control {
   width: 100%;
   display: flex;
-  direction: row;
+  flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
@@ -6972,5 +6987,7 @@ blockquote {
 .container-forgot-password button[disabled] {
   opacity: 0.65;
 }
+
+/*# sourceMappingURL=app.css.map */
 
 /*# sourceMappingURL=app.css.map */

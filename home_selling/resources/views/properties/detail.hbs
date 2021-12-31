@@ -26,7 +26,11 @@
                                             <li><a>{{property.postDate}}</a></li>
                                         </ul>
                                       <div class="control-container">
-                                        <button class="btn favourite-btn" type="button"><i class="far fa-heart"></i> Favourite </button>
+                                        {{#if isFavourite}}
+                                        <button class="btn favourite-btn press" type="button" value={{property._id}}><i class="far fa-heart"></i> Favourite this </button>
+                                        {{else}}
+                                          <button class="btn favourite-btn" type="button" value={{property._id}}><i class="far fa-heart"></i> Favourite this </button>
+                                        {{/if}}
                                         <button type="button" class="btn btn-primary request-tour-btn">Request a tour</button>
                                       </div>
                                     </div>
@@ -248,6 +252,7 @@
                         </div>
 
                         <button type="submit" class="ml-2 btn btn-primary submit-form-btn">Send tour request</button>
+                        </div>
                     </form>
                 </div>
             </div>

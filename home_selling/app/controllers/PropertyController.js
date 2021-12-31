@@ -3,16 +3,22 @@ const propertyService = require('../services/propertyService');
 const categoryService = require('../services/categoryService');
 const commentService = require('../services/commentService');
 const tourService = require('../services/tourService');
-
+const userService = require('../services/userService');
+const { reject } = require("bcrypt/promises");
 
 const propertiesPerPage = 6;
 class PropertyController {
   //[GET]  /
   async show(req, res, next) {
     const property = await propertyService.detail(req.params.slug);
+    let isFavourite = false;
+    if(req.user){
+      isFavourite = await userService.checkFavourite(req.user.email,property._id);
+    }
     const category = await categoryService.listAll();
     const relatedProperty = await propertyService.getRelated(req.params.slug);
     res.render('properties/detail', {
+      isFavourite,
       property: property,
       category: category,
       related: relatedProperty
@@ -70,6 +76,31 @@ class PropertyController {
     const appointmentDate = await tourService.requestTour(req.user._id, requestTour);
     if(appointmentDate)
       res.send({appointmentDate: appointmentDate});
+  }
+
+
+  //[POST] /detail/:slug/favourite/add
+  async addPropertyToFavourite(req, res, next) {
+    if(!req.user){
+      res.send('not-login');
+    }
+    const email = req.user.email;
+    const propertyId = req.body.propertyId;
+    await userService.addToFavourite(email, propertyId)
+      .then((ack)=> res.send(ack))
+      .catch((err)=>next(err));
+  }
+
+  //[POST] /detail/:slug/favourite/remove
+  async removePropertyToFavourite(req, res,next){
+    if(!req.user){
+      res.send('not-login');
+    }
+    const email = req.user.email;
+    const propertyId = req.body.propertyId;
+    await userService.removeFromFavourite(email, propertyId)
+      .then((ack)=> res.send(ack))
+      .catch((err)=>next(err));
   }
 }
 
