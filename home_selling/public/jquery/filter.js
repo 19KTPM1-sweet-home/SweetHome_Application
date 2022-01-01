@@ -5,49 +5,66 @@ console.log(isSitePage);
 searchBar.on('keyup', (event)=>{
   const searchString = event.target.value.toLowerCase();
   console.log(searchString);
-  const data = loadProperties();
-  if(isSitePage){
-    let result;
-    if(searchString === ''){
-      result = data.filter((property,index) =>{
-        if(index<6){
-          return property;
+  loadProperties()
+    .then((properties)=>{
+      if(isSitePage){
+        let result;
+        if(searchString === ''){
+          result = properties.filter((property,index) =>{
+            if(index<6){
+              return property;
+            }
+          })
         }
-      })
-    }
-    else{
-      result = data.filter((property)=>{
-        return (property.name.toLowerCase().includes(searchString))||(property.address.toLowerCase().includes(searchString));
-      })
-    }
-    displaySite(result)
-  }else{
-    const result = data.filter((property)=>{
-      return (property.name.toLowerCase().includes(searchString))||(property.address.toLowerCase().includes(searchString));
+        else{
+          result = properties.filter((property)=>{
+            return (property.name.toLowerCase().includes(searchString))||(property.address.toLowerCase().includes(searchString));
+          })
+        }
+        if(result.length===0){
+          displayNoResults();
+        }
+        else {
+          displaySite(result)
+        }
+
+      }else{
+          const result = properties.filter((property)=>{
+          return (property.name.toLowerCase().includes(searchString))||(property.address.toLowerCase().includes(searchString));
+        })
+          if(result.length===0){
+            displayNoResults()
+          }
+          else{
+            // init pagination
+            $('#property-pagination-wrapper').pagination(
+              {
+                dataSource:result,
+                pageSize:propertiesPerPage,
+                callback: function(data,pagination){
+                  displayPropertyPerPage(data);
+                }
+              }
+            )
+          }
+      }
     })
-    displayPropertyPerPage(result);
-  }
 })
 const loadProperties = ()=>{
   return new Promise((resolve, reject) => {
-    if(isSitePage){
-      $.ajax({
-        type: "GET",
-        url: origin + '/search',
-        success: function(list){
-           resolve(list)
-        }
+    let category = 'all';
+    if(!isSitePage){
+       category = pathname.split('/').at(-1);
+    }
+    filterProperties(category)
+      .then((data)=>{
+        resolve(data)
       })
-    }
-    else{
-      const category = pathname.split('/').at(-1);
-      filterProperties(category)
-        .then((data)=>{
-          resolve(data)
-        })
-    }
   })
-
+}
+const displayNoResults = ()=>{
+  console.log('No results found');
+  const container = $("<div class=\"row\"></div>");
 }
 const filterProperties = (categoryFilter, keySearch =undefined, priceFilter = undefined, statusFilter=undefined, rateFilter =undefined)=>{
   return new Promise((resolve, reject) =>{
@@ -148,20 +165,7 @@ const displayPropertyPerPage = (data)=>{
     }
   });
 }
-loadProperties()
-   .then((propertiesLoaded)=>{
-     console.log(propertiesLoaded)
-     // init pagination
-     $('#property-pagination-wrapper').pagination(
-       {
-         dataSource:propertiesLoaded,
-         pageSize:6,
-         callback: function(data,pagination){
-           displayPropertyPerPage(data);
-         }
-       }
-     )
-   })
+
 
 
 

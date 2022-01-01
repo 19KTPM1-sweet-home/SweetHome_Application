@@ -12,13 +12,6 @@ class SiteController {
       .catch(next);
   }
 
-  //[GET] /search
-  async listBySearchLatest(req, res,next){
-    await propertyService
-      .listLatest(-1)
-      .then((properties) => {res.send(properties);})
-      .catch(next);
-  }
 
 
 }
