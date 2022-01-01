@@ -7,6 +7,7 @@ const slug = pathname.split("/").at(-1);
 const url = origin + '/property/' + slug;
 function loadPropertiesPerPage(currentPage) {
     const fullUrl = url +'/'+ currentPage.toString();
+    console.log(fullUrl);
     $.get(fullUrl, function (data) {
 
         // temporary container 

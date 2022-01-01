@@ -4,18 +4,18 @@ const categoryService = require('../services/categoryService');
 const commentService = require('../services/commentService');
 const tourService = require('../services/tourService');
 const userService = require('../services/userService');
-const { reject } = require("bcrypt/promises");
 
 const propertiesPerPage = 6;
 class PropertyController {
-  //[GET]  /
+  //[GET]  /buy/category/all
   async show(req, res, next) {
     const property = await propertyService.detail(req.params.slug);
     let isFavourite = false;
     if(req.user){
       isFavourite = await userService.checkFavourite(req.user.email,property._id);
     }
-    const category = await categoryService.listAll();
+    const category = await categoryService.listAll()
+      .catch(next)
     const relatedProperty = await propertyService.getRelated(req.params.slug);
     res.render('properties/detail', {
       isFavourite,
@@ -26,7 +26,8 @@ class PropertyController {
   }
   //[GET] /property/:currentPage
   async listByCategory(req, res, next){
-    const properties = await propertyService.listByCategory(req.params.slug,req.params.currentPage,propertiesPerPage);
+    const properties = await propertyService.listByCategory(req.params.slug,req.params.currentPage,propertiesPerPage)
+      .catch(next);
     res.send(properties);
   }
 
