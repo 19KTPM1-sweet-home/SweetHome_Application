@@ -26,18 +26,7 @@ exports.listBySearchLatest = (queryString,limit) => {
       else {
         const list = multipleMongooseToObject(properties);
         let result;
-        if(queryString === ''){
-          result = list.filter((property,index) =>{
-            if(index<limit){
-              return property;
-            }
-          })
-        }
-        else{
-          result = list.filter((property)=>{
-            return (property.name.toLowerCase().includes(queryString));
-          })
-        }
+
         result.map((property) => {
           const price = new Number(property.price)
           property.price = price.toLocaleString();
@@ -88,7 +77,9 @@ exports.listBySearchLatest = (queryString,limit) => {
 exports.listLatest = (number) => {
   return new Promise((resolve, reject) => {
     const query = Properties.find({});
-    query.limit(number);
+    if(number !== -1){
+      query.limit(number);
+    }
     query.sort({ createdAt: -1 });
     query.exec((err, properties) => {
       if (err) reject(err);
@@ -266,6 +257,52 @@ exports.listByCategory = (slug, currentPage, propertiesPerPage) => {
         })
     }
 
+
+  })
+}
+
+module.exports.filter = function(conditionsFilter){
+  return new Promise(async (resolve, reject)=>{
+    const categoryFilter = conditionsFilter.categoryFilter;
+    if (categoryFilter !== 'all') {
+      await Categories.findOne({ slug: categoryFilter })
+        .populate({
+          path: 'properties',
+          options:{
+            sort: { createdAt: -1 },
+          }
+
+        })
+        .then((category) => {
+          const result = mongooseToObject(category).properties;
+          result.map((property) =>{
+            const price = Number(property.price)
+            property.price = price.toLocaleString();
+          })
+          resolve(result);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    }
+    else {
+      await Properties.find({})
+        .sort({ createdAt: -1 })
+        .exec((err, properties) => {
+          if (err) { reject(err); }
+          else {
+              if (err) { reject(err); }
+              else {
+                const result = multipleMongooseToObject(properties);
+                result.map((property)=>{
+                  const price = new Number(property.price)
+                  property.price = price.toLocaleString();
+                })
+                resolve(result);
+              }
+          }
+        })
+    }
 
   })
 }

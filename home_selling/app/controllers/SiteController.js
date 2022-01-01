@@ -12,14 +12,15 @@ class SiteController {
       .catch(next);
   }
 
-  //[POST] /search
+  //[GET] /search
   async listBySearchLatest(req, res,next){
-    const queryString = req.body.queryString;
     await propertyService
-      .listBySearchLatest(queryString,6)
+      .listLatest(-1)
       .then((properties) => {res.send(properties);})
       .catch(next);
   }
+
+
 }
 
 module.exports = new SiteController();

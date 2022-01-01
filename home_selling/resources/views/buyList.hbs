@@ -25,7 +25,7 @@
                 </div>
                 <div class ="content"></div>
             </main>
-           <div class = "mt-4 pagination-wrapper pagination justify-content-center"></div>
+           <div id="property-pagination-wrapper" class = "mt-4 pagination-wrapper "></div>
             {{!-- <nav aria-label="Page navigation example" class="mt-4">
                 <ul class="pagination pagination-lg justify-content-center">
                     <li class="page-item disabled">
@@ -41,14 +41,4 @@
             </nav> --}}
         </div> <!-- tm-content-container -->
     </div>
-
-    <script src="/javascripts/jquery-3.4.1.min.js"></script>
-    <script src="/javascripts/bootstrap.min.js"></script>
-    <script src="/jquery/pagination.js"></script>
-    <script>
-        $(document).ready(function(){
-            var pathname = window.location.pathname;
-            const slug = pathname.split("/").at(-1);
-            $(".buying-section .category a").removeClass("active");
-            $(`.buying-section .category a[name='${slug}']`).addClass("active");})
-    </script>
+</div>

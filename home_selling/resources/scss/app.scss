@@ -6821,3 +6821,67 @@ font-size: 16px;
   opacity:.65;
 }
 //---------END RESET PASSWORD----------
+
+
+//---------START PAGINATION----------
+.paginationjs {
+  ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    border-radius: 0.6rem;
+    list-style: none;
+    background: #ffffff;
+    box-shadow: 0 0.8rem 2rem rgba(#5a6181, 0.05);
+  }
+
+
+  &-prev,
+  &-page,
+  &-next {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    margin: 0.8rem;
+    font-size: 1.0rem;
+    cursor: pointer;
+    & a {
+      text-decoration: none;
+    }
+  }
+  //
+  //
+  &-prev ,
+  &-next ,
+  &-page  {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 0.4rem;
+
+    &:hover {
+      color: var(--primary);
+    }
+
+    &.active {
+      color: #ffffff;
+      background: var(--primary);
+      font-weight: 600;
+      border: 1px solid var(--primary);
+    }
+  }
+  //
+  &-page a {
+    color: var(--greyLight);
+
+
+    &.active {
+      color: var(--greyDark);
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+}

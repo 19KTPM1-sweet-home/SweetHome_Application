@@ -103,6 +103,14 @@ class PropertyController {
       .then((ack)=> res.send(ack))
       .catch((err)=>next(err));
   }
+  //[POST] /property/filter
+  async filterProperties(req, res, next){
+    const conditionsFilter = req.body;
+    console.log(conditionsFilter);
+    await propertyService.filter(conditionsFilter)
+      .then((properties) => {res.send(properties);})
+      .catch(next);
+  }
 }
 
 module.exports = new PropertyController();

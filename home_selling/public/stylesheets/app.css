@@ -6988,6 +6988,49 @@ blockquote {
   opacity: 0.65;
 }
 
-/*# sourceMappingURL=app.css.map */
+.paginationjs ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  border-radius: 0.6rem;
+  list-style: none;
+  background: #ffffff;
+  box-shadow: 0 0.8rem 2rem rgba(90, 97, 129, 0.05);
+}
+.paginationjs-prev, .paginationjs-page, .paginationjs-next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.8rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.paginationjs-prev a, .paginationjs-page a, .paginationjs-next a {
+  text-decoration: none;
+}
+.paginationjs-prev, .paginationjs-next, .paginationjs-page {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.4rem;
+}
+.paginationjs-prev:hover, .paginationjs-next:hover, .paginationjs-page:hover {
+  color: var(--primary);
+}
+.paginationjs-prev.active, .paginationjs-next.active, .paginationjs-page.active {
+  color: #ffffff;
+  background: var(--primary);
+  font-weight: 600;
+  border: 1px solid var(--primary);
+}
+.paginationjs-page a {
+  color: var(--greyLight);
+}
+.paginationjs-page a.active {
+  color: var(--greyDark);
+}
+.paginationjs-page a.active:hover {
+  color: var(--primary);
+}
 
 /*# sourceMappingURL=app.css.map */
