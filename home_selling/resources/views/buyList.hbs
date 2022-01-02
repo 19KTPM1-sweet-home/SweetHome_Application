@@ -5,9 +5,9 @@
                 <div class="buy-title">
                     <p>Discover your perfect home</p>
                 </div>
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col-6 category">
-                        <ul class="nav nav-pills mt-4">
+                        <ul class="nav nav-pills">
                             <li class="nav-item mr-4">
                                 <h4>Categories:</h4>
                             </li>
@@ -22,9 +22,170 @@
 
                         </ul>
                     </div>
-                    <div class="col-3 filter-price"></div>
-                    <div class= "col-3 filter-start"></div>
+                    <div class="col-6">
+                      <div class ="wrapper_layered_filter">
+                        <div class="layered_filter_container">
+                          <div class="layered_filter_title hidden-xs hidden-sm">
+                            <p class="title_filter">
+                            <span class="icon-filter">
+                              <i class="fas fa-filter"></i>
+                            </span>
+                              Filter
+                            </p>
+                          </div>
+                          <div class="layered_filter_group">
+                            <div class="row">
+                              <div class="filter_group col-md-4" aria-expanded="true">
+                                <div class="filter_group_block">
+                                  <div class="filter_group-subtitle">
+                                    <span>PRICE</span>
+                                    <span class="icon-control">
+                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                  </span>
+                                  </div>
+                                  <div class="filter_group-content filter-price">
+                                    <ul class="checkbox-list">
+                                      <li>
+                                        <input type="checkbox" name="cc" data-price="" id="p1" />
+                                        <label for="p1">
+                                          <span>Below</span>
+                                          200,000$
+                                        </label>
+                                      </li>
+                                      <li>
+                                        <input type="checkbox" name="cc" data-price="" id="p2" />
+                                        <label for="p2">
+                                          200,000$ - 500,000$
+                                        </label>
+                                      </li>
+                                      <li>
+                                        <input type="checkbox" name="cc" data-price="" id="p3" />
+                                        <label for="p3">
+                                          500,000$ - 1,000,000$
+                                        </label>
+                                      </li>
+                                      <li>
+                                        <input type="checkbox" name="cc" data-price="" id="p4" />
+                                        <label for="p4">
+                                          1,000,000$ - 5,000,000$
+                                        </label>
+                                      </li>
+                                      <li>
+                                        <input type="checkbox" name="cc" data-price="" id="p5" />
+                                        <label for="p5">
+                                          <span>Above</span>
+                                          5,000,000$
+                                        </label>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="filter_group col-md-4" aria-expanded="true">
+                                <div class="filter_group_block">
+                                  <div class="filter_group-subtitle">
+                                    <span>RATE</span>
+                                    <span class="icon-control">
+                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                  </span>
+                                  </div>
+                                  <div class="filter_group-content filter-ratings">
+                                    <ul class="checkbox-list">
+                                      <li>
+                                        <input type="checkbox" name="cc" data-price="" id="p1" />
+                                        <label for="p1">
+                                          <span>Below</span>
+                                          200,000$
+                                        </label>
+                                      </li>
+                                      <li>
+                                        <input type="checkbox" name="cc" data-price="" id="p2" />
+                                        <label for="p2">
+                                          200,000$ - 500,000$
+                                        </label>
+                                      </li>
+                                      <li>
+                                        <input type="checkbox" name="cc" data-price="" id="p3" />
+                                        <label for="p3">
+                                          500,000$ - 1,000,000$
+                                        </label>
+                                      </li>
+                                      <li>
+                                        <input type="checkbox" name="cc" data-price="" id="p4" />
+                                        <label for="p4">
+                                          1,000,000$ - 5,000,000$
+                                        </label>
+                                      </li>
+                                      <li>
+                                        <input type="checkbox" name="cc" data-price="" id="p5" />
+                                        <label for="p5">
+                                          <span>Above</span>
+                                          5,000,000$
+                                        </label>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="filter_group col-md-4" aria-expanded="true">
+                                <div class="filter_group_block">
+                                  <div class="filter_group-subtitle">
+                                    <span class="icon-filter">
+                                      <i class="fas fa-sort-alpha-down"></i>
+                                    </span>
+                                    <span>SORT</span>
+                                    <span class="icon-control">
+                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                  </span>
+                                  </div>
+                                  <div class="filter_group-content">
+                                    <ul class="sort-by sort-by-content">
+                                      <li>
+                                        <span data-value="title-ascending">Name: A-Z</span>
+                                      </li>
+                                      <li>
+                                        <span data-value="title-descending">Name: Z-A</span>
+                                      </li>
+                                      <li>
+                                        <span data-value="created-ascending">Oldest properties</span>
+                                      </li>
+                                      <li>
+                                        <span data-value="created-descending">Newest properties</span>
+                                      </li>
+
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
                 </div>
+              <div class="layered_filter_tags">
+                <div class="filter_tags opened">
+                  Filter price:
+                  <b>200,000$ - 500,000$ , 500,000$ - 1,000,000$</b>
+                  <span class="filter_tags_removed">
+                    <i class="fas fa-times"></i>
+                  </span>
+                </div>
+                <div class="filter_tags opened">
+                  Filter rate:
+                  <b>
+                    1 star, 2 starts
+                  </b>
+                  <span class="filter_tags_removed">
+                    <i class="fas fa-times"></i>
+                  </span>
+                </div>
+                <div class="filter_tags filter_tags_remove_all opened">
+                  <span>Remove all</span>
+                </div>
+              </div>
                 <div class ="content"></div>
             </main>
            <div id="property-pagination-wrapper" class = "mt-4 pagination-wrapper "></div>
