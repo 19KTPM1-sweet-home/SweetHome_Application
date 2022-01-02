@@ -136,7 +136,7 @@ const displaySite =  (properties) =>{
                                     <a href="/detail/${property.slug}" class="property-title">
                                     <h5 class="card-title ">${property.name}</h5>
                                     </a>
-                                    <h5 class="property-price ">${property.price}</h5>
+                                    <h5 class="property-price ">$${property.price}</h5>
                                 </div>
 
                                 <p class="card-text">
@@ -187,7 +187,7 @@ const displayPropertyPerPage = (data)=>{
                                     <a href="/detail/${properties.slug}" class="property-title">
                                         <h5 class="card-title ">${properties.name}</h5>
                                     </a>
-                                    <h5 class="property-price ">$ ${properties.price}</h5>
+                                    <h5 class="property-price ">$${properties.price}</h5>
                                 </div>
                                 ${featureContainer}
                             </div>

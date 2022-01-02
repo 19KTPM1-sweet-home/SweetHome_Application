@@ -1042,10 +1042,7 @@ html {
   box-sizing: inherit;
 }
 
-@font-face {
-  font-family: myFirstFont;
-  src: url(sansation_light.woff);
-}
+
 
 //---------------START NAV BAR-----------------
 
@@ -1273,7 +1270,7 @@ html {
   color: black;
   font-weight: bold;
   font-size: 3.5rem;
-  margin-top: 1.5em;
+  margin-top: 0.8em;
 }
 /*==================
  LATEST PROPERTY SECTION
@@ -1594,6 +1591,7 @@ body {
 
 .card-body .property-title {
   text-decoration: none;
+  margin-right: 10px;
   color: $theme_color;
 }
 
