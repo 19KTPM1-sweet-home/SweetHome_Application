@@ -224,6 +224,44 @@ module.exports.filter = function(conditionsFilter){
             const price = Number(property.price)
             property.price = price.toLocaleString();
           })
+          result.map((property) => {
+            const minute = Math.round(
+              (Date.now() - property.createdAt.getTime()) / (1000 * 60),
+            );
+            property.unit = 'minutes';
+            property.time = minute;
+            if (minute > 60) {
+              const hour = Math.round(
+                (Date.now() - property.createdAt.getTime()) / (1000 * 60 * 60),
+              );
+              property.unit = 'hours';
+              property.time = hour;
+              if (hour > 24) {
+                const day = Math.round(
+                  (Date.now() - property.createdAt.getTime()) /
+                  (1000 * 60 * 60 * 24),
+                );
+                property.unit = 'days';
+                property.time = day;
+                if (day > 30) {
+                  const month = Math.round(
+                    (Date.now() - property.createdAt.getTime()) /
+                    (1000 * 60 * 60 * 24 * 30),
+                  );
+                  property.unit = 'months';
+                  property.time = month;
+                  if (month > 12) {
+                    const year = Math.round(
+                      (Date.now() - property.createdAt.getTime()) /
+                      (1000 * 60 * 60 * 24 * 30 * 12),
+                    );
+                    property.unit = 'years';
+                    property.time = year;
+                  }
+                }
+              }
+            }
+          });
           resolve(result);
         })
         .catch((error) => {
@@ -243,6 +281,44 @@ module.exports.filter = function(conditionsFilter){
                   const price = new Number(property.price)
                   property.price = price.toLocaleString();
                 })
+                result.map((property) => {
+                  const minute = Math.round(
+                    (Date.now() - property.createdAt.getTime()) / (1000 * 60),
+                  );
+                  property.unit = 'minutes';
+                  property.time = minute;
+                  if (minute > 60) {
+                    const hour = Math.round(
+                      (Date.now() - property.createdAt.getTime()) / (1000 * 60 * 60),
+                    );
+                    property.unit = 'hours';
+                    property.time = hour;
+                    if (hour > 24) {
+                      const day = Math.round(
+                        (Date.now() - property.createdAt.getTime()) /
+                        (1000 * 60 * 60 * 24),
+                      );
+                      property.unit = 'days';
+                      property.time = day;
+                      if (day > 30) {
+                        const month = Math.round(
+                          (Date.now() - property.createdAt.getTime()) /
+                          (1000 * 60 * 60 * 24 * 30),
+                        );
+                        property.unit = 'months';
+                        property.time = month;
+                        if (month > 12) {
+                          const year = Math.round(
+                            (Date.now() - property.createdAt.getTime()) /
+                            (1000 * 60 * 60 * 24 * 30 * 12),
+                          );
+                          property.unit = 'years';
+                          property.time = year;
+                        }
+                      }
+                    }
+                  }
+                });
                 resolve(result);
               }
           }

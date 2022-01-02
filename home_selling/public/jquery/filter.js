@@ -28,12 +28,34 @@ searchBar.on('keyup', (event)=>{
           displaySite(result)
         }
 
-      }else{
+      }
+      else{
+        showPagination();
+        if(searchString === ''){
+          if(properties.length===0){
+            displayNoResults($('#content .buying-section .content'));
+            hidePagination();
+          }
+          else{
+            // init pagination
+            $('#property-pagination-wrapper').pagination(
+              {
+                dataSource:properties,
+                pageSize:propertiesPerPage,
+                callback: function(data){
+                  displayPropertyPerPage(data);
+                }
+              }
+            )
+          }
+        }
+        else{
           const result = properties.filter((property)=>{
-          return (property.name.toLowerCase().includes(searchString))||(property.address.toLowerCase().includes(searchString));
-        })
+            return (property.name.toLowerCase().includes(searchString))||(property.address.toLowerCase().includes(searchString));
+          })
           if(result.length===0){
             displayNoResults($('#content .buying-section .content'))
+            hidePagination();
           }
           else{
             // init pagination
@@ -41,12 +63,14 @@ searchBar.on('keyup', (event)=>{
               {
                 dataSource:result,
                 pageSize:propertiesPerPage,
-                callback: function(data,pagination){
+                callback: function(data){
                   displayPropertyPerPage(data);
                 }
               }
             )
           }
+        }
+
       }
     })
 })
@@ -129,7 +153,12 @@ const displaySite =  (properties) =>{
   })
   container.html(propertiesHtml);
 }
-
+const hidePagination = ()=>{
+  $("#property-pagination-wrapper").hide();
+}
+const showPagination = ()=>{
+  $("#property-pagination-wrapper").show();
+}
 const displayPropertyPerPage = (data)=>{
   // temporary container
   const container = $("<div class=\"row\"></div>");
@@ -158,7 +187,7 @@ const displayPropertyPerPage = (data)=>{
                                     <a href="/detail/${properties.slug}" class="property-title">
                                         <h5 class="card-title ">${properties.name}</h5>
                                     </a>
-                                    <h5 class="property-price ">$${properties.price}</h5>
+                                    <h5 class="property-price ">$ ${properties.price}</h5>
                                 </div>
                                 ${featureContainer}
                             </div>
