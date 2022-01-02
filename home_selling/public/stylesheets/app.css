@@ -7033,4 +7033,20 @@ blockquote {
   color: var(--primary);
 }
 
+.no-results-search {
+  flex-direction: column;
+  display: flex;
+}
+.no-results-search h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.no-results-search .no-results-img {
+  justify-content: center;
+}
+.no-results-search .no-results-img img {
+  width: 15rem;
+}
+
 /*# sourceMappingURL=app.css.map */

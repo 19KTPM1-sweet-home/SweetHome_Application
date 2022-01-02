@@ -6885,3 +6885,22 @@ font-size: 16px;
     }
   }
 }
+//---------END PAGINATION----------
+
+//---------NO RESULT FOUND----------
+.no-results-search{
+  flex-direction:column;
+  display:flex;
+  h2{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .no-results-img{
+
+    justify-content:center;
+    img{
+      width:15rem;
+    }
+  }
+}

@@ -22,7 +22,7 @@ searchBar.on('keyup', (event)=>{
           })
         }
         if(result.length===0){
-          displayNoResults();
+          displayNoResults($('#list-properties-container'));
         }
         else {
           displaySite(result)
@@ -33,7 +33,7 @@ searchBar.on('keyup', (event)=>{
           return (property.name.toLowerCase().includes(searchString))||(property.address.toLowerCase().includes(searchString));
         })
           if(result.length===0){
-            displayNoResults()
+            displayNoResults($('#content .buying-section .content'))
           }
           else{
             // init pagination
@@ -62,9 +62,19 @@ const loadProperties = ()=>{
       })
   })
 }
-const displayNoResults = ()=>{
+const displayNoResults = (container)=>{
+  console.log(container);
   console.log('No results found');
-  const container = $("<div class=\"row\"></div>");
+  const no_results_container = $("<div class=\"row\"></div>");
+  no_results_container.addClass('no-results-search');
+  const no_results_content = $("<h2>No results found</h2>");
+  const no_results_img_container = $("<div class=\"row\"></div>");
+  no_results_img_container.addClass('no-results-img');
+  const no_results_img = $("<img src=\"/images/no_result_found.svg\"></img>")
+  no_results_img_container.append(no_results_img);
+  no_results_container.append(no_results_content);
+  no_results_container.append(no_results_img_container);
+  container.html(no_results_container);
 }
 const filterProperties = (categoryFilter, keySearch =undefined, priceFilter = undefined, statusFilter=undefined, rateFilter =undefined)=>{
   return new Promise((resolve, reject) =>{
