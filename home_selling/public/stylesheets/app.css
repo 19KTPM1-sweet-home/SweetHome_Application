@@ -7046,6 +7046,9 @@ blockquote {
   width: 15rem;
 }
 
+.wrapper_layered_filter ul {
+  list-style-type: none;
+}
 .wrapper_layered_filter .layered_filter_container {
   display: flex;
   flex-wrap: nowrap;
@@ -7059,12 +7062,21 @@ blockquote {
   flex: 1 1 auto;
   width: 1%;
 }
+.wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group_block:hover .filter_group-content {
+  pointer-events: auto;
+  visibility: visible;
+  top: 100%;
+  opacity: 1;
+}
 .wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group_block {
   position: relative;
 }
 .wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group_block ul.sort-by {
   margin: 0;
   padding: 5px 10px;
+}
+.wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group_block ul.sort-by li.active:before {
+  transform: rotate(-45deg) scale(1, 1);
 }
 .wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group_block ul.sort-by li:before {
   content: "";
@@ -7075,7 +7087,7 @@ blockquote {
   z-index: 1;
   width: 12px;
   height: 6px;
-  border: 1.5px solid #e7e7e7;
+  border: 1.5px solid black;
   border-top-style: none;
   border-right-style: none;
   transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
@@ -7110,6 +7122,8 @@ blockquote {
   display: inline-block;
 }
 .wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group-content {
+  padding: 10px 5px;
+  background: #fff;
   position: absolute;
   left: 0;
   right: 0;
@@ -7135,12 +7149,49 @@ blockquote {
   font-weight: normal;
   cursor: pointer;
 }
+.wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group-content .checkbox-list input[type=checkbox]:checked:before,
+.wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group-content .checkbox-list input[type=radio]:checked:before {
+  transform: rotate(-45deg) scale(1, 1);
+}
+.wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group-content .checkbox-list input[type=checkbox]:checked:after,
+.wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group-content .checkbox-list input[type=radio]:checked:after {
+  background: #f48840;
+}
+.wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group-content .checkbox-list input[type=checkbox]:before,
+.wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group-content .checkbox-list input[type=radio]:before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 5px;
+  margin: auto;
+  z-index: 1;
+  width: 10px;
+  height: 5px;
+  border: 2px solid #fff;
+  border-top-style: none;
+  border-right-style: none;
+  transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+  transform: rotate(-45deg) scale(0, 0);
+}
+.wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group-content .checkbox-list input[type=checkbox]:after,
+.wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group-content .checkbox-list input[type=radio]:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border: 1px solid #cedadd;
+  cursor: pointer;
+  border-radius: 2px;
+}
 .wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group-content .checkbox-list input[type=checkbox],
 .wrapper_layered_filter .layered_filter_container .layered_filter_group .filter_group .filter_group-content .checkbox-list input[type=radio] {
   position: absolute;
   top: 0px;
   left: 0px;
-  margin-top: 0;
+  margin: 0;
   vertical-align: top;
   width: 16px;
   height: 16px;
@@ -7150,8 +7201,6 @@ blockquote {
   border: 1px solid transparent;
   appearance: none;
   line-height: normal;
-  box-sizing: border-box;
-  padding: 0;
 }
 .wrapper_layered_filter .layered_filter_title {
   text-transform: uppercase;
