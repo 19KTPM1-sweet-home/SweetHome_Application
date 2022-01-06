@@ -207,6 +207,8 @@ exports.listByCategory = (slug, currentPage, propertiesPerPage) => {
 module.exports.filter = function(conditionsFilter){
   return new Promise(async (resolve, reject)=>{
     const categoryFilter = conditionsFilter.categoryFilter;
+    const priceFilter = conditionsFilter.priceFilter;
+    const rateFilter = conditionsFilter.rateFilter;
     if (categoryFilter !== 'all') {
       await Categories.findOne({ slug: categoryFilter })
         .populate({
@@ -216,14 +218,24 @@ module.exports.filter = function(conditionsFilter){
           }
         })
         .then((category) => {
-          const result = mongooseToObject(category).properties;
-          if (conditionsFilter.keySearch){
+          let result = mongooseToObject(category).properties;
+          if(priceFilter.length > 0) {
 
+            result = result.filter((property)=>{
+              let isValid = false;
+              const price = Number(property.price);
+              for (const condition of priceFilter){
+                if(condition.max === "Infinity"){
+                  condition.max = Infinity;
+                }
+                if(price>=condition.min && price<condition.max){
+                  isValid = true;
+                  break;
+                }
+              }
+              return isValid;
+            })
           }
-          result.map((property) =>{
-            const price = Number(property.price)
-            property.price = price.toLocaleString();
-          })
           result.map((property) => {
             const minute = Math.round(
               (Date.now() - property.createdAt.getTime()) / (1000 * 60),
@@ -276,7 +288,24 @@ module.exports.filter = function(conditionsFilter){
           else {
               if (err) { reject(err); }
               else {
-                const result = multipleMongooseToObject(properties);
+                let result = multipleMongooseToObject(properties);
+                if(priceFilter.length > 0) {
+
+                  result = result.filter((property)=>{
+                    let isValid = false;
+                    const price = Number(property.price);
+                    for (const condition of priceFilter){
+                      if(condition.max === "Infinity"){
+                        condition.max = Infinity;
+                      }
+                      if(price>=condition.min && price<condition.max){
+                        isValid = true;
+                        break;
+                      }
+                    }
+                    return isValid;
+                  })
+                }
                 result.map((property)=>{
                   const price = new Number(property.price)
                   property.price = price.toLocaleString();

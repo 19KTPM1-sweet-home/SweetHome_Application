@@ -1,91 +1,95 @@
 const searchBar = $('#search-bar');
 const pathname = window.location.pathname;
+console.log(pathname.split("/"));
 const isSitePage = pathname.split("/").at(1)==='';
-console.log(isSitePage);
+const isBuyListPage = pathname.split("/").at(1)==='buy';
 searchBar.on('keyup', (event)=>{
-  const searchString = event.target.value.toLowerCase();
-  console.log(searchString);
-  loadProperties()
-    .then((properties)=>{
-      if(isSitePage){
-        let result;
-        if(searchString === ''){
-          result = properties.filter((property,index) =>{
-            if(index<6){
-              return property;
-            }
-          })
-        }
-        else{
-          result = properties.filter((property)=>{
-            return (property.name.toLowerCase().includes(searchString))||(property.address.toLowerCase().includes(searchString));
-          })
-        }
-        if(result.length===0){
-          displayNoResults($('#list-properties-container'));
-        }
-        else {
-          displaySite(result)
-        }
-
-      }
-      else{
-        showPagination();
-        if(searchString === ''){
-          if(properties.length===0){
-            displayNoResults($('#content .buying-section .content'));
-            hidePagination();
+  if(isSitePage||isBuyListPage){
+    const searchString = event.target.value.toLowerCase();
+    console.log(searchString);
+    loadAllProperties()
+      .then((properties)=>{
+        if(isSitePage){
+          let result;
+          if(searchString === ''){
+            result = properties.filter((property,index) =>{
+              if(index<6){
+                return property;
+              }
+            })
           }
           else{
-            // init pagination
-            $('#property-pagination-wrapper').pagination(
-              {
-                dataSource:properties,
-                pageSize:propertiesPerPage,
-                callback: function(data){
-                  displayPropertyPerPage(data);
-                }
-              }
-            )
+            result = properties.filter((property)=>{
+              return (property.name.toLowerCase().includes(searchString))||(property.address.toLowerCase().includes(searchString));
+            })
           }
-        }
-        else{
-          const result = properties.filter((property)=>{
-            return (property.name.toLowerCase().includes(searchString))||(property.address.toLowerCase().includes(searchString));
-          })
           if(result.length===0){
-            displayNoResults($('#content .buying-section .content'))
-            hidePagination();
+            displayNoResults($('#list-properties-container'));
+          }
+          else {
+            displaySite(result)
+          }
+
+        }
+        else{
+          showPagination();
+          if(searchString === ''){
+            if(properties.length===0){
+              displayNoResults($('#content .buying-section .content'));
+              hidePagination();
+            }
+            else{
+              // init pagination
+              $('#property-pagination-wrapper').pagination(
+                {
+                  dataSource:properties,
+                  pageSize:propertiesPerPage,
+                  callback: function(data){
+                    displayPropertyPerPage(data);
+                  }
+                }
+              )
+            }
           }
           else{
-            // init pagination
-            $('#property-pagination-wrapper').pagination(
-              {
-                dataSource:result,
-                pageSize:propertiesPerPage,
-                callback: function(data){
-                  displayPropertyPerPage(data);
+            const result = properties.filter((property)=>{
+              return (property.name.toLowerCase().includes(searchString))||(property.address.toLowerCase().includes(searchString));
+            })
+            if(result.length===0){
+              displayNoResults($('#content .buying-section .content'))
+              hidePagination();
+            }
+            else{
+              // init pagination
+              $('#property-pagination-wrapper').pagination(
+                {
+                  dataSource:result,
+                  pageSize:propertiesPerPage,
+                  callback: function(data){
+                    displayPropertyPerPage(data);
+                  }
                 }
-              }
-            )
+              )
+            }
           }
-        }
 
-      }
-    })
+        }
+      })
+  }
+  else{
+    console.log('cannot search at this page')
+  }
 })
-const loadProperties = ()=>{
+const loadAllProperties = ()=>{
   return new Promise((resolve, reject) => {
-    let category = 'all';
-    if(!isSitePage){
-       category = pathname.split('/').at(-1);
-    }
-    filterProperties(category)
+    filterProperties({ categoryFilter:"all" })
       .then((data)=>{
         resolve(data)
       })
+      .catch((err)=> reject(err))
   })
 }
+
 const displayNoResults = (container)=>{
   console.log(container);
   console.log('No results found');
@@ -100,13 +104,18 @@ const displayNoResults = (container)=>{
   no_results_container.append(no_results_img_container);
   container.html(no_results_container);
 }
-const filterProperties = (categoryFilter, keySearch =undefined, priceFilter = undefined, statusFilter=undefined, rateFilter =undefined)=>{
+const filterProperties = ({
+                            categoryFilter,
+                            priceFilter = undefined,
+                            statusFilter = undefined,
+                            rateFilter = undefined
+                          })=>{
   return new Promise((resolve, reject) =>{
     $.ajax({
       type:"POST",
       url:origin + '/property/filter',
       contentType: "application/json",
-      data: JSON.stringify({categoryFilter,keySearch,priceFilter,statusFilter,rateFilter}),
+      data: JSON.stringify({categoryFilter,priceFilter,statusFilter,rateFilter}),
       success: function (res) {
         resolve(res);
       }
