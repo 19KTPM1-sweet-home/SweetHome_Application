@@ -33,17 +33,23 @@ const loadPropertiesAtBuyList = ()=>{
   if(isBuyListPage) {
     loadProperties()
       .then((propertiesLoaded) => {
-        console.log(propertiesLoaded)
-        // init pagination
-        $('#property-pagination-wrapper').pagination(
-          {
-            dataSource: propertiesLoaded,
-            pageSize: propertiesPerPage,
-            callback: function(data, pagination) {
-              displayPropertyPerPage(data);
+        showPagination();
+        if(propertiesLoaded.length===0){
+          displayNoResults($('#content .buying-section .content'));
+          hidePagination();
+        }
+        else{
+          // init pagination
+          $('#property-pagination-wrapper').pagination(
+            {
+              dataSource: propertiesLoaded,
+              pageSize: propertiesPerPage,
+              callback: function(data, pagination) {
+                displayPropertyPerPage(data);
+              }
             }
-          }
-        )
+          )
+        }
       })
   }
 }
