@@ -107,15 +107,15 @@ const displayNoResults = (container)=>{
 const filterProperties = ({
                             categoryFilter,
                             priceFilter = undefined,
-                            statusFilter = undefined,
-                            rateFilter = undefined
+                            rateFilter = undefined,
+                            sortBy = undefined,
                           })=>{
   return new Promise((resolve, reject) =>{
     $.ajax({
       type:"POST",
       url:origin + '/property/filter',
       contentType: "application/json",
-      data: JSON.stringify({categoryFilter,priceFilter,statusFilter,rateFilter}),
+      data: JSON.stringify({categoryFilter,priceFilter,rateFilter,sortBy}),
       success: function (res) {
         resolve(res);
       }
@@ -201,12 +201,14 @@ const displayPropertyPerPage = (data)=>{
                                 ${featureContainer}
                             </div>
                             <div class="card-footer d-flex justify-content-between foot">
-                                <a href="#" class="btn btn-primary">Liên hệ</a>
+                                <div class="property-rating" data-rating=${properties.rate}></div>
+                                <p><i class="far fa-clock"></i> ${properties.time} ${properties.unit} ago</p>
                             </div>
                         </div>
                     </div>
                 `
     container.append(template);
+
     // Finish load all data of a page => render to layout
     if (index == array.length - 1) {
       $(".buying-section .content").replaceWith(container);

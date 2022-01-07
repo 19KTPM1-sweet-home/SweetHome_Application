@@ -3,6 +3,7 @@ const propertiesPerPage = 6;
 const loadProperties = ()=>{
   return new Promise((resolve, reject) => {
     const category = pathname.split('/').at(-1);
+    const sortOption = $('.sort-by li.active').find('span').data('sort-by');
     const priceFilter = [];
     $('.filter-price ul.checkbox-list li.active').each(function(){
       const price_min = $(this).find('input').data('price-min');
@@ -16,14 +17,12 @@ const loadProperties = ()=>{
       };
       priceFilter.push(price);
     })
-    console.log("priceFilter: "+ priceFilter);
     const rateFilter = [];
     $('.filter-ratings ul.checkbox-list li.active').each(function(){
       const rate = $(this).find('input').data('rate');
       rateFilter.push(rate);
     })
-    console.log("rateFilter: "+rateFilter);
-    filterProperties({categoryFilter:category,priceFilter:priceFilter,rateFilter:rateFilter})
+    filterProperties({categoryFilter:category,priceFilter:priceFilter,rateFilter:rateFilter,sortBy:sortOption})
       .then((data)=>{
         resolve(data)
       })
@@ -46,6 +45,14 @@ const loadPropertiesAtBuyList = ()=>{
               pageSize: propertiesPerPage,
               callback: function(data, pagination) {
                 displayPropertyPerPage(data);
+                $(".property-rating").each(function(index){
+                  $(this).starRating({
+                    initialRating:$(this).data('rating'),
+                    readOnly:true,
+                    starSize:20,
+                  })
+
+                })
               }
             }
           )
@@ -56,6 +63,8 @@ const loadPropertiesAtBuyList = ()=>{
 
 
 $(document).ready(function(){
+  //default sorting
+  $('.sort-by li:nth-child(3)').addClass('active');
   loadPropertiesAtBuyList();
   // category
   var pathname = window.location.pathname;
@@ -67,8 +76,9 @@ $(document).ready(function(){
   $('.sort-by li').click(function(){
     if($(this).hasClass('active')){}
     else{
-      jQuery('.sort-by li').removeClass('active');
+      $('.sort-by li').removeClass('active');
       $(this).addClass('active');
+      loadPropertiesAtBuyList();
     }
   })
   $('.checkbox-list li>input').click(function(){
@@ -92,7 +102,6 @@ $(document).ready(function(){
       const tags = textFilter.join(',');
       const filter_tags = $('.filter_tags:eq('+indexTitles+') b');
       filter_tags.html(tags).parent().addClass('opened');
-      console.log(filter_tags);
       if($('.filter_tags:not(.filter_tags_remove_all).opened').length > 1){
         $('.filter_tags_remove_all').addClass('opened');
       }

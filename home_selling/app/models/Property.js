@@ -18,7 +18,7 @@ const Property = new Schema(
       phoneNumber: { type: String },
       email: { type: String },
     },
-    rate: { type: Number },
+    rate: { type: Number, default: 0},
     status: { type: String, required: true },
     category: {
       name: { type: String, required: true },

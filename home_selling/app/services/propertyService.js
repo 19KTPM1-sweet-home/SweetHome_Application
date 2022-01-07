@@ -209,12 +209,27 @@ module.exports.filter = function(conditionsFilter){
     const categoryFilter = conditionsFilter.categoryFilter;
     const priceFilter = conditionsFilter.priceFilter;
     const rateFilter = conditionsFilter.rateFilter;
+
+    const sortOptions = conditionsFilter.sortBy;
+    let sortCondition = {};
+    if(sortOptions==='created-descending'){
+      sortCondition = { createdAt: 1 }
+    }
+    else if(sortOptions==='price-ascending'){
+      sortCondition = { price: 1 }
+    }
+    else if(sortOptions==='price-descending'){
+      sortCondition = { price: -1 }
+    }
+    else{
+      sortCondition = { createdAt: -1 }
+    }
     if (categoryFilter !== 'all') {
       await Categories.findOne({ slug: categoryFilter })
         .populate({
           path: 'properties',
           options:{
-            sort: { createdAt: -1 },
+            sort: sortCondition,
           }
         })
         .then((category) => {
@@ -234,6 +249,15 @@ module.exports.filter = function(conditionsFilter){
                 }
               }
               return isValid;
+            })
+          }
+          if(rateFilter.length > 0) {
+            result = result.filter((property)=>{
+              for (const rate of rateFilter){
+                if(property.rate === rate){
+                  return true;
+                }
+              }
             })
           }
           result.map((property) => {
@@ -282,7 +306,7 @@ module.exports.filter = function(conditionsFilter){
     }
     else {
       await Properties.find({})
-        .sort({ createdAt: -1 })
+        .sort(sortCondition)
         .exec((err, properties) => {
           if (err) { reject(err); }
           else {
@@ -290,7 +314,6 @@ module.exports.filter = function(conditionsFilter){
               else {
                 let result = multipleMongooseToObject(properties);
                 if(priceFilter.length > 0) {
-
                   result = result.filter((property)=>{
                     let isValid = false;
                     const price = Number(property.price);
@@ -304,6 +327,15 @@ module.exports.filter = function(conditionsFilter){
                       }
                     }
                     return isValid;
+                  })
+                }
+                if(rateFilter.length > 0) {
+                  result = result.filter((property)=>{
+                    for (const rate of rateFilter){
+                      if(property.rate === rate){
+                        return true;
+                      }
+                    }
                   })
                 }
                 result.map((property)=>{
