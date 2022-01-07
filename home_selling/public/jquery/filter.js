@@ -161,7 +161,62 @@ const displayPropertyPerPage = (data)=>{
     }
   });
 }
+const loadProperties = (currentPage)=>{
+  return new Promise((resolve, reject) => {
+    const category = pathname.split('/').at(-1);
+    const sortOption = $('.sort-by li.active').find('span').data('sort-by');
+    const priceFilter = [];
+    $('.filter-price ul.checkbox-list li.active').each(function(){
+      const price_min = $(this).find('input').data('price-min');
+      let price_max = $(this).find('input').data('price-max');
+      if(price_max === Infinity){
+        price_max = "Infinity";
+      }
+      const price = {
+        min: price_min,
+        max: price_max
+      };
+      priceFilter.push(price);
+    })
+    const rateFilter = [];
+    $('.filter-ratings ul.checkbox-list li.active').each(function(){
+      const rate = $(this).find('input').data('rate');
+      rateFilter.push(rate);
+    })
+    const key = searchBar.val();
+    console.log(key);
+    filterProperties({categoryFilter:category,priceFilter:priceFilter,rateFilter:rateFilter,sortBy:sortOption,keySearch:key,currentPage})
+      .then((data)=>{
+        resolve(data)
+      })
+  })
+}
 
+const loadPropertiesAtBuyList = (currentPage)=>{
+  loadProperties(currentPage)
+    .then((data) => {
+      const propertiesLoaded = data.properties;
+      const count = data.count;
+      showPagination();
+      if(propertiesLoaded.length===0){
+        displayNoResults($('#content .buying-section .content'));
+        hidePagination();
+      }
+      else{
+        displayPropertyPerPage(propertiesLoaded);
+        $(".property-rating").each(function(index){
+          $(this).starRating({
+            initialRating:$(this).data('rating'),
+            readOnly:true,
+            starSize:20,
+          })
+        })
+        $('#property-pagination-wrapper').pagination('updateItems',count);
+      }
+
+    })
+
+}
 
 
 

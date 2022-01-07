@@ -66,7 +66,7 @@ class userController {
 
   async showHomeTours(req, res) {
     const homeTours = await tourService.loadHomeTours(req.user._id);
-    res.render('homeTour', {layout: false, homeTours: homeTours});
+    res.render('homeTour', {homeTours: homeTours});
   }
 
   async cancelHomeTour(req, res) {
