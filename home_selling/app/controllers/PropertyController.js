@@ -107,8 +107,8 @@ class PropertyController {
   async filterProperties(req, res, next){
     const conditionsFilter = req.body;
     console.log(conditionsFilter);
-    await propertyService.filter(conditionsFilter)
-      .then((properties) => {res.send(properties);})
+    await propertyService.filter(conditionsFilter,propertiesPerPage)
+      .then((data) => {res.send(data);})
       .catch(next);
   }
 }

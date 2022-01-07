@@ -1,73 +1,67 @@
-// pagination for buy list
-const propertiesPerPage = 6;
-const loadProperties = ()=>{
-  return new Promise((resolve, reject) => {
-    const category = pathname.split('/').at(-1);
-    const sortOption = $('.sort-by li.active').find('span').data('sort-by');
-    const priceFilter = [];
-    $('.filter-price ul.checkbox-list li.active').each(function(){
-      const price_min = $(this).find('input').data('price-min');
-      let price_max = $(this).find('input').data('price-max');
-      if(price_max === Infinity){
-        price_max = "Infinity";
-      }
-      const price = {
-        min: price_min,
-        max: price_max
-      };
-      priceFilter.push(price);
-    })
-    const rateFilter = [];
-    $('.filter-ratings ul.checkbox-list li.active').each(function(){
-      const rate = $(this).find('input').data('rate');
-      rateFilter.push(rate);
-    })
-    const key = searchBar.val();
-    console.log(key);
-    filterProperties({categoryFilter:category,priceFilter:priceFilter,rateFilter:rateFilter,sortBy:sortOption,keySearch:key})
-      .then((data)=>{
-        resolve(data)
-      })
-  })
-}
-const loadPropertiesAtBuyList = ()=>{
-  if(isBuyListPage) {
-    loadProperties()
-      .then((propertiesLoaded) => {
-        showPagination();
-        if(propertiesLoaded.length===0){
-          displayNoResults($('#content .buying-section .content'));
-          hidePagination();
-        }
-        else{
-          // init pagination
-          $('#property-pagination-wrapper').pagination(
-            {
-              dataSource: propertiesLoaded,
-              pageSize: propertiesPerPage,
-              callback: function(data, pagination) {
-                displayPropertyPerPage(data);
-                $(".property-rating").each(function(index){
-                  $(this).starRating({
-                    initialRating:$(this).data('rating'),
-                    readOnly:true,
-                    starSize:20,
-                  })
 
-                })
-              }
-            }
-          )
+
+  const defaultTotalPages = 10;
+  // pagination for buy list
+  const propertiesPerPage = 6;
+  const loadProperties = (currentPage)=>{
+    return new Promise((resolve, reject) => {
+      const category = pathname.split('/').at(-1);
+      const sortOption = $('.sort-by li.active').find('span').data('sort-by');
+      const priceFilter = [];
+      $('.filter-price ul.checkbox-list li.active').each(function(){
+        const price_min = $(this).find('input').data('price-min');
+        let price_max = $(this).find('input').data('price-max');
+        if(price_max === Infinity){
+          price_max = "Infinity";
         }
+        const price = {
+          min: price_min,
+          max: price_max
+        };
+        priceFilter.push(price);
       })
+      const rateFilter = [];
+      $('.filter-ratings ul.checkbox-list li.active').each(function(){
+        const rate = $(this).find('input').data('rate');
+        rateFilter.push(rate);
+      })
+      const key = searchBar.val();
+      console.log(key);
+      filterProperties({categoryFilter:category,priceFilter:priceFilter,rateFilter:rateFilter,sortBy:sortOption,keySearch:key,currentPage})
+        .then((data)=>{
+          resolve(data)
+        })
+    })
   }
-}
 
+  const loadPropertiesAtBuyList = (currentPage)=>{
+      loadProperties(currentPage)
+        .then((data) => {
+          const propertiesLoaded = data.properties;
+          const count = data.count;
+          showPagination();
+          if(propertiesLoaded.length===0){
+            displayNoResults($('#content .buying-section .content'));
+            hidePagination();
+          }
+          else{
+            displayPropertyPerPage(propertiesLoaded);
+            $(".property-rating").each(function(index){
+              $(this).starRating({
+                initialRating:$(this).data('rating'),
+                readOnly:true,
+                starSize:20,
+              })
+            })
+            $('#property-pagination-wrapper').pagination('updateItems',count);
+          }
 
-$(document).ready(function(){
+        })
+
+  }
+  $(window).on('load', function () {
   //default sorting
   $('.sort-by li:nth-child(3)').addClass('active');
-  loadPropertiesAtBuyList();
   // category
   var pathname = window.location.pathname;
   const slug = pathname.split("/").at(-1);
@@ -80,13 +74,14 @@ $(document).ready(function(){
     else{
       $('.sort-by li').removeClass('active');
       $(this).addClass('active');
-      loadPropertiesAtBuyList();
+      console.log($('#property-pagination-wrapper').pagination('getCurrentPage'));
+      loadPropertiesAtBuyList($('#property-pagination-wrapper').pagination('getCurrentPage'));
     }
   })
   $('.checkbox-list li>input').click(function(){
 
     $(this).parent().toggleClass("active");
-    loadPropertiesAtBuyList();
+    loadPropertiesAtBuyList(1);
     if($(this).is(':checked')){
       $(this).prop('checked', true);
     }
@@ -122,14 +117,26 @@ $(document).ready(function(){
     if($('.filter_tags:not(.filter_tags_remove_all).opened').length === 1){
       $('.filter_tags_remove_all').removeClass('opened');
     }
-    loadPropertiesAtBuyList();
+    loadPropertiesAtBuyList(1);
   })
   $('.filter_tags_remove_all').click(function(){
     $('.filter_group li.active input').prop('checked',false);
     $('.filter_group li.active').removeClass('active');
     $('.filter_tags b').html('').parent().removeClass('opened');
     $('.filter_tags_remove_all').removeClass('opened');
-    loadPropertiesAtBuyList();
+    loadPropertiesAtBuyList(1);
   })
-
+  function initPagination() {
+    $('#property-pagination-wrapper').pagination({
+      items: defaultTotalPages,
+      itemsOnPage: propertiesPerPage,
+      onInit: loadPropertiesAtBuyList(1),
+      onPageClick: function (currentPage) {
+        $(this).removeAttr("href");
+        loadPropertiesAtBuyList(currentPage);
+      }
+    })
+  }
+//configure pagination
+  initPagination();
 })

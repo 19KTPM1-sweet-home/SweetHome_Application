@@ -6,39 +6,27 @@ const isBuyListPage = pathname.split("/").at(1)==='buy';
 searchBar.on('keyup', (event)=>{
   const searchString = event.target.value.toLowerCase();
   if(isSitePage){
-    loadAllProperties()
-      .then((properties)=> {
-
-        let result;
-        if (searchString === '') {
-          result = properties.filter((property, index) => {
-            if (index < 6) {
-              return property;
-            }
-          })
-        } else {
-          result = properties.filter((property) => {
-            return (property.name.toLowerCase().includes(searchString)) || (property.address.toLowerCase().includes(searchString));
-          })
-        }
-        if (result.length === 0) {
+    loadAllProperties(searchString)
+      .then((data)=> {
+        const properties = data.properties;
+        if (properties.length === 0) {
           displayNoResults($('#list-properties-container'));
         } else {
-          displaySite(result)
+          displaySite(properties)
         }
       })
 
   }
   else if(isBuyListPage){
-    loadPropertiesAtBuyList();
+    loadPropertiesAtBuyList(1);
   }
   else{
     console.log('cannot search at this page')
   }
 })
-const loadAllProperties = ()=>{
+const loadAllProperties = (key=undefined)=>{
   return new Promise((resolve, reject) => {
-    filterProperties({ categoryFilter:"all" })
+    filterProperties({ categoryFilter:"all",keySearch:key})
       .then((data)=>{
         resolve(data)
       })
@@ -66,13 +54,14 @@ const filterProperties = ({
                             rateFilter = [],
                             sortBy = undefined,
                             keySearch = undefined,
+                            currentPage= undefined
                           })=>{
   return new Promise((resolve, reject) =>{
     $.ajax({
       type:"POST",
       url:origin + '/property/filter',
       contentType: "application/json",
-      data: JSON.stringify({categoryFilter,priceFilter,rateFilter,sortBy,keySearch}),
+      data: JSON.stringify({categoryFilter,priceFilter,rateFilter,sortBy,keySearch,currentPage}),
       success: function (res) {
         resolve(res);
       }

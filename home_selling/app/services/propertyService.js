@@ -204,13 +204,28 @@ exports.listByCategory = (slug, currentPage, propertiesPerPage) => {
   })
 }
 
-module.exports.filter = function(conditionsFilter){
+module.exports.filter = function(conditionsFilter,propertiesPerPage){
   return new Promise(async (resolve, reject)=>{
     const categoryFilter = conditionsFilter.categoryFilter;
     const priceFilter = conditionsFilter.priceFilter;
     const rateFilter = conditionsFilter.rateFilter;
     const keySearch = conditionsFilter.keySearch;
     const sortOptions = conditionsFilter.sortBy;
+    const currentPage = conditionsFilter.currentPage;
+    let pagination= null;
+    if(currentPage){
+        pagination = {
+          skip: (propertiesPerPage * currentPage) - propertiesPerPage,
+          limit: (propertiesPerPage),
+        };
+    }
+    else{
+      if(!keySearch){
+        pagination = {
+          limit: (propertiesPerPage),
+        }
+      }
+    }
     let sortCondition = {};
     if(sortOptions==='created-descending'){
       sortCondition = { createdAt: 1 }
@@ -227,13 +242,12 @@ module.exports.filter = function(conditionsFilter){
     if (categoryFilter !== 'all') {
       await Categories.findOne({ slug: categoryFilter })
         .populate({
-          path: 'properties',
-          options:{
-            sort: sortCondition,
-          }
+          path: 'properties'
         })
+        .sort(sortCondition)
         .then((category) => {
           let result = mongooseToObject(category).properties;
+
           if(keySearch){
             result = result.filter((property) => {
               return (property.name.toLowerCase().includes(keySearch)) || (property.address.toLowerCase().includes(keySearch));
@@ -263,6 +277,19 @@ module.exports.filter = function(conditionsFilter){
                   return true;
                 }
               }
+            })
+          }
+          const count = result.length;
+          if(pagination) {
+            const skip = pagination.skip;
+            if (skip) {
+              result = result.filter((property,index)=>{
+                return index >= skip;
+              })
+            }
+            const limit = pagination.limit;
+            result = result.filter((property,index)=>{
+              return index < limit;
             })
           }
           result.map((property) => {
@@ -303,7 +330,7 @@ module.exports.filter = function(conditionsFilter){
               }
             }
           });
-          resolve(result);
+          resolve({ properties: result, count: count });
         })
         .catch((error) => {
           reject(error);
@@ -315,83 +342,95 @@ module.exports.filter = function(conditionsFilter){
         .exec((err, properties) => {
           if (err) { reject(err); }
           else {
-              if (err) { reject(err); }
-              else {
-                let result = multipleMongooseToObject(properties);
-                if(keySearch){
-                  result = result.filter((property) => {
-                    return (property.name.toLowerCase().includes(keySearch)) || (property.address.toLowerCase().includes(keySearch));
-                  })
+            let result = multipleMongooseToObject(properties);
+
+            if(keySearch){
+              result = result.filter((property) => {
+                return (property.name.toLowerCase().includes(keySearch)) || (property.address.toLowerCase().includes(keySearch));
+              })
+            }
+            if(priceFilter.length > 0) {
+              result = result.filter((property)=>{
+                let isValid = false;
+                const price = Number(property.price);
+                for (const condition of priceFilter){
+                  if(condition.max === "Infinity"){
+                    condition.max = Infinity;
+                  }
+                  if(price>=condition.min && price<condition.max){
+                    isValid = true;
+                    break;
+                  }
                 }
-                if(priceFilter.length > 0) {
-                  result = result.filter((property)=>{
-                    let isValid = false;
-                    const price = Number(property.price);
-                    for (const condition of priceFilter){
-                      if(condition.max === "Infinity"){
-                        condition.max = Infinity;
-                      }
-                      if(price>=condition.min && price<condition.max){
-                        isValid = true;
-                        break;
-                      }
-                    }
-                    return isValid;
-                  })
+                return isValid;
+              })
+            }
+            if(rateFilter.length > 0) {
+              result = result.filter((property)=>{
+                for (const rate of rateFilter){
+                  if(property.rate === rate){
+                    return true;
+                  }
                 }
-                if(rateFilter.length > 0) {
-                  result = result.filter((property)=>{
-                    for (const rate of rateFilter){
-                      if(property.rate === rate){
-                        return true;
-                      }
-                    }
+              })
+            }
+            const count = result.length;
+            if(pagination) {
+              const skip = pagination.skip;
+              if (skip) {
+                  result = result.filter((property,index)=>{
+                      return index >= skip;
                   })
-                }
-                result.map((property)=>{
-                  const price = new Number(property.price)
-                  property.price = price.toLocaleString();
-                })
-                result.map((property) => {
-                  const minute = Math.round(
-                    (Date.now() - property.createdAt.getTime()) / (1000 * 60),
+              }
+              const limit = pagination.limit;
+              result = result.filter((property,index)=>{
+                return index < limit;
+              })
+            }
+            result.map((property)=>{
+              const price = new Number(property.price)
+              property.price = price.toLocaleString();
+            })
+            result.map((property) => {
+              const minute = Math.round(
+                (Date.now() - property.createdAt.getTime()) / (1000 * 60),
+              );
+              property.unit = 'minutes';
+              property.time = minute;
+              if (minute > 60) {
+                const hour = Math.round(
+                  (Date.now() - property.createdAt.getTime()) / (1000 * 60 * 60),
+                );
+                property.unit = 'hours';
+                property.time = hour;
+                if (hour > 24) {
+                  const day = Math.round(
+                    (Date.now() - property.createdAt.getTime()) /
+                    (1000 * 60 * 60 * 24),
                   );
-                  property.unit = 'minutes';
-                  property.time = minute;
-                  if (minute > 60) {
-                    const hour = Math.round(
-                      (Date.now() - property.createdAt.getTime()) / (1000 * 60 * 60),
+                  property.unit = 'days';
+                  property.time = day;
+                  if (day > 30) {
+                    const month = Math.round(
+                      (Date.now() - property.createdAt.getTime()) /
+                      (1000 * 60 * 60 * 24 * 30),
                     );
-                    property.unit = 'hours';
-                    property.time = hour;
-                    if (hour > 24) {
-                      const day = Math.round(
+                    property.unit = 'months';
+                    property.time = month;
+                    if (month > 12) {
+                      const year = Math.round(
                         (Date.now() - property.createdAt.getTime()) /
-                        (1000 * 60 * 60 * 24),
+                        (1000 * 60 * 60 * 24 * 30 * 12),
                       );
-                      property.unit = 'days';
-                      property.time = day;
-                      if (day > 30) {
-                        const month = Math.round(
-                          (Date.now() - property.createdAt.getTime()) /
-                          (1000 * 60 * 60 * 24 * 30),
-                        );
-                        property.unit = 'months';
-                        property.time = month;
-                        if (month > 12) {
-                          const year = Math.round(
-                            (Date.now() - property.createdAt.getTime()) /
-                            (1000 * 60 * 60 * 24 * 30 * 12),
-                          );
-                          property.unit = 'years';
-                          property.time = year;
-                        }
-                      }
+                      property.unit = 'years';
+                      property.time = year;
                     }
                   }
-                });
-                resolve(result);
+                }
               }
+            });
+
+            resolve({ properties: result, count: count });
           }
         })
     }
