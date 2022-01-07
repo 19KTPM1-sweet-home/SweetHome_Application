@@ -24,7 +24,8 @@ const User = new Schema(
     resetToken:{
       token:{type: String},
       updatedAt:{type: Date}
-    }
+    },
+    lock:{type:String,required: true,default:'false'}
   },
   {
     // assign createAt and updateAt fields to Schema
