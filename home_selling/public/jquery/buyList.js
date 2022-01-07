@@ -22,7 +22,9 @@ const loadProperties = ()=>{
       const rate = $(this).find('input').data('rate');
       rateFilter.push(rate);
     })
-    filterProperties({categoryFilter:category,priceFilter:priceFilter,rateFilter:rateFilter,sortBy:sortOption})
+    const key = searchBar.val();
+    console.log(key);
+    filterProperties({categoryFilter:category,priceFilter:priceFilter,rateFilter:rateFilter,sortBy:sortOption,keySearch:key})
       .then((data)=>{
         resolve(data)
       })

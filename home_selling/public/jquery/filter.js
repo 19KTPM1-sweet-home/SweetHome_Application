@@ -4,77 +4,33 @@ console.log(pathname.split("/"));
 const isSitePage = pathname.split("/").at(1)==='';
 const isBuyListPage = pathname.split("/").at(1)==='buy';
 searchBar.on('keyup', (event)=>{
-  if(isSitePage||isBuyListPage){
-    const searchString = event.target.value.toLowerCase();
-    console.log(searchString);
+  const searchString = event.target.value.toLowerCase();
+  if(isSitePage){
     loadAllProperties()
-      .then((properties)=>{
-        if(isSitePage){
-          let result;
-          if(searchString === ''){
-            result = properties.filter((property,index) =>{
-              if(index<6){
-                return property;
-              }
-            })
-          }
-          else{
-            result = properties.filter((property)=>{
-              return (property.name.toLowerCase().includes(searchString))||(property.address.toLowerCase().includes(searchString));
-            })
-          }
-          if(result.length===0){
-            displayNoResults($('#list-properties-container'));
-          }
-          else {
-            displaySite(result)
-          }
+      .then((properties)=> {
 
+        let result;
+        if (searchString === '') {
+          result = properties.filter((property, index) => {
+            if (index < 6) {
+              return property;
+            }
+          })
+        } else {
+          result = properties.filter((property) => {
+            return (property.name.toLowerCase().includes(searchString)) || (property.address.toLowerCase().includes(searchString));
+          })
         }
-        else{
-          showPagination();
-          if(searchString === ''){
-            if(properties.length===0){
-              displayNoResults($('#content .buying-section .content'));
-              hidePagination();
-            }
-            else{
-              // init pagination
-              $('#property-pagination-wrapper').pagination(
-                {
-                  dataSource:properties,
-                  pageSize:propertiesPerPage,
-                  callback: function(data){
-                    displayPropertyPerPage(data);
-                  }
-                }
-              )
-            }
-          }
-          else{
-            const result = properties.filter((property)=>{
-              return (property.name.toLowerCase().includes(searchString))||(property.address.toLowerCase().includes(searchString));
-            })
-            if(result.length===0){
-              displayNoResults($('#content .buying-section .content'))
-              hidePagination();
-            }
-            else{
-              // init pagination
-              $('#property-pagination-wrapper').pagination(
-                {
-                  dataSource:result,
-                  pageSize:propertiesPerPage,
-                  callback: function(data){
-                    displayPropertyPerPage(data);
-                  }
-                }
-              )
-            }
-          }
-
+        if (result.length === 0) {
+          displayNoResults($('#list-properties-container'));
+        } else {
+          displaySite(result)
         }
       })
+
+  }
+  else if(isBuyListPage){
+    loadPropertiesAtBuyList();
   }
   else{
     console.log('cannot search at this page')
@@ -106,16 +62,17 @@ const displayNoResults = (container)=>{
 }
 const filterProperties = ({
                             categoryFilter,
-                            priceFilter = undefined,
-                            rateFilter = undefined,
+                            priceFilter = [],
+                            rateFilter = [],
                             sortBy = undefined,
+                            keySearch = undefined,
                           })=>{
   return new Promise((resolve, reject) =>{
     $.ajax({
       type:"POST",
       url:origin + '/property/filter',
       contentType: "application/json",
-      data: JSON.stringify({categoryFilter,priceFilter,rateFilter,sortBy}),
+      data: JSON.stringify({categoryFilter,priceFilter,rateFilter,sortBy,keySearch}),
       success: function (res) {
         resolve(res);
       }

@@ -209,7 +209,7 @@ module.exports.filter = function(conditionsFilter){
     const categoryFilter = conditionsFilter.categoryFilter;
     const priceFilter = conditionsFilter.priceFilter;
     const rateFilter = conditionsFilter.rateFilter;
-
+    const keySearch = conditionsFilter.keySearch;
     const sortOptions = conditionsFilter.sortBy;
     let sortCondition = {};
     if(sortOptions==='created-descending'){
@@ -234,6 +234,11 @@ module.exports.filter = function(conditionsFilter){
         })
         .then((category) => {
           let result = mongooseToObject(category).properties;
+          if(keySearch){
+            result = result.filter((property) => {
+              return (property.name.toLowerCase().includes(keySearch)) || (property.address.toLowerCase().includes(keySearch));
+            })
+          }
           if(priceFilter.length > 0) {
 
             result = result.filter((property)=>{
@@ -313,6 +318,11 @@ module.exports.filter = function(conditionsFilter){
               if (err) { reject(err); }
               else {
                 let result = multipleMongooseToObject(properties);
+                if(keySearch){
+                  result = result.filter((property) => {
+                    return (property.name.toLowerCase().includes(keySearch)) || (property.address.toLowerCase().includes(keySearch));
+                  })
+                }
                 if(priceFilter.length > 0) {
                   result = result.filter((property)=>{
                     let isValid = false;
