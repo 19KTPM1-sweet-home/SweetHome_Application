@@ -15,7 +15,7 @@ function loadCommentPerPage(currentPage) {
                 {{#each commentData.comments}}
                 <li>
                     <div class="author-thumb">
-                        <img src="{{this.authorAvatar}}" alt="">
+                        <img src="{{#if this.authorAvatar}}{{this.authorAvatar}}{{else}}https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png{{/if}}" alt="">
                     </div>
                     <div class="right-content">
                         <h4>{{this.authorName}}<span>{{this.createdAt}}</span></h4>

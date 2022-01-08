@@ -10,7 +10,7 @@ const Comment = new Schema(
       required: true,
     },
     authorName: { type: String, required: true },
-    authorAvatar: { type: String, required: true },
+    authorAvatar: { type: String},
     postId: {
       type: Schema.Types.ObjectId,
       ref: 'Property',
