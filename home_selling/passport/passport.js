@@ -17,6 +17,9 @@ passport.use(new LocalStrategy({
     if (!passwordValid) {
       return done(null, false, { messages: req.flash('errorMsg', 'Incorrect password') });
     }
+    if (user.lock == 'true') {
+      return done(null, false, { messages: req.flash('errorMsg', 'Your account was banned') });
+    }
     return done(null, user);
   }
 ));

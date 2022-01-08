@@ -15,7 +15,7 @@ router.get('/logout', function(req, res){
 });
 
 router.post('/login', passport.authenticate('local', { 
-    failureRedirect: '/login/?wrong-password',
+    failureRedirect: '/login/?error',
     failureFlash: true
 }), (req, res) => {
   const returnTo = req.session.returnTo || '/';
