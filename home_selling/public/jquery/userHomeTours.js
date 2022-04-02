@@ -16,6 +16,7 @@ $(window).on('load', function () {
         e.preventDefault();
         $(this).removeAttr("href");
         $('#deleteModal').modal('show');
+        $('#delete-modal-yes-btn').val($(this).parent().children('.home-tour-id').val()); // passing id of home tour to be deleted to the button
     });
 
     // Close delete modal
@@ -38,7 +39,7 @@ $(window).on('load', function () {
         $(this).removeAttr("href");
         $('#deleteModal').modal('hide');
 
-        const homeTourId = $('.home-tour-id').val();
+        const homeTourId = $(this).val(); // Get id of home tour to be deleted
 
         const origin = window.location.origin + window.location.pathname;
         $.ajax({
@@ -49,8 +50,7 @@ $(window).on('load', function () {
             success: function(res){
                 if(res == 'success') {
                     // Delete home tour on UI side
-                    const homeTourDeleted = ".home-tour-id[value='" + homeTourId + "']"
-                    console.log(homeTourDeleted)
+                    const homeTourDeleted = ".home-tour-id[value='" + homeTourId + "']";
                     $(homeTourDeleted).parent().remove();
                     if($('.tour-list').children().length == 0 ) {
                         $('.card-container-custom .container').hide();
