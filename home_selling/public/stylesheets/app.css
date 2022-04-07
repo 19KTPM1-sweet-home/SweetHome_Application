@@ -1142,6 +1142,7 @@ html {
 
 .user-dropdown-menu-custom {
   width: 50%;
+  left: auto !important;
 }
 
 @media only screen and (max-width: 992px) {
