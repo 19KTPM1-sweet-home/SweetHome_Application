@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const cloudinary = require("../../cloudinary/cloudinary");
 const streamifier = require("streamifier");
 const randomString = require("randomstring");
